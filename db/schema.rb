@@ -93,11 +93,11 @@ ActiveRecord::Schema.define(version: 20151104073234) do
     t.string   "login_id"
     t.string   "password"
     t.string   "name"
-    t.integer  "sex"
+    t.string   "sex"
     t.string   "address",    default: ""
     t.date     "birthdate"
     t.string   "cellphone"
-    t.integer  "type"
+    t.string   "user_type"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end

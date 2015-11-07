@@ -53,4 +53,17 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+# root :to => "session#auth"
+root 'static_pages#home'
+
+# Session
+get 'login' => 'session#new'
+post 'login' => 'session#create'
+get 'logout'  => 'session#destroy'
+# User
+get 'join' => 'user#new'
+post 'join' => 'user#create'
+get 'sign-out' => 'user#destroy'
+
 end

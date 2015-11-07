@@ -5,11 +5,11 @@ class CreateUsers < ActiveRecord::Migration
       t.string :login_id
       t.string :password
       t.string :name
-      t.integer :sex
+      t.string :sex
       t.string :address, default: ''
       t.date :birthdate
       t.string :cellphone
-      t.integer :type
+      t.string :user_type
       t.timestamps null: false
     end
   end

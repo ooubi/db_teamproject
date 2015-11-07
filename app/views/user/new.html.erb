@@ -1,0 +1,41 @@
+<% provide(:title, "Sign in") %>
+<div class="row">
+  <div class="flash_container">
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
+  <%= yield %>
+  </div>
+  
+  <div class="col-md-6 col-md-offset-3">
+  	<h1>Join</h1>
+    <%= form_for(:user, :url => { :controller => "user", :action => "create"}, :method => "post" ) do |f| %>
+      <li>
+      <%= f.label :id %>
+      <%= f.text_field :login_id, class: 'form-control' %>
+      </li><li>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+      </li><li>
+      <%= f.label :name %>
+      <%= f.text_field :password, class: 'form-control' %>
+      </li><li>
+      <%= f.label :sex %>
+      <%= f.select :sex, ['female', 'male'], class: 'form-control' %>
+      </li><li>
+      <%= f.label :address %> (optional)
+      <%= f.text_field :address, class: 'form-control' %>
+      </li><li>
+      <%= f.label :birthdate %>
+      <%= f.date_field :birthdate, class: 'form-control' %>
+      </li><li>
+      <%= f.label :cellphone %> (000-0000-0000)
+      <%= f.text_field :cellphone, class: 'form-control' %>
+      </li><li>
+      <%= f.label :usertype %>
+      <%= f.select :user_type, ['eval', 'submit'], class: 'form-control' %>
+      </li>
+      <%= f.submit "Join", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+class EvalUserController < ApplicationController
+end
