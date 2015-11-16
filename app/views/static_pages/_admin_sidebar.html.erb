@@ -1,0 +1,16 @@
+<div id="sidebar-wrapper"  style="background-color: DarkSlateGray">
+  <ul class="sidebar-nav">
+    <li class="sidebar-brand"> Underwood-Admin </li>
+    <!-- user specific menu -->
+    <% if current_user != nil %>
+      <li> <a href="settings"> Settings </a> </li>
+      <li>
+        <%= link_to "Logout", {:controller => :admin_session, :action => :destroy}, {:style =>  'display: inline;' } %>
+      </li>
+    <% else %>
+      <%= link_to "Login", {:controller => :admin_session, :action => :new}, {:style =>  'display: inline;' } %>
+    <% end %>
+
+    <!-- end of join/login menu -->
+  </ul>
+</div>

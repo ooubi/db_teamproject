@@ -8,7 +8,7 @@ class SessionController < ApplicationController
   	  log_in user
   	  redirect_to root_url
   	else
-      flash[:warning] = "something's wrong! please check the input format again."
+      flash[:warning] = "something's wrong! please log in again."
       redirect_to :action => 'new'
   	end
   end

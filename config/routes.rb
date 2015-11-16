@@ -54,16 +54,27 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-# root :to => "session#auth"
+# Static pages
 root 'static_pages#home'
-
+get 'settings' => 'static_pages#settings'
+get 'admin/home' => 'static_pages#admin_home'
+get 'admin/settings' => 'static_pages#admin_settings'
+# Admin
+match 'admin(.?)', :to => 'admin_session#index', :via => :get
+get 'admin/login' => 'admin_session#new'
+post 'admin/login' => 'admin_session#create'
+get 'admin/logout' => 'admin_session#destroy'
+get 'admin/edit' => 'user#edit'
+post 'admin/update' => 'user#update'
 # Session
 get 'login' => 'session#new'
 post 'login' => 'session#create'
-get 'logout'  => 'session#destroy'
+get 'secession'  => 'session#destroy'
 # User
 get 'join' => 'user#new'
 post 'join' => 'user#create'
 get 'sign-out' => 'user#destroy'
+get 'edit' => 'user#edit'
+post 'update' => 'user#update'
 
 end

@@ -32,8 +32,8 @@
       <%= f.label :cellphone %> (000-0000-0000)
       <%= f.text_field :cellphone, class: 'form-control' %>
       </li><li>
-      <%= f.label :usertype %>
-      <%= f.select :user_type, ['eval', 'submit'], class: 'form-control' %>
+      <%= f.label :user_type %>
+      <%= f.select :user_type, ['eval', 'submit'], :selected => "eval", class: 'form_control' %>
       </li>
       <%= f.submit "Join", class: "btn btn-primary" %>
     <% end %>

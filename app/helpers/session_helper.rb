@@ -1,5 +1,6 @@
 module SessionHelper
   def log_in(user)
+    print "hello!"
     session[:login_id] = user.login_id
   end
 

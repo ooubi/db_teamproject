@@ -13,21 +13,18 @@
 
 ActiveRecord::Schema.define(version: 20151104073234) do
 
-  create_table "admin_users", id: false, force: :cascade do |t|
-    t.string   "user_id"
+  create_table "admin_users", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "eval_users", id: false, force: :cascade do |t|
-    t.string   "user_id"
+  create_table "eval_users", primary_key: "user_id", force: :cascade do |t|
     t.string   "pdst_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "original_data_types", id: false, force: :cascade do |t|
-    t.string   "odt_id"
+  create_table "original_data_types", primary_key: "odt_id", force: :cascade do |t|
     t.string   "schema_info",  default: ""
     t.string   "mapping_info", default: ""
     t.string   "submit_id"
@@ -36,8 +33,7 @@ ActiveRecord::Schema.define(version: 20151104073234) do
     t.datetime "updated_at",                null: false
   end
 
-  create_table "parsing_data_sequence_types", id: false, force: :cascade do |t|
-    t.string   "pdst_id"
+  create_table "parsing_data_sequence_types", primary_key: "pdst_id", force: :cascade do |t|
     t.string   "task_name"
     t.string   "submit_user_id"
     t.string   "season_info"
@@ -59,8 +55,7 @@ ActiveRecord::Schema.define(version: 20151104073234) do
     t.datetime "updated_at",     null: false
   end
 
-  create_table "submit_users", id: false, force: :cascade do |t|
-    t.string   "user_id"
+  create_table "submit_users", primary_key: "user_id", force: :cascade do |t|
     t.integer  "eval_value",     default: 50
     t.string   "participate_id"
     t.string   "submit_id"
@@ -76,8 +71,7 @@ ActiveRecord::Schema.define(version: 20151104073234) do
     t.datetime "updated_at",     null: false
   end
 
-  create_table "tasks", id: false, force: :cascade do |t|
-    t.string   "task_name"
+  create_table "tasks", primary_key: "task_name", force: :cascade do |t|
     t.string   "description",            default: ""
     t.integer  "min_upload_period_hour", default: 24
     t.string   "tdt_name"
@@ -88,8 +82,7 @@ ActiveRecord::Schema.define(version: 20151104073234) do
     t.datetime "updated_at",                          null: false
   end
 
-  create_table "users", id: false, force: :cascade do |t|
-    t.string   "user_id"
+  create_table "users", primary_key: "user_id", force: :cascade do |t|
     t.string   "login_id"
     t.string   "password"
     t.string   "name"
@@ -97,9 +90,11 @@ ActiveRecord::Schema.define(version: 20151104073234) do
     t.string   "address",    default: ""
     t.date     "birthdate"
     t.string   "cellphone"
-    t.string   "user_type"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.boolean  "is_admin",   default: false
+    t.boolean  "is_eval",    default: false
+    t.boolean  "is_submit",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
 end

@@ -1,7 +1,7 @@
 class CreateParsingDataSequenceTypes < ActiveRecord::Migration
   def change
     create_table(:parsing_data_sequence_types, :id => false) do |t|
-      t.string :pdst_id
+      t.primary_key :pdst_id
       t.string :task_name
       t.string :submit_user_id
       t.string :season_info

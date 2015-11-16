@@ -1,7 +1,7 @@
 class CreateUsers < ActiveRecord::Migration
   def change
     create_table(:users, :id => false) do |t|
-      t.string :user_id
+      t.primary_key :user_id
       t.string :login_id
       t.string :password
       t.string :name
@@ -9,7 +9,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :address, default: ''
       t.date :birthdate
       t.string :cellphone
-      t.string :user_type
+      t.boolean :is_admin, default: false
+      t.boolean :is_eval, default: false
+      t.boolean :is_submit, default: false
       t.timestamps null: false
     end
   end

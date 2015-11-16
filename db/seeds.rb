@@ -11,11 +11,11 @@ admin_user = User.new(
   :password => 'admin',
   :name => 'administrator',
   :sex => 'female',
-  :birthdate => 1970-01-01,
-  :cellphone => 010-1111-1111,
-  :user_type => 'admin'
+  :birthdate => "1970-01-01",
+  :cellphone => "010-1111-1111",
+  :is_admin => true
 )
 
-if admin_user.save
+if not admin_user.save
   puts "admin save went wrong"
 end

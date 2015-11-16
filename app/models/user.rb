@@ -8,35 +8,37 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 4, :message => "4 <= password length" }
   validates_inclusion_of :sex, :in => %w(male female), :message => "neither male nor female? are you alien or what?"
   validates :cellphone, length: { maximum: 50 }, format: {with: VALID_PHONE_REGEX }
-  validates_inclusion_of :user_type, :in => %w(admin eval submit), :message => "choose adequate role." # TODO : not admin role!
 
   before_create :admin_role_check
-  before_create :create_user_id
   before_create :set_subclass
 
   def admin_role_check
-  	if self.user_type == Util::ADMIN_ROLE && self.login_id != 'admin' then return false end
-  end
-
-  def create_user_id
-    self.user_id = self.login_id + SecureRandom.urlsafe_base64(nil, false)
+    if self.is_admin && self.login_id != 'admin' then return false end
   end
 
   def set_subclass
-  	puts case self.user_type
-    when Util::ADMIN_ROLE
+    if self.is_admin
       return AdminUser.add_user(self.user_id)
-    when Util::EVAL_ROLE
+    elsif self.is_eval
       return EvalUser.add_user(self.user_id)
-    when Util::SUBMIT_ROLE
+    elsif self.is_submit
       return SubmitUser.add_user(self.user_id)
     else
       return false
     end
   end
 
+  def self.update_user(user_params)
+    temp_user = find(user_params[:user_id])
+    return temp_user.update_attributes(user_params)
+  end
+
   def auth(pw)
     return self.password == pw
+  end
+
+  def self.is_admin()
+    return AdminUser.find_by(:user_id => self.user_id).exists?
   end
 end
 
