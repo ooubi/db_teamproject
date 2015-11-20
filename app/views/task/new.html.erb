@@ -1,0 +1,32 @@
+<% provide(:title, "Create a Task") %>
+<div class="row">
+  <div class="flash_container">
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
+  <%= yield %>
+  </div>
+  
+  <div class="col-md-6 col-md-offset-3">
+  	<h1>Create a Task</h1>
+    <%= form_for(:task, :url => { :controller => "task", :action => "create"}, :method => "post" ) do |f| %>
+      <li>
+      <%= f.label :"task name" %>
+      <%= f.text_field :task_name, class: 'form-control' %>
+      </li><li>
+      <%= f.label :description %>
+      <%= f.text_field :description, class: 'form-control' %>
+      </li><li>
+      <%= f.label :"min upload period hour" %>
+      <%= f.number_field :min_upload_period_hour, class: 'form-control' %>
+      </li><li>
+      <%= f.label :"task data table name" %>
+      <%= f.text_field :tdt_name, class: 'form-control' %>
+      </li><li>
+      <%= f.label :"task data table schema information" %> (optional)
+      <%= f.text_field :tdt_schema_info, class: 'form-control' %>
+      </li>
+      <%= f.submit "Create", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

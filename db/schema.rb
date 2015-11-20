@@ -71,7 +71,8 @@ ActiveRecord::Schema.define(version: 20151104073234) do
     t.datetime "updated_at",     null: false
   end
 
-  create_table "tasks", primary_key: "task_name", force: :cascade do |t|
+  create_table "tasks", primary_key: "task_id", force: :cascade do |t|
+    t.string   "task_name"
     t.string   "description",            default: ""
     t.integer  "min_upload_period_hour", default: 24
     t.string   "tdt_name"

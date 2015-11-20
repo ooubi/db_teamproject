@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :task
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -76,5 +77,9 @@ post 'join' => 'user#create'
 get 'sign-out' => 'user#destroy'
 get 'edit' => 'user#edit'
 post 'update' => 'user#update'
+# Task
+get 'task/' => 'task#index'
+get 'task/new' => 'task#new'
+post 'task/new' => 'task#create'
 
 end
