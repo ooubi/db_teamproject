@@ -22,6 +22,16 @@ class UserController < ApplicationController
     @edit_user = User.find_by(:login_id => current_user.login_id)
   end
 
+  def destroy
+    @destroy_user = User.find_by(:login_id => current_user.login_id)
+    if @destroy_user.destroy
+      flash[:notice] = "Bye~"
+      redirect_to '/login'
+    else
+      flash[:warning] = "Error."
+    end
+  end
+
   def update
     if User.update_user(user_params)
       flash[:notice] = "Successfully updated!"

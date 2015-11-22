@@ -1,6 +1,6 @@
 <div id="sidebar-wrapper">
   <ul class="sidebar-nav">
-    <li class="sidebar-brand"> Underwood </li>
+    <li class="sidebar-brand"> <a href="/">Underwood </a></li>
     <!-- user specific menu -->
     <% if current_user != nil %>
       <% if !current_user.is_admin %>
@@ -13,8 +13,12 @@
     <% end %>
     <!-- end of user specific menu -->
     <!-- join/login menu -->
-    <li> <%= link_to "Join", {:controller => :user, :action => :new}, {:style =>  'display: inline;' } %>
+    
+    <li>
+    <% if current_user == nil %>
+     <%= link_to "Join", {:controller => :user, :action => :new}, {:style =>  'display: inline;' } %>
      | 
+     <% end %>
       <% if current_user != nil %>
         <%= link_to "Logout", {:controller => :session, :action => :destroy}, {:style =>  'display: inline;' } %>
       <% else %>
