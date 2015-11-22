@@ -1,12 +1,18 @@
 class TaskController < ApplicationController
   def index
-  	@all_tasks = Task.all
+  	@user = User.find_by(:login_id => current_user.login_id)
+    if @user.is_admin
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @posts }
+      @all_tasks = Task.all
+
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml  { render :xml => @posts }
+      end
+    else
+      flash[:warning] = "login as administrator!!"
+      redirect_to '/admin'
     end
-  
   end
 
   def show

@@ -4,7 +4,20 @@ class UserController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:login_id])
+    @user = User.find_by(:login_id => current_user.login_id)
+    if @user.is_admin
+
+
+      @all_users = User.all
+
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @user }
+      end
+    else
+      flash[:warning] = "login as administrator!!"
+      redirect_to '/admin'
+    end
   end
 
   def create
