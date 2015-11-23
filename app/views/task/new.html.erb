@@ -8,7 +8,8 @@
   </div>
   
   <div class="col-md-6 col-md-offset-3">
-  	<h1>Create a Task</h1>
+    <h1>Create a Task </h1>
+    **** Attribute type should be one of : string, text, integer, float, decimal, datetime, timestamp, time, date, binary, boolean ****
     <%= form_for(:task, :url => { :controller => "task", :action => "create"}, :method => "post" ) do |f| %>
       <li>
       <%= f.label :"task name" %>
@@ -23,9 +24,9 @@
       <%= f.label :"task data table name" %>
       <%= f.text_field :tdt_name, class: 'form-control' %>
       </li><li>
-      <%= f.label :"task data table schema information" %> (optional)
-      <%= f.text_field :tdt_schema_info, class: 'form-control' %>
-      </li>
+      <%= f.label :"task data table schema information" %> (json format)
+      <%= f.text_field :tdt_schema_info, :value => '{"foo" : "string"}', class: 'form-control' %>
+        </li>
       <%= f.submit "Create", class: "btn btn-primary" %>
     <% end %>
   </div>

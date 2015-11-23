@@ -85,4 +85,11 @@ get 'task/' => 'task#index'
 get 'task/new' => 'task#new'
 post 'task/new' => 'task#create'
 
+# Original data type
+get 'original_data_type/new' => 'original_data_type#new'
+post 'original_data_type/new' => 'original_data_type#create'
+
+# Participate
+get 'participate/index' => 'participate#index'
+get 'participate/update' => 'participate#update'
 end

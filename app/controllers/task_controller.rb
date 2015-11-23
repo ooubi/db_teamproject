@@ -41,7 +41,8 @@ class TaskController < ApplicationController
     @task = Task.find(params[:id])
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to task_url, notice: 'Task was successfully destroyed.' }
+      #format.html { redirect_to task_url, notice: 'Task was successfully destroyed.' }
+      format.html { redirect_to task_url }
       #format.json { head :no_content }
     end
   end

@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20151104073234) do
   create_table "original_data_types", primary_key: "odt_id", force: :cascade do |t|
     t.string   "schema_info",  default: ""
     t.string   "mapping_info", default: ""
-    t.string   "submit_id"
     t.string   "pdst_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
@@ -49,26 +48,25 @@ ActiveRecord::Schema.define(version: 20151104073234) do
   end
 
   create_table "participates", id: false, force: :cascade do |t|
-    t.string   "submit_user_id"
-    t.string   "task_id"
+    t.integer  "submit_user_id"
+    t.integer  "task_id"
+    t.boolean  "is_pending"
+    t.boolean  "is_permitted"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
   create_table "submit_users", primary_key: "user_id", force: :cascade do |t|
-    t.integer  "eval_value",     default: 50
-    t.string   "participate_id"
-    t.string   "submit_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "eval_value", default: 50
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "submits", id: false, force: :cascade do |t|
-    t.string   "submit_user_id"
-    t.string   "odt_id"
-    t.string   "task_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "odt_id"
+    t.integer  "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tasks", primary_key: "task_id", force: :cascade do |t|
@@ -77,8 +75,6 @@ ActiveRecord::Schema.define(version: 20151104073234) do
     t.integer  "min_upload_period_hour", default: 24
     t.string   "tdt_name"
     t.string   "tdt_schema_info"
-    t.string   "participate_id"
-    t.string   "submit_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
