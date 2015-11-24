@@ -1,0 +1,43 @@
+<div id="wrapper">
+  <%= render "/static_pages/admin_sidebar" %>
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          
+            <h1>Listing ODTs for <%= @task.tdt_name %></h1>
+
+            <table border="1px" cellpadding="10px">
+              <thead>
+                <tr>
+                  <th> ID </th>
+                  <th> Schema Info </th>
+                  <th> Mapping Info </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @odts.each do |odt| %>
+                  <tr>
+                    <td><%= odt.odt_id %></td>
+                    <td><%= odt.schema_info %></td>
+                    <td><%= odt.mapping_info %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+
+            <br>
+          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Menu Toggle Script -->
+<script>
+  $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+  });
+</script>

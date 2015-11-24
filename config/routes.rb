@@ -82,14 +82,20 @@ post 'update' => 'user#update'
 
 # Task
 get 'task/' => 'task#index'
+get 'admin/task/' => 'task#show'
 get 'task/new' => 'task#new'
 post 'task/new' => 'task#create'
 
 # Original data type
 get 'original_data_type/new' => 'original_data_type#new'
 post 'original_data_type/new' => 'original_data_type#create'
+get 'original_data_type/show' => 'original_data_type#show'
+get 'original_data_type/destroy' => 'original_data_type#destroy'
 
 # Participate
 get 'participate/index' => 'participate#index'
+get 'participate/show' => 'participate#show'
+get 'participate/new' => 'participate#new'
+get 'participate/create' => 'participate#create'
 get 'participate/update' => 'participate#update'
 end

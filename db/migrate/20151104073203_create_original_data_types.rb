@@ -4,7 +4,6 @@ class CreateOriginalDataTypes < ActiveRecord::Migration
       t.primary_key :odt_id
       t.string :schema_info, default: ''
       t.string :mapping_info, default: ''
-      t.string :pdst_id
       t.timestamps null: false
     end
   end

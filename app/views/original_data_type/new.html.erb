@@ -11,7 +11,7 @@
     <h1>Add new Original Data Type for <%= @task.tdt_name %> </h1>
     **** Attribute type should be one of : string, text, integer, float, decimal, datetime, timestamp, time, date, binary, boolean ****
     <%= form_for(:original_data_type, :url => { :controller => "original_data_type", :action => "create"}, :method => "post" ) do |f| %>
-      <%= f.hidden_field :task_id, :value => @task_id, class: 'form-control' %>
+      <%= f.hidden_field :task_id, :value => @task.task_id, class: 'form-control' %>
       <li>
       <%= f.label :"original data type schema information" %> (json format)
       <%= f.text_field :schema_info, :value => '{"bar" : "string"}', class: 'form-control' %>

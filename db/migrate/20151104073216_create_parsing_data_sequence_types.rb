@@ -10,8 +10,6 @@ class CreateParsingDataSequenceTypes < ActiveRecord::Migration
       t.integer :estimate_state
       t.integer :total_tuple_num, default: 0
       t.integer :dup_tuple_num, default: 0
-      t.string :odt_id
-      t.string :eval_user_id
       t.timestamps null: false
     end
   end

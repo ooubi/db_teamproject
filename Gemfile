@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.2.0'
 # Automatically adds the proper vendor prefixes to your CSS code when it is compiled
 gem 'autoprefixer-rails'
+# Composite primary keys gem for set relation entity keys
+gem 'composite_primary_keys'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

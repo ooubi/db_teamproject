@@ -1,33 +1,34 @@
 class TaskController < ApplicationController
   def index
-  	@user = User.find_by(:login_id => current_user.login_id)
-    if @user.is_admin
-
-      @all_tasks = Task.all
-
-      respond_to do |format|
-        format.html # index.html.erb
-        format.xml  { render :xml => @posts }
-      end
-    else
-      flash[:warning] = "login as administrator!!"
-      redirect_to '/admin'
+    @all_tasks = Task.all
+    @my_tasks = []
+    if current_user.is_submit
+      @my_tasks = Task.get_submit_tasks(current_user.user_id)
+    elsif current_user.is_eval
+      @my_tasks = Task.get_eval_tasks(current_user.user_id)
     end
   end
 
   def show
-    redirect_to :action => 'index'
+    return if not admin_check
+    # redirect_to :action => 'index'
+    @all_tasks = Task.all
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @posts }
+    end
   end
 
   def new
+    return if not admin_check
   	@task = Task.new
   end
 
   def create
-	@task = Task.new(task_params)
-
+    return if not admin_check
+	  @task = Task.new(task_params)
     if @task.save!
-      redirect_to :action => 'index'
+      redirect_to :action => 'show'
     else
       flash[:warning] = "something's wrong! please check the input format again."
       redirect_to :action => 'new'
@@ -38,6 +39,7 @@ class TaskController < ApplicationController
   end
 
   def destroy
+    return if not admin_check
     @task = Task.find(params[:id])
     @task.destroy
     respond_to do |format|

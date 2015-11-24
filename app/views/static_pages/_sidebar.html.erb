@@ -4,10 +4,7 @@
     <!-- user specific menu -->
     <% if current_user != nil %>
       <% if !current_user.is_admin %>
-        <% if current_user.is_submit %>
-          <li> <a href="#">All Tasks</a> </li> <!-- submit user -->
-        <% end %>
-        <li> <a href="#">My Tasks</a> </li>  <!-- submit user, eval user -->
+          <li> <a href="/task/">Tasks</a> </li>
         <li> <a href="/settings">Settings</a> </li>
       <% end %>
     <% end %>

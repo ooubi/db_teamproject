@@ -1,0 +1,63 @@
+<div id="wrapper">
+  <%= render "/static_pages/admin_sidebar" %>
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          
+            <h1>Listing Tasks</h1>
+
+            <table border="1px" cellpadding="10px">
+              <thead>
+                <tr>
+                  <th> Name </th>
+                  <th> Description </th>
+                  <th> Min upload period hour </th>
+                  <th> TDT name </th>
+                  <th> TDT schema information </th>
+                  <th> PDSF Number </th>
+                  <th> TDT Tuple Number </th>
+                  <th> Add ODT </td>
+                  <th> See ODT </td>
+                  <th> Delete Task </td>
+                  <th> Submitters </td>
+                </tr>
+              </thead>
+              <tbody>
+                <% @all_tasks.each do |task| %>
+                  <tr>
+                    <td><%= task.task_name %></td>
+                    <td><%= task.description %></td>
+                    <td><%= task.min_upload_period_hour %></td>
+                    <td><%= task.tdt_name %></td>
+                    <td><%= task.tdt_schema_info %></td>
+                    <td> 0 </td> <!-- TODO -->
+                    <td> 0 </td> <!-- TODO -->
+                    <td><%= link_to "Add", :controller => "original_data_type", :action => :new, :task_id => task.task_id %></td>
+                    <td><%= link_to "See", :controller => "original_data_type", :action => :show, :task_id => task.task_id %></td>
+                    <td><%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <td><%= link_to 'Check', :controller => "participate" ,:action => :show, :task_id => task.task_id %></td>    
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+
+            <br>
+
+            <%= link_to 'Create', new_task_path %>
+            <br><br><br>
+
+          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Menu Toggle Script -->
+<script>
+  $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+  });
+</script>

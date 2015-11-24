@@ -4,8 +4,8 @@
     <!-- user specific menu -->
     <% if current_user != nil %>
       <li> <a href="/admin/user/"> Users </a> </li>
-      <li> <a href="/task/"> Tasks </a> </li>
-      <li> <a href="settings"> Settings </a> </li>
+      <li> <a href="/admin/task/"> Tasks </a> </li>
+      <li> <a href="/settings"> Settings </a> </li>
       <li>
         <%= link_to "Logout", {:controller => :admin_session, :action => :destroy}, {:style =>  'display: inline;' } %>
       </li>
