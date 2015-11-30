@@ -5,6 +5,7 @@
     <% if current_user != nil %>
       <li> <a href="/admin/user/"> Users </a> </li>
       <li> <a href="/admin/task/"> Tasks </a> </li>
+      <li> <a href="/original_data_file/show"> Files </a> </li>
       <li> <a href="/settings"> Settings </a> </li>
       <li>
         <%= link_to "Logout", {:controller => :admin_session, :action => :destroy}, {:style =>  'display: inline;' } %>

@@ -35,7 +35,9 @@
                 <tr>
                   <th> Name </th>
                   <th> Description </th>
-                  <th> Action </td>
+                  <th> Action </th>
+                  <th></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -44,6 +46,17 @@
                     <td><%= task.task_name %></td>
                     <td><%= task.description %></td>
                     <td><%= link_to "Enter", :controller => "participate", :action => :index, :task_id => task.task_id %></td>
+
+
+                    <td>
+                      <%= form_for(:original_data_file, :url => { :controller => "original_data_file", :action => "upload"}, :method => "post" ) do |f| %>
+                      <%= f.file_field :data, accept: 'text/csv'%>
+                      </td><td>
+                      <%= f.submit "Submit", class: "btn" %>
+                      <% end %>
+                    </td>
+
+
                   </tr>
                 <% end %>
               </tbody>

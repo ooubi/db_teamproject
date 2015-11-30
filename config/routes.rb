@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :task
   resources :user
+  resources :original_data_file
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -85,6 +86,7 @@ get 'task/' => 'task#index'
 get 'admin/task/' => 'task#show'
 get 'task/new' => 'task#new'
 post 'task/new' => 'task#create'
+post 'task/upload' => 'task#upload'
 
 # Original data type
 get 'original_data_type/new' => 'original_data_type#new'
@@ -98,4 +100,9 @@ get 'participate/show' => 'participate#show'
 get 'participate/new' => 'participate#new'
 get 'participate/create' => 'participate#create'
 get 'participate/update' => 'participate#update'
+
+# Original Data File
+post 'original_data_file/upload' => 'original_data_file#upload'
+post 'original_data_file/:id' => 'original_data_file#show_file'
+
 end

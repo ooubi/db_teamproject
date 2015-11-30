@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20151124131943) do
   end
 
   create_table "original_data_files", primary_key: "odf_id", force: :cascade do |t|
-    t.string   "file_url"
+    t.binary   "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20151124131943) do
   end
 
   create_table "parsing_data_sequence_files", primary_key: "pdsf_id", force: :cascade do |t|
-    t.string   "file_url"
+    t.binary   "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
