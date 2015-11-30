@@ -10,6 +10,13 @@ class ParticipateController < ApplicationController
   end
 
   def new
+    is_joined = Participate.join(current_user, params[:task_id])
+    if is_joined
+      msg = 'Successfully joined.'
+    else
+      msg = 'Something went wrong! Please try again.'
+    end
+    redirect_to :controller => 'task', :action => 'index'
   end
 
   def update
@@ -22,3 +29,5 @@ class ParticipateController < ApplicationController
 	redirect_to :action => 'index'
   end
 end
+
+

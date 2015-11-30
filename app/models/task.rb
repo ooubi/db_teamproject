@@ -3,10 +3,10 @@ class Task < ActiveRecord::Base
 
   def self.get_submit_tasks(uid)
   	tasks = []
-  	submits = Submit.where(:submit_user_id => uid)
-  	if submits != nil
-  	  for submit in submits
-  	    tasks << find_by(:task_id => submit.task_id)
+    participates = Participate.where(:submit_user_id => uid)
+  	if participates != nil
+  	  for participate in participates
+  	    tasks << find_by(:task_id => participate.task_id)
   	  end
   	end
   	return tasks
@@ -14,10 +14,10 @@ class Task < ActiveRecord::Base
 
   def self.get_eval_tasks(uid)
   	tasks = []
-  	evals = Eval.where(:eval_user_id => uid, :is_pending => true)
-  	if evals != nil
-  	  for eval in evals
-  	    tasks << find_by(:task_id => submit.task_id)
+  	evaluates = Evaluate.where(:eval_user_id => uid, :is_pending => true)
+  	if evaluates != nil
+  	  for evaluate in evaluates
+  	    tasks << find_by(:task_id => evaluate.task_id)
   	  end
   	end
   	return tasks

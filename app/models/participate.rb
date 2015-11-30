@@ -1,5 +1,7 @@
+require 'rubygems'
+require 'composite_primary_keys'
 class Participate < ActiveRecord::Base
-  self.primary_keys = :submit_user_id, :task_id
+  self.primary_keys = :submit_user_id, :task_id # TODO : check!
 
   def self.get_pending_users(tid)
     pending_users = []
@@ -29,5 +31,10 @@ class Participate < ActiveRecord::Base
 	is_permitted = (us == "permitted" && participate.update_attributes(:is_pending => false, :is_permitted => true))
 	is_declined = (us == "declined" && participate.update_attributes(:is_pending => false, :is_permitted => false))
 	return is_permitted || is_declined
+  end
+
+  def self.join(cu, tid)
+  	participate = new(:submit_user_id => cu.user_id, :task_id => tid)
+  	return participate.save
   end
 end

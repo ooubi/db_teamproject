@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20151124131943) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "converts", id: false, force: :cascade do |t|
+  create_table "converts", force: :cascade do |t|
     t.integer  "odf_id"
     t.integer  "pdsf_id"
     t.datetime "created_at", null: false
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20151124131943) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "evaluates", id: false, force: :cascade do |t|
+  create_table "evaluates", force: :cascade do |t|
     t.integer  "eval_user_id"
     t.integer  "pdsf_id"
     t.boolean  "is_pending",   default: true
@@ -39,21 +39,21 @@ ActiveRecord::Schema.define(version: 20151124131943) do
     t.datetime "updated_at",                  null: false
   end
 
-  create_table "generalizes", id: false, force: :cascade do |t|
+  create_table "generalizes", force: :cascade do |t|
     t.integer  "odt_id"
     t.integer  "pdst_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "implement_odts", id: false, force: :cascade do |t|
+  create_table "implement_odts", force: :cascade do |t|
     t.integer  "odt_id"
     t.integer  "odf_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "implement_pdsts", id: false, force: :cascade do |t|
+  create_table "implement_pdsts", force: :cascade do |t|
     t.integer  "pdst_id"
     t.integer  "pdsf_id"
     t.datetime "created_at", null: false
@@ -92,16 +92,16 @@ ActiveRecord::Schema.define(version: 20151124131943) do
     t.datetime "updated_at",                    null: false
   end
 
-  create_table "participates", id: false, force: :cascade do |t|
+  create_table "participates", force: :cascade do |t|
     t.integer  "submit_user_id"
     t.integer  "task_id"
-    t.boolean  "is_pending"
-    t.boolean  "is_permitted"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.boolean  "is_pending",     default: true
+    t.boolean  "is_permitted",   default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
-  create_table "specifies", id: false, force: :cascade do |t|
+  create_table "specifies", force: :cascade do |t|
     t.integer  "odt_id"
     t.integer  "task_id"
     t.datetime "created_at", null: false
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 20151124131943) do
     t.datetime "updated_at",              null: false
   end
 
-  create_table "submits", id: false, force: :cascade do |t|
+  create_table "submits", force: :cascade do |t|
     t.integer  "submit_user_id"
     t.integer  "odf_id"
     t.datetime "created_at",     null: false

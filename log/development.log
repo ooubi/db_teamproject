@@ -14412,3 +14412,2075 @@ Processing by TaskController#index as HTML
   [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks"
   Rendered task/index.html.erb within layouts/application (3.8ms)
 Completed 200 OK in 149ms (Views: 147.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2015-11-29 16:02:42 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (2.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (38.8ms)
+  Rendered static_pages/home.html.erb within layouts/application (49.0ms)
+Completed 200 OK in 770ms (Views: 751.8ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/" for ::1 at 2015-11-29 16:02:43 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (2.3ms)
+  Rendered static_pages/home.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 188ms (Views: 186.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/secession" for ::1 at 2015-11-29 16:02:49 +0900
+Processing by SessionController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-11-29 16:02:49 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  Rendered static_pages/_sidebar.html.erb (3.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  Rendered static_pages/home.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 167ms (Views: 166.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/login" for ::1 at 2015-11-29 16:02:51 +0900
+Processing by SessionController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  Rendered static_pages/_sidebar.html.erb (1.9ms)
+  Rendered session/new.html.erb within layouts/application (18.2ms)
+Completed 200 OK in 317ms (Views: 316.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/login" for ::1 at 2015-11-29 16:02:56 +0900
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IvWZOiOicQdikbhlWOoBmXD+T3jxdKxBJF/P3N6+zMxQpMnYCrU4HiPyvDrJiwFN4Sz/3P9YXJKWSalTc4sOkA==", "session"=>{"login_id"=>"admin", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2015-11-29 16:02:56 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_sidebar.html.erb (0.7ms)
+  Rendered static_pages/home.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 169ms (Views: 168.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/admin" for ::1 at 2015-11-29 16:02:59 +0900
+Processing by AdminSessionController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+Redirected to http://localhost:3000/admin/home
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/admin/home" for ::1 at 2015-11-29 16:02:59 +0900
+Processing by StaticPagesController#admin_home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (1.1ms)
+  Rendered static_pages/admin_home.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 192ms (Views: 190.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/settings" for ::1 at 2015-11-29 16:03:01 +0900
+Processing by StaticPagesController#settings as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  Rendered static_pages/_sidebar.html.erb (0.7ms)
+  Rendered static_pages/settings.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 168ms (Views: 167.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/admin/task/" for ::1 at 2015-11-29 16:03:05 +0900
+Processing by TaskController#show as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (0.3ms)
+  [1m[35mTask Load (0.4ms)[0m  SELECT "tasks".* FROM "tasks"
+  Rendered task/show.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 183ms (Views: 179.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/participate/show?task_id=2" for ::1 at 2015-11-29 16:03:08 +0900
+Processing by ParticipateController#show as HTML
+  Parameters: {"task_id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  [1m[36mParticipate Load (1.3ms)[0m  [1mSELECT "participates".* FROM "participates" WHERE "participates"."task_id" = ? AND "participates"."is_pending" = ?[0m  [["task_id", 2], ["is_pending", "t"]]
+  [1m[35mParticipate Load (0.1ms)[0m  SELECT "participates".* FROM "participates" WHERE "participates"."task_id" = ? AND "participates"."is_pending" = ? AND "participates"."is_permitted" = ?  [["task_id", 2], ["is_pending", "f"], ["is_permitted", "t"]]
+  Rendered static_pages/_admin_sidebar.html.erb (0.6ms)
+  Rendered participate/show.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 184ms (Views: 177.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/participate/show?task_id=2" for ::1 at 2015-11-29 16:03:18 +0900
+Processing by ParticipateController#show as HTML
+  Parameters: {"task_id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  [1m[36mParticipate Load (0.1ms)[0m  [1mSELECT "participates".* FROM "participates" WHERE "participates"."task_id" = ? AND "participates"."is_pending" = ?[0m  [["task_id", 2], ["is_pending", "t"]]
+  [1m[35mParticipate Load (0.1ms)[0m  SELECT "participates".* FROM "participates" WHERE "participates"."task_id" = ? AND "participates"."is_pending" = ? AND "participates"."is_permitted" = ?  [["task_id", 2], ["is_pending", "f"], ["is_permitted", "t"]]
+  Rendered static_pages/_admin_sidebar.html.erb (0.2ms)
+  Rendered participate/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 175ms (Views: 172.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2015-11-29 16:03:27 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  Rendered static_pages/_sidebar.html.erb (0.7ms)
+  Rendered static_pages/home.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 193ms (Views: 192.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2015-11-29 16:03:27 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_sidebar.html.erb (0.6ms)
+  Rendered static_pages/home.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 183ms (Views: 182.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/secession" for ::1 at 2015-11-29 16:03:28 +0900
+Processing by SessionController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-11-29 16:03:28 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  Rendered static_pages/_sidebar.html.erb (3.7ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  Rendered static_pages/home.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 196ms (Views: 194.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/login" for ::1 at 2015-11-29 16:03:29 +0900
+Processing by SessionController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  Rendered static_pages/_sidebar.html.erb (2.1ms)
+  Rendered session/new.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 188ms (Views: 187.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/login" for ::1 at 2015-11-29 16:03:34 +0900
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"l2RPl9EvEYtawYAm8RFQuqoIxu+bQDuiJJPkm8UNvb/lNR91+DhYkhuihHlgcFBuO9p2S5Vsy3GWhYIUaDh/4w==", "session"=>{"login_id"=>"submit", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2015-11-29 16:03:34 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (0.8ms)
+  Rendered static_pages/home.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 181ms (Views: 180.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/task/" for ::1 at 2015-11-29 16:03:35 +0900
+Processing by TaskController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mSubmit Load (0.4ms)[0m  [1mSELECT "submits".* FROM "submits" WHERE "submits"."submit_user_id" = ?[0m  [["submit_user_id", 2]]
+  Rendered static_pages/_sidebar.html.erb (0.4ms)
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks"
+  Rendered task/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 191ms (Views: 186.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/participate/new?task_id=2" for ::1 at 2015-11-29 16:03:37 +0900
+Processing by ParticipateController#new as HTML
+  Parameters: {"task_id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  Rendered participate/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 170ms (Views: 169.8ms | ActiveRecord: 0.1ms)
+  [1m[36m (1.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (0.7ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20151104073114)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login_id" varchar, "password" varchar, "name" varchar, "sex" varchar, "address" varchar DEFAULT '', "birthdate" date, "cellphone" varchar, "is_admin" boolean DEFAULT 'f', "is_eval" boolean DEFAULT 'f', "is_submit" boolean DEFAULT 'f', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073114"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateAdminUsers (20151104073131)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "admin_users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073131"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateEvalUsers (20151104073138)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "eval_users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "pdst_id" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073138"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateSubmitUsers (20151104073144)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "submit_users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "eval_value" integer DEFAULT 50, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073144"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateTasks (20151104073150)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "tasks" ("task_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "task_name" varchar, "description" varchar DEFAULT '', "min_upload_period_hour" integer DEFAULT 24, "tdt_name" varchar, "tdt_schema_info" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073150"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateOriginalDataTypes (20151104073203)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "original_data_types" ("odt_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "schema_info" varchar DEFAULT '', "mapping_info" varchar DEFAULT '', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073203"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateParsingDataSequenceTypes (20151104073216)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "parsing_data_sequence_types" ("pdst_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "task_name" varchar, "submit_user_id" varchar, "season_info" varchar, "null_ratio" float DEFAULT 0.5, "period_info" varchar, "estimate_state" integer, "total_tuple_num" integer DEFAULT 0, "dup_tuple_num" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073216"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateSubmits (20151104073229)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "submits" ("submit_user_id" integer, "odf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073229"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateParticipates (20151104073234)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "participates" ("submit_user_id" integer, "task_id" integer, "is_pending" boolean DEFAULT 't', "is_permitted" boolean DEFAULT 'f', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073234"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateOriginalDataFiles (20151124113233)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "original_data_files" ("odf_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "file_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113233"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateParsingDataSequenceFiles (20151124113300)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "parsing_data_sequence_files" ("pdsf_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "file_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113300"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateSpecifies (20151124113343)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "specifies" ("odt_id" integer, "task_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113343"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateGeneralizes (20151124113350)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "generalizes" ("odt_id" integer, "pdst_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113350"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateImplementOdts (20151124113359)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "implement_odts" ("odt_id" integer, "odf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113359"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateImplementPdsts (20151124113406)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "implement_pdsts" ("pdst_id" integer, "pdsf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113406"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateConverts (20151124113414)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "converts" ("odf_id" integer, "pdsf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113414"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateEvaluates (20151124131943)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "evaluates" ("eval_user_id" integer, "pdsf_id" integer, "is_pending" boolean DEFAULT 't', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124131943"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."login_id" = 'admin' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "admin_users" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2015-11-30 01:17:08.793761"], ["updated_at", "2015-11-30 01:17:08.793761"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("login_id", "password", "name", "sex", "birthdate", "cellphone", "is_admin", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login_id", "admin"], ["password", "admin"], ["name", "administrator"], ["sex", "female"], ["birthdate", "1970-01-01"], ["cellphone", "010-1111-1111"], ["is_admin", "t"], ["created_at", "2015-11-30 01:17:08.790467"], ["updated_at", "2015-11-30 01:17:08.790467"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+
+
+Started GET "/task/" for ::1 at 2015-11-30 10:25:01 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TaskController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.3ms)
+
+NoMethodError (undefined method `is_submit' for nil:NilClass):
+  app/controllers/task_controller.rb:5:in `index'
+
+
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.6ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (61.5ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (53.3ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (124.1ms)
+
+
+Started GET "/task" for ::1 at 2015-11-30 10:25:08 +0900
+Processing by TaskController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms)
+
+NoMethodError (undefined method `is_submit' for nil:NilClass):
+  app/controllers/task_controller.rb:5:in `index'
+
+
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.7ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (56.8ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (45.6ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (106.6ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:25:09 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (2.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  Rendered static_pages/home.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 512ms (Views: 511.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:25:10 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (1.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  Rendered static_pages/home.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 187ms (Views: 186.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/login" for ::1 at 2015-11-30 10:25:13 +0900
+Processing by SessionController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (1.7ms)
+  Rendered session/new.html.erb within layouts/application (16.7ms)
+Completed 200 OK in 178ms (Views: 176.8ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/login" for ::1 at 2015-11-30 10:25:16 +0900
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VGi0yCl4oHcXTlMEbFyj9H5YRMVlEO36OS0b0M0pAHMmOeQqAG/pblYtV1v9PaMg74r0YWs8HSmLO31fYBzCLw==", "session"=>{"login_id"=>"admin", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 9ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:25:16 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_sidebar.html.erb (0.7ms)
+  Rendered static_pages/home.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 159ms (Views: 158.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/admin" for ::1 at 2015-11-30 10:25:19 +0900
+Processing by AdminSessionController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+Redirected to http://localhost:3000/admin/home
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/admin/home" for ::1 at 2015-11-30 10:25:19 +0900
+Processing by StaticPagesController#admin_home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (1.9ms)
+  Rendered static_pages/admin_home.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 247ms (Views: 246.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admin/task/" for ::1 at 2015-11-30 10:25:21 +0900
+Processing by TaskController#show as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (0.3ms)
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+  Rendered task/show.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 177ms (Views: 175.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/task/new" for ::1 at 2015-11-30 10:25:23 +0900
+Processing by TaskController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  Rendered task/new.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 186ms (Views: 180.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/task" for ::1 at 2015-11-30 10:25:31 +0900
+Processing by TaskController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VSyH0SWS9uCrAX+gxYM2GObNokFcAfCa0mSI0UCE4J0nfdczDIW/+epie/9U4jbMdx8S5VItAElgcu5e7bEiwQ==", "task"=>{"task_name"=>"temp1", "description"=>"temp1", "min_upload_period_hour"=>"24", "tdt_name"=>"temp1", "tdt_schema_info"=>"{\"foo\" : \"string\"}"}, "commit"=>"Create"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "tasks" ("task_name", "description", "tdt_name", "tdt_schema_info", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["task_name", "temp1"], ["description", "temp1"], ["tdt_name", "temp1"], ["tdt_schema_info", "{\"foo\" : \"string\"}"], ["created_at", "2015-11-30 01:25:31.222981"], ["updated_at", "2015-11-30 01:25:31.222981"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/admin/task
+Completed 302 Found in 8ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/admin/task" for ::1 at 2015-11-30 10:25:31 +0900
+Processing by TaskController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (0.3ms)
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+  Rendered task/show.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 222ms (Views: 219.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/admin" for ::1 at 2015-11-30 10:25:35 +0900
+Processing by AdminSessionController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+Redirected to http://localhost:3000/admin/home
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/admin/home" for ::1 at 2015-11-30 10:25:35 +0900
+Processing by StaticPagesController#admin_home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (0.6ms)
+  Rendered static_pages/admin_home.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 172ms (Views: 171.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:25:37 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_sidebar.html.erb (0.8ms)
+  Rendered static_pages/home.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 185ms (Views: 184.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:25:38 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  Rendered static_pages/_sidebar.html.erb (0.7ms)
+  Rendered static_pages/home.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 193ms (Views: 192.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/secession" for ::1 at 2015-11-30 10:25:39 +0900
+Processing by SessionController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:25:39 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  Rendered static_pages/_sidebar.html.erb (2.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  Rendered static_pages/home.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 181ms (Views: 180.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/user/new" for ::1 at 2015-11-30 10:25:41 +0900
+Processing by UserController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  Rendered static_pages/_sidebar.html.erb (2.1ms)
+  Rendered user/new.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 184ms (Views: 183.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/user" for ::1 at 2015-11-30 10:26:00 +0900
+Processing by UserController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dm+y/qrtU8KXZ4Aqa16M8uSNrvnsTVvHXAb4tU0oOAN8PuIcg/oa29YEhHX6P4wmdV8eXeJhqxTuEJ464B36Xw==", "user"=>{"login_id"=>"submit", "password"=>"[FILTERED]", "sex"=>"female", "address"=>"", "birthdate"=>"1212-02-12", "cellphone"=>"000-0000-0000", "user_type"=>"submit"}, "commit"=>"Join"}
+Unpermitted parameter: user_type
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."login_id" = 'submit' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "submit_users" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2015-11-30 01:26:00.082780"], ["updated_at", "2015-11-30 01:26:00.082780"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("login_id", "password", "sex", "birthdate", "cellphone", "is_submit", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["login_id", "submit"], ["password", "submit"], ["sex", "female"], ["birthdate", "1212-02-12"], ["cellphone", "000-0000-0000"], ["is_submit", "t"], ["created_at", "2015-11-30 01:26:00.078786"], ["updated_at", "2015-11-30 01:26:00.078786"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 17ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:26:00 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (1.1ms)
+  Rendered static_pages/home.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 185ms (Views: 184.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/task/" for ::1 at 2015-11-30 10:26:01 +0900
+Processing by TaskController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mParticipate Load (0.1ms)[0m  SELECT "participates".* FROM "participates" WHERE "participates"."submit_user_id" = ?  [["submit_user_id", 2]]
+  Rendered static_pages/_sidebar.html.erb (0.3ms)
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+  Rendered task/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 196ms (Views: 192.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/participate/new?task_id=1" for ::1 at 2015-11-30 10:26:03 +0900
+Processing by ParticipateController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "participates" ("submit_user_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["submit_user_id", 2], ["task_id", 1], ["created_at", "2015-11-30 01:26:03.183818"], ["updated_at", "2015-11-30 01:26:03.183818"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 2.0ms)
+
+NameError (undefined local variable or method `participate_url' for #<ParticipateController:0x007faa91c45b60>):
+  app/controllers/participate_controller.rb:20:in `block (2 levels) in new'
+  app/controllers/participate_controller.rb:19:in `new'
+
+
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.9ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (53.5ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (45.9ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (101.2ms)
+
+
+Started GET "/participate/new?task_id=1" for ::1 at 2015-11-30 10:26:03 +0900
+Processing by ParticipateController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "participates" ("submit_user_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["submit_user_id", 2], ["task_id", 1], ["created_at", "2015-11-30 01:26:03.452527"], ["updated_at", "2015-11-30 01:26:03.452527"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 1.0ms)
+
+NameError (undefined local variable or method `participate_url' for #<ParticipateController:0x007faa900e1a68>):
+  app/controllers/participate_controller.rb:20:in `block (2 levels) in new'
+  app/controllers/participate_controller.rb:19:in `new'
+
+
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.8ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (56.0ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (45.6ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/sookyungpark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (102.1ms)
+
+
+Started GET "/participate/new?task_id=1" for ::1 at 2015-11-30 10:26:33 +0900
+Processing by ParticipateController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "participates" ("submit_user_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["submit_user_id", 2], ["task_id", 1], ["created_at", "2015-11-30 01:26:33.782453"], ["updated_at", "2015-11-30 01:26:33.782453"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/participate/index
+Completed 302 Found in 17ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/participate/index" for ::1 at 2015-11-30 10:26:33 +0900
+Processing by ParticipateController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered participate/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 176ms (Views: 175.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/participate/index" for ::1 at 2015-11-30 10:28:33 +0900
+Processing by ParticipateController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  Rendered participate/index.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 185ms (Views: 184.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/participate/index" for ::1 at 2015-11-30 10:28:46 +0900
+Processing by ParticipateController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered participate/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 182ms (Views: 180.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:29:37 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (8.6ms)
+  Rendered static_pages/home.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 219ms (Views: 217.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:29:38 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (0.8ms)
+  Rendered static_pages/home.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 210ms (Views: 209.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/task/" for ::1 at 2015-11-30 10:29:39 +0900
+Processing by TaskController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mParticipate Load (0.2ms)[0m  SELECT "participates".* FROM "participates" WHERE "participates"."submit_user_id" = ?  [["submit_user_id", 2]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1[0m  [["task_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1  [["task_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1[0m  [["task_id", 1]]
+  Rendered static_pages/_sidebar.html.erb (0.4ms)
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks"
+  Rendered task/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 200ms (Views: 188.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/participate/index?task_id=1" for ::1 at 2015-11-30 10:29:47 +0900
+Processing by ParticipateController#index as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  Rendered participate/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 169ms (Views: 168.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/participate/index?task_id=1" for ::1 at 2015-11-30 10:29:51 +0900
+Processing by ParticipateController#index as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered participate/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 179ms (Views: 178.0ms | ActiveRecord: 0.1ms)
+  [1m[36m (2.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20151104073114)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login_id" varchar, "password" varchar, "name" varchar, "sex" varchar, "address" varchar DEFAULT '', "birthdate" date, "cellphone" varchar, "is_admin" boolean DEFAULT 'f', "is_eval" boolean DEFAULT 'f', "is_submit" boolean DEFAULT 'f', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073114"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateAdminUsers (20151104073131)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "admin_users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073131"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateEvalUsers (20151104073138)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "eval_users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "pdst_id" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073138"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateSubmitUsers (20151104073144)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "submit_users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "eval_value" integer DEFAULT 50, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073144"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateTasks (20151104073150)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "tasks" ("task_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "task_name" varchar, "description" varchar DEFAULT '', "min_upload_period_hour" integer DEFAULT 24, "tdt_name" varchar, "tdt_schema_info" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073150"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateOriginalDataTypes (20151104073203)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "original_data_types" ("odt_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "schema_info" varchar DEFAULT '', "mapping_info" varchar DEFAULT '', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073203"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateParsingDataSequenceTypes (20151104073216)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "parsing_data_sequence_types" ("pdst_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "task_name" varchar, "submit_user_id" varchar, "season_info" varchar, "null_ratio" float DEFAULT 0.5, "period_info" varchar, "estimate_state" integer, "total_tuple_num" integer DEFAULT 0, "dup_tuple_num" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073216"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateSubmits (20151104073229)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "submits" ("submit_user_id" integer, "odf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073229"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateParticipates (20151104073234)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "participates" ("submit_user_id" integer, "task_id" integer, "is_pending" boolean DEFAULT 't', "is_permitted" boolean DEFAULT 'f', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073234"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateOriginalDataFiles (20151124113233)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "original_data_files" ("odf_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "file_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113233"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateParsingDataSequenceFiles (20151124113300)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "parsing_data_sequence_files" ("pdsf_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "file_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113300"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateSpecifies (20151124113343)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "specifies" ("odt_id" integer, "task_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113343"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateGeneralizes (20151124113350)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "generalizes" ("odt_id" integer, "pdst_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113350"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateImplementOdts (20151124113359)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "implement_odts" ("odt_id" integer, "odf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113359"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateImplementPdsts (20151124113406)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "implement_pdsts" ("pdst_id" integer, "pdsf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113406"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateConverts (20151124113414)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "converts" ("odf_id" integer, "pdsf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113414"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateEvaluates (20151124131943)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "evaluates" ("eval_user_id" integer, "pdsf_id" integer, "is_pending" boolean DEFAULT 't', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124131943"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."login_id" = 'admin' LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "admin_users" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2015-11-30 01:33:33.481284"], ["updated_at", "2015-11-30 01:33:33.481284"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("login_id", "password", "name", "sex", "birthdate", "cellphone", "is_admin", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login_id", "admin"], ["password", "admin"], ["name", "administrator"], ["sex", "female"], ["birthdate", "1970-01-01"], ["cellphone", "010-1111-1111"], ["is_admin", "t"], ["created_at", "2015-11-30 01:33:33.478445"], ["updated_at", "2015-11-30 01:33:33.478445"]]
+  [1m[35m (1.8ms)[0m  commit transaction
+
+
+Started GET "/" for ::1 at 2015-11-30 10:33:43 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (11.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  Rendered static_pages/home.html.erb within layouts/application (15.7ms)
+Completed 200 OK in 507ms (Views: 497.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:33:44 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (1.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  Rendered static_pages/home.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 161ms (Views: 160.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/login" for ::1 at 2015-11-30 10:33:47 +0900
+Processing by SessionController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (1.8ms)
+  Rendered session/new.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 180ms (Views: 179.9ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/login" for ::1 at 2015-11-30 10:33:50 +0900
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"j3sS7IFK0JzPE9T0FOeAv1B+d4Ea1E7Bq+rVapnTBkH9KkIOqF2ZhY5w0KuFhoBrwazHJRT4vhIZ/LPlNObEHQ==", "session"=>{"login_id"=>"admin", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 9ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:33:50 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_sidebar.html.erb (0.7ms)
+  Rendered static_pages/home.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 150ms (Views: 149.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/admin" for ::1 at 2015-11-30 10:33:54 +0900
+Processing by AdminSessionController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+Redirected to http://localhost:3000/admin/home
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/admin/home" for ::1 at 2015-11-30 10:33:54 +0900
+Processing by StaticPagesController#admin_home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (1.1ms)
+  Rendered static_pages/admin_home.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 168ms (Views: 167.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/admin/task/" for ::1 at 2015-11-30 10:33:55 +0900
+Processing by TaskController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (0.3ms)
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+  Rendered task/show.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 183ms (Views: 180.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/task/new" for ::1 at 2015-11-30 10:33:57 +0900
+Processing by TaskController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  Rendered task/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 184ms (Views: 177.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/task" for ::1 at 2015-11-30 10:34:02 +0900
+Processing by TaskController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JghXyKWN1UP6azglIW7x/zJ0lUzDoL0ZNQ0ARP2YHUhUWQcqjJqcWrsIPHqwD/Ero6Yl6M2MTcqHG2bLUK3fFA==", "task"=>{"task_name"=>"temp1", "description"=>"temp1", "min_upload_period_hour"=>"24", "tdt_name"=>"temp1", "tdt_schema_info"=>"{\"foo\" : \"string\"}"}, "commit"=>"Create"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tasks" ("task_name", "description", "tdt_name", "tdt_schema_info", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["task_name", "temp1"], ["description", "temp1"], ["tdt_name", "temp1"], ["tdt_schema_info", "{\"foo\" : \"string\"}"], ["created_at", "2015-11-30 01:34:02.717133"], ["updated_at", "2015-11-30 01:34:02.717133"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/admin/task
+Completed 302 Found in 6ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/admin/task" for ::1 at 2015-11-30 10:34:02 +0900
+Processing by TaskController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (0.5ms)
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+  Rendered task/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 221ms (Views: 218.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/admin" for ::1 at 2015-11-30 10:34:06 +0900
+Processing by AdminSessionController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+Redirected to http://localhost:3000/admin/home
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/admin/home" for ::1 at 2015-11-30 10:34:06 +0900
+Processing by StaticPagesController#admin_home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (0.6ms)
+  Rendered static_pages/admin_home.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 189ms (Views: 188.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:34:07 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_sidebar.html.erb (0.9ms)
+  Rendered static_pages/home.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 187ms (Views: 186.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/secession" for ::1 at 2015-11-30 10:34:08 +0900
+Processing by SessionController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:34:08 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  Rendered static_pages/_sidebar.html.erb (1.9ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  Rendered static_pages/home.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 187ms (Views: 186.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/user/new" for ::1 at 2015-11-30 10:34:10 +0900
+Processing by UserController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  Rendered static_pages/_sidebar.html.erb (1.8ms)
+  Rendered user/new.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 183ms (Views: 181.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/user" for ::1 at 2015-11-30 10:34:23 +0900
+Processing by UserController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Zmh9Q8axymQf573B8znwhne6APdFLPBAfE0WWndg1NUUOS2h76aDfV6EuZ5iWPBS5miwU0sAAJPOW3DV2lUWiQ==", "user"=>{"login_id"=>"submit", "password"=>"[FILTERED]", "sex"=>"female", "address"=>"", "birthdate"=>"1212-12-12", "cellphone"=>"000-0000-0000", "user_type"=>"submit"}, "commit"=>"Join"}
+Unpermitted parameter: user_type
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."login_id" = 'submit' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "submit_users" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2015-11-30 01:34:23.911400"], ["updated_at", "2015-11-30 01:34:23.911400"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("login_id", "password", "sex", "birthdate", "cellphone", "is_submit", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login_id", "submit"], ["password", "submit"], ["sex", "female"], ["birthdate", "1212-12-12"], ["cellphone", "000-0000-0000"], ["is_submit", "t"], ["created_at", "2015-11-30 01:34:23.906988"], ["updated_at", "2015-11-30 01:34:23.906988"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 17ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:34:23 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (0.9ms)
+  Rendered static_pages/home.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 183ms (Views: 182.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/task/" for ::1 at 2015-11-30 10:34:25 +0900
+Processing by TaskController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mParticipate Load (0.1ms)[0m  [1mSELECT "participates".* FROM "participates" WHERE "participates"."submit_user_id" = ?[0m  [["submit_user_id", 2]]
+  Rendered static_pages/_sidebar.html.erb (0.3ms)
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks"
+  Rendered task/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 179ms (Views: 175.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/participate/new?task_id=1" for ::1 at 2015-11-30 10:34:26 +0900
+Processing by ParticipateController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "participates" ("submit_user_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["submit_user_id", 2], ["task_id", 1], ["created_at", "2015-11-30 01:34:26.908160"], ["updated_at", "2015-11-30 01:34:26.908160"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+Redirected to http://localhost:3000/task
+Completed 302 Found in 8ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/task" for ::1 at 2015-11-30 10:34:26 +0900
+Processing by TaskController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mParticipate Load (0.1ms)[0m  SELECT "participates".* FROM "participates" WHERE "participates"."submit_user_id" = ?  [["submit_user_id", 2]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1[0m  [["task_id", 1]]
+  Rendered static_pages/_sidebar.html.erb (0.3ms)
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks"
+  Rendered task/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 172ms (Views: 169.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/participate/new?task_id=1" for ::1 at 2015-11-30 10:34:30 +0900
+Processing by ParticipateController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "participates" ("submit_user_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["submit_user_id", 2], ["task_id", 1], ["created_at", "2015-11-30 01:34:30.317095"], ["updated_at", "2015-11-30 01:34:30.317095"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+Redirected to http://localhost:3000/task
+Completed 302 Found in 6ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/task" for ::1 at 2015-11-30 10:34:30 +0900
+Processing by TaskController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mParticipate Load (0.1ms)[0m  SELECT "participates".* FROM "participates" WHERE "participates"."submit_user_id" = ?  [["submit_user_id", 2]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1[0m  [["task_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1  [["task_id", 1]]
+  Rendered static_pages/_sidebar.html.erb (0.3ms)
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+  Rendered task/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 168ms (Views: 165.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/participate/new?task_id=1" for ::1 at 2015-11-30 10:34:31 +0900
+Processing by ParticipateController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "participates" ("submit_user_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["submit_user_id", 2], ["task_id", 1], ["created_at", "2015-11-30 01:34:31.346402"], ["updated_at", "2015-11-30 01:34:31.346402"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/task
+Completed 302 Found in 6ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/task" for ::1 at 2015-11-30 10:34:31 +0900
+Processing by TaskController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mParticipate Load (0.1ms)[0m  [1mSELECT "participates".* FROM "participates" WHERE "participates"."submit_user_id" = ?[0m  [["submit_user_id", 2]]
+  [1m[35mTask Load (0.1ms)[0m  SELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1  [["task_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1[0m  [["task_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1  [["task_id", 1]]
+  Rendered static_pages/_sidebar.html.erb (0.3ms)
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+  Rendered task/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 189ms (Views: 184.9ms | ActiveRecord: 0.6ms)
+  [1m[36m (2.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20151104073114)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login_id" varchar, "password" varchar, "name" varchar, "sex" varchar, "address" varchar DEFAULT '', "birthdate" date, "cellphone" varchar, "is_admin" boolean DEFAULT 'f', "is_eval" boolean DEFAULT 'f', "is_submit" boolean DEFAULT 'f', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073114"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateAdminUsers (20151104073131)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "admin_users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073131"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateEvalUsers (20151104073138)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "eval_users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "pdst_id" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073138"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateSubmitUsers (20151104073144)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "submit_users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "eval_value" integer DEFAULT 50, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073144"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateTasks (20151104073150)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "tasks" ("task_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "task_name" varchar, "description" varchar DEFAULT '', "min_upload_period_hour" integer DEFAULT 24, "tdt_name" varchar, "tdt_schema_info" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073150"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateOriginalDataTypes (20151104073203)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "original_data_types" ("odt_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "schema_info" varchar DEFAULT '', "mapping_info" varchar DEFAULT '', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073203"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateParsingDataSequenceTypes (20151104073216)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "parsing_data_sequence_types" ("pdst_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "task_name" varchar, "submit_user_id" varchar, "season_info" varchar, "null_ratio" float DEFAULT 0.5, "period_info" varchar, "estimate_state" integer, "total_tuple_num" integer DEFAULT 0, "dup_tuple_num" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073216"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateSubmits (20151104073229)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "submits" ("submit_user_id" integer, "odf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073229"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateParticipates (20151104073234)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "participates" ("submit_user_id" integer, "task_id" integer, "is_pending" boolean DEFAULT 't', "is_permitted" boolean DEFAULT 'f', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073234"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateOriginalDataFiles (20151124113233)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "original_data_files" ("odf_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "file_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113233"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateParsingDataSequenceFiles (20151124113300)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "parsing_data_sequence_files" ("pdsf_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "file_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113300"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateSpecifies (20151124113343)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "specifies" ("odt_id" integer, "task_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113343"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateGeneralizes (20151124113350)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "generalizes" ("odt_id" integer, "pdst_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113350"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateImplementOdts (20151124113359)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "implement_odts" ("odt_id" integer, "odf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113359"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateImplementPdsts (20151124113406)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "implement_pdsts" ("pdst_id" integer, "pdsf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113406"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateConverts (20151124113414)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "converts" ("odf_id" integer, "pdsf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113414"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateEvaluates (20151124131943)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "evaluates" ("eval_user_id" integer, "pdsf_id" integer, "is_pending" boolean DEFAULT 't', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124131943"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."login_id" = 'admin' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "admin_users" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2015-11-30 01:37:38.730952"], ["updated_at", "2015-11-30 01:37:38.730952"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("login_id", "password", "name", "sex", "birthdate", "cellphone", "is_admin", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login_id", "admin"], ["password", "admin"], ["name", "administrator"], ["sex", "female"], ["birthdate", "1970-01-01"], ["cellphone", "010-1111-1111"], ["is_admin", "t"], ["created_at", "2015-11-30 01:37:38.727904"], ["updated_at", "2015-11-30 01:37:38.727904"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+
+
+Started GET "/" for ::1 at 2015-11-30 10:37:47 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (14.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  Rendered static_pages/home.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 532ms (Views: 523.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:37:47 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (1.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  Rendered static_pages/home.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 166ms (Views: 165.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/login" for ::1 at 2015-11-30 10:37:49 +0900
+Processing by SessionController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (1.7ms)
+  Rendered session/new.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 176ms (Views: 175.8ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/login" for ::1 at 2015-11-30 10:37:51 +0900
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lUR/hnjTqYXwJbRTBcn3X0KTCXRAKEBid2YUpVMOMRznFS9kUcTgnLFGsAyUqPeL00G50E4EsLHFcHIq/jvzQA==", "session"=>{"login_id"=>"admin", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:37:51 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_sidebar.html.erb (0.7ms)
+  Rendered static_pages/home.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 169ms (Views: 168.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/admin" for ::1 at 2015-11-30 10:37:55 +0900
+Processing by AdminSessionController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+Redirected to http://localhost:3000/admin/home
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/admin/home" for ::1 at 2015-11-30 10:37:55 +0900
+Processing by StaticPagesController#admin_home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (1.7ms)
+  Rendered static_pages/admin_home.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 274ms (Views: 272.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admin" for ::1 at 2015-11-30 10:37:56 +0900
+Processing by AdminSessionController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+Redirected to http://localhost:3000/admin/home
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/admin/home" for ::1 at 2015-11-30 10:37:56 +0900
+Processing by StaticPagesController#admin_home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (0.7ms)
+  Rendered static_pages/admin_home.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 184ms (Views: 183.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/admin/task/" for ::1 at 2015-11-30 10:37:57 +0900
+Processing by TaskController#show as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (0.3ms)
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+  Rendered task/show.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 184ms (Views: 180.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/task/new" for ::1 at 2015-11-30 10:37:58 +0900
+Processing by TaskController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  Rendered task/new.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 191ms (Views: 186.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/task" for ::1 at 2015-11-30 10:38:04 +0900
+Processing by TaskController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"X9+cmtBwuVbyKbdBSfz23NECvPiweeS4mtzHOD/W0Y4tjsx4+WfwT7NKsx7YnfYIQNAMXL5VFGsoyqG3kuMT0g==", "task"=>{"task_name"=>"temp", "description"=>"temp", "min_upload_period_hour"=>"24", "tdt_name"=>"temp", "tdt_schema_info"=>"{\"foo\" : \"string\"}"}, "commit"=>"Create"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tasks" ("task_name", "description", "tdt_name", "tdt_schema_info", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["task_name", "temp"], ["description", "temp"], ["tdt_name", "temp"], ["tdt_schema_info", "{\"foo\" : \"string\"}"], ["created_at", "2015-11-30 01:38:04.366045"], ["updated_at", "2015-11-30 01:38:04.366045"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/admin/task
+Completed 302 Found in 5ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/admin/task" for ::1 at 2015-11-30 10:38:04 +0900
+Processing by TaskController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (0.2ms)
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+  Rendered task/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 175ms (Views: 172.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/admin" for ::1 at 2015-11-30 10:38:07 +0900
+Processing by AdminSessionController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+Redirected to http://localhost:3000/admin/home
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/admin/home" for ::1 at 2015-11-30 10:38:07 +0900
+Processing by StaticPagesController#admin_home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (0.7ms)
+  Rendered static_pages/admin_home.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 190ms (Views: 189.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:38:08 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_sidebar.html.erb (0.6ms)
+  Rendered static_pages/home.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 200ms (Views: 199.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:38:08 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  Rendered static_pages/_sidebar.html.erb (0.7ms)
+  Rendered static_pages/home.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 167ms (Views: 166.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/secession" for ::1 at 2015-11-30 10:38:09 +0900
+Processing by SessionController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:38:09 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  Rendered static_pages/_sidebar.html.erb (2.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  Rendered static_pages/home.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 157ms (Views: 156.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/user/new" for ::1 at 2015-11-30 10:38:11 +0900
+Processing by UserController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  Rendered static_pages/_sidebar.html.erb (2.0ms)
+  Rendered user/new.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 170ms (Views: 169.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/user" for ::1 at 2015-11-30 10:38:24 +0900
+Processing by UserController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xGut00phgG8TYlBNvNj6TKMc1Ik0HignIfXI5SY8Xey2Ov0xY3bJdlIBVBItufqYMs5kLToy2PST465qiwmfsA==", "user"=>{"login_id"=>"submit", "password"=>"[FILTERED]", "sex"=>"female", "address"=>"", "birthdate"=>"1212-12-12", "cellphone"=>"000-0000-0000", "user_type"=>"submit"}, "commit"=>"Join"}
+Unpermitted parameter: user_type
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.6ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."login_id" = 'submit' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "submit_users" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2015-11-30 01:38:24.346797"], ["updated_at", "2015-11-30 01:38:24.346797"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("login_id", "password", "sex", "birthdate", "cellphone", "is_submit", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["login_id", "submit"], ["password", "submit"], ["sex", "female"], ["birthdate", "1212-12-12"], ["cellphone", "000-0000-0000"], ["is_submit", "t"], ["created_at", "2015-11-30 01:38:24.341256"], ["updated_at", "2015-11-30 01:38:24.341256"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 18ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:38:24 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (1.1ms)
+  Rendered static_pages/home.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 178ms (Views: 177.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/task/" for ::1 at 2015-11-30 10:38:25 +0900
+Processing by TaskController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mParticipate Load (0.2ms)[0m  SELECT "participates".* FROM "participates" WHERE "participates"."submit_user_id" = ?  [["submit_user_id", 2]]
+  Rendered static_pages/_sidebar.html.erb (0.3ms)
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+  Rendered task/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 187ms (Views: 182.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/participate/new?task_id=1" for ::1 at 2015-11-30 10:38:27 +0900
+Processing by ParticipateController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "participates" ("submit_user_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["submit_user_id", 2], ["task_id", 1], ["created_at", "2015-11-30 01:38:27.282179"], ["updated_at", "2015-11-30 01:38:27.282179"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/task
+Completed 302 Found in 8ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/task" for ::1 at 2015-11-30 10:38:27 +0900
+Processing by TaskController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mParticipate Load (0.2ms)[0m  [1mSELECT "participates".* FROM "participates" WHERE "participates"."submit_user_id" = ?[0m  [["submit_user_id", 2]]
+  [1m[35mTask Load (0.3ms)[0m  SELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1  [["task_id", 1]]
+  Rendered static_pages/_sidebar.html.erb (0.6ms)
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+  Rendered task/index.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 194ms (Views: 190.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/participate/new?task_id=1" for ::1 at 2015-11-30 10:38:28 +0900
+Processing by ParticipateController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "participates" ("submit_user_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["submit_user_id", 2], ["task_id", 1], ["created_at", "2015-11-30 01:38:28.355001"], ["updated_at", "2015-11-30 01:38:28.355001"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/task
+Completed 302 Found in 5ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/task" for ::1 at 2015-11-30 10:38:28 +0900
+Processing by TaskController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mParticipate Load (0.1ms)[0m  [1mSELECT "participates".* FROM "participates" WHERE "participates"."submit_user_id" = ?[0m  [["submit_user_id", 2]]
+  [1m[35mTask Load (0.1ms)[0m  SELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1  [["task_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1[0m  [["task_id", 1]]
+  Rendered static_pages/_sidebar.html.erb (0.5ms)
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks"
+  Rendered task/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 184ms (Views: 180.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/participate/new?task_id=1" for ::1 at 2015-11-30 10:38:29 +0900
+Processing by ParticipateController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "participates" ("submit_user_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["submit_user_id", 2], ["task_id", 1], ["created_at", "2015-11-30 01:38:29.156529"], ["updated_at", "2015-11-30 01:38:29.156529"]]
+  [1m[35m (2.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/task
+Completed 302 Found in 6ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/task" for ::1 at 2015-11-30 10:38:29 +0900
+Processing by TaskController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mParticipate Load (0.1ms)[0m  SELECT "participates".* FROM "participates" WHERE "participates"."submit_user_id" = ?  [["submit_user_id", 2]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1[0m  [["task_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1  [["task_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1[0m  [["task_id", 1]]
+  Rendered static_pages/_sidebar.html.erb (0.3ms)
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks"
+  Rendered task/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 182ms (Views: 178.7ms | ActiveRecord: 0.5ms)
+  [1m[36m (2.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20151104073114)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login_id" varchar, "password" varchar, "name" varchar, "sex" varchar, "address" varchar DEFAULT '', "birthdate" date, "cellphone" varchar, "is_admin" boolean DEFAULT 'f', "is_eval" boolean DEFAULT 'f', "is_submit" boolean DEFAULT 'f', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073114"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateAdminUsers (20151104073131)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "admin_users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073131"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateEvalUsers (20151104073138)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "eval_users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "pdst_id" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073138"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateSubmitUsers (20151104073144)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "submit_users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "eval_value" integer DEFAULT 50, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073144"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateTasks (20151104073150)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "tasks" ("task_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "task_name" varchar, "description" varchar DEFAULT '', "min_upload_period_hour" integer DEFAULT 24, "tdt_name" varchar, "tdt_schema_info" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073150"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateOriginalDataTypes (20151104073203)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "original_data_types" ("odt_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "schema_info" varchar DEFAULT '', "mapping_info" varchar DEFAULT '', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073203"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateParsingDataSequenceTypes (20151104073216)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "parsing_data_sequence_types" ("pdst_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "task_name" varchar, "submit_user_id" varchar, "season_info" varchar, "null_ratio" float DEFAULT 0.5, "period_info" varchar, "estimate_state" integer, "total_tuple_num" integer DEFAULT 0, "dup_tuple_num" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073216"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateSubmits (20151104073229)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "submits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "submit_user_id" integer, "odf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073229"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateParticipates (20151104073234)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "participates" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "submit_user_id" integer, "task_id" integer, "is_pending" boolean DEFAULT 't', "is_permitted" boolean DEFAULT 'f', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073234"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateOriginalDataFiles (20151124113233)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "original_data_files" ("odf_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "file_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113233"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateParsingDataSequenceFiles (20151124113300)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "parsing_data_sequence_files" ("pdsf_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "file_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113300"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateSpecifies (20151124113343)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "specifies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "odt_id" integer, "task_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113343"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateGeneralizes (20151124113350)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "generalizes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "odt_id" integer, "pdst_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113350"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateImplementOdts (20151124113359)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "implement_odts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "odt_id" integer, "odf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113359"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateImplementPdsts (20151124113406)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "implement_pdsts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "pdst_id" integer, "pdsf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113406"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateConverts (20151124113414)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "converts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "odf_id" integer, "pdsf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113414"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateEvaluates (20151124131943)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "evaluates" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "eval_user_id" integer, "pdsf_id" integer, "is_pending" boolean DEFAULT 't', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124131943"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."login_id" = 'admin' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "admin_users" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2015-11-30 01:41:08.636240"], ["updated_at", "2015-11-30 01:41:08.636240"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("login_id", "password", "name", "sex", "birthdate", "cellphone", "is_admin", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login_id", "admin"], ["password", "admin"], ["name", "administrator"], ["sex", "female"], ["birthdate", "1970-01-01"], ["cellphone", "010-1111-1111"], ["is_admin", "t"], ["created_at", "2015-11-30 01:41:08.633345"], ["updated_at", "2015-11-30 01:41:08.633345"]]
+  [1m[35m (1.7ms)[0m  commit transaction
+
+
+Started GET "/" for ::1 at 2015-11-30 10:41:17 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (9.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  Rendered static_pages/home.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 502ms (Views: 492.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:41:17 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (1.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  Rendered static_pages/home.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 202ms (Views: 201.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admin" for ::1 at 2015-11-30 10:41:22 +0900
+Processing by AdminSessionController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+Redirected to http://localhost:3000/admin/login
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/admin/login" for ::1 at 2015-11-30 10:41:22 +0900
+Processing by AdminSessionController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  Rendered static_pages/_admin_sidebar.html.erb (1.2ms)
+  Rendered admin_session/new.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 189ms (Views: 188.3ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/admin/login" for ::1 at 2015-11-30 10:41:25 +0900
+Processing by AdminSessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jYurkdWmfrB/NJdj34GpktLED5+XdeS4eeX3/fCzx5r/2vtz/LE3qT5XkzxO4KlGQxa/O5lZFGvL85FyXYYFxg==", "session"=>{"login_id"=>"admin", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+Redirected to http://localhost:3000/admin/home
+Completed 302 Found in 22ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/admin/home" for ::1 at 2015-11-30 10:41:25 +0900
+Processing by StaticPagesController#admin_home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (1.2ms)
+  Rendered static_pages/admin_home.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 215ms (Views: 214.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admin/task/" for ::1 at 2015-11-30 10:41:27 +0900
+Processing by TaskController#show as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (0.3ms)
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks"
+  Rendered task/show.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 182ms (Views: 179.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/task/new" for ::1 at 2015-11-30 10:41:29 +0900
+Processing by TaskController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered task/new.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 182ms (Views: 176.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/task" for ::1 at 2015-11-30 10:41:36 +0900
+Processing by TaskController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3UPwpvrJfGfVKWtD/cvQhni6atWJI0zFfrhXdPFuZuCvEqBE0941fpRKbxxsqtBS6WjacYcPvBbMrjH7XFukvA==", "task"=>{"task_name"=>"temp", "description"=>"temp", "min_upload_period_hour"=>"24", "tdt_name"=>"temp", "tdt_schema_info"=>"{\"foo\" : \"string\"}"}, "commit"=>"Create"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tasks" ("task_name", "description", "tdt_name", "tdt_schema_info", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["task_name", "temp"], ["description", "temp"], ["tdt_name", "temp"], ["tdt_schema_info", "{\"foo\" : \"string\"}"], ["created_at", "2015-11-30 01:41:36.425254"], ["updated_at", "2015-11-30 01:41:36.425254"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/admin/task
+Completed 302 Found in 5ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/admin/task" for ::1 at 2015-11-30 10:41:36 +0900
+Processing by TaskController#show as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (0.4ms)
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks"
+  Rendered task/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 182ms (Views: 181.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admin" for ::1 at 2015-11-30 10:41:39 +0900
+Processing by AdminSessionController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+Redirected to http://localhost:3000/admin/home
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/admin/home" for ::1 at 2015-11-30 10:41:39 +0900
+Processing by StaticPagesController#admin_home as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (2.3ms)
+  Rendered static_pages/admin_home.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 203ms (Views: 202.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:41:40 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  Rendered static_pages/_sidebar.html.erb (0.8ms)
+  Rendered static_pages/home.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 185ms (Views: 184.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/secession" for ::1 at 2015-11-30 10:41:43 +0900
+Processing by SessionController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:41:43 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  Rendered static_pages/_sidebar.html.erb (2.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  Rendered static_pages/home.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 171ms (Views: 170.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/user/new" for ::1 at 2015-11-30 10:41:45 +0900
+Processing by UserController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  Rendered static_pages/_sidebar.html.erb (1.9ms)
+  Rendered user/new.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 190ms (Views: 188.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/user" for ::1 at 2015-11-30 10:41:59 +0900
+Processing by UserController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mUJq23pqZ7Nfqn+KGJiIDYl9lbGQwxLA0xFTCVJop1TrEzo5U30uqh7Je9WJ+YjZGK8lFZ7v4hNhBzWG/11lCA==", "user"=>{"login_id"=>"submit", "password"=>"[FILTERED]", "sex"=>"female", "address"=>"", "birthdate"=>"1212-12-12", "cellphone"=>"000-0000-0000", "user_type"=>"submit"}, "commit"=>"Join"}
+Unpermitted parameter: user_type
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."login_id" = 'submit' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "submit_users" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2015-11-30 01:41:59.929371"], ["updated_at", "2015-11-30 01:41:59.929371"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("login_id", "password", "sex", "birthdate", "cellphone", "is_submit", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["login_id", "submit"], ["password", "submit"], ["sex", "female"], ["birthdate", "1212-12-12"], ["cellphone", "000-0000-0000"], ["is_submit", "t"], ["created_at", "2015-11-30 01:41:59.924800"], ["updated_at", "2015-11-30 01:41:59.924800"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 16ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:41:59 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (1.0ms)
+  Rendered static_pages/home.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 195ms (Views: 194.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/task/" for ::1 at 2015-11-30 10:42:01 +0900
+Processing by TaskController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mParticipate Load (0.1ms)[0m  SELECT "participates".* FROM "participates" WHERE "participates"."submit_user_id" = ?  [["submit_user_id", 2]]
+  Rendered static_pages/_sidebar.html.erb (0.4ms)
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+  Rendered task/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 189ms (Views: 185.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/participate/new?task_id=1" for ::1 at 2015-11-30 10:42:03 +0900
+Processing by ParticipateController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "participates" ("submit_user_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["submit_user_id", 2], ["task_id", 1], ["created_at", "2015-11-30 01:42:03.206143"], ["updated_at", "2015-11-30 01:42:03.206143"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/task
+Completed 302 Found in 9ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/task" for ::1 at 2015-11-30 10:42:03 +0900
+Processing by TaskController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mParticipate Load (0.1ms)[0m  [1mSELECT "participates".* FROM "participates" WHERE "participates"."submit_user_id" = ?[0m  [["submit_user_id", 2]]
+  [1m[35mTask Load (0.1ms)[0m  SELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1  [["task_id", 1]]
+  Rendered static_pages/_sidebar.html.erb (0.3ms)
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+  Rendered task/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 183ms (Views: 180.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/participate/new?task_id=1" for ::1 at 2015-11-30 10:42:04 +0900
+Processing by ParticipateController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "participates" ("submit_user_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["submit_user_id", 2], ["task_id", 1], ["created_at", "2015-11-30 01:42:04.096199"], ["updated_at", "2015-11-30 01:42:04.096199"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/task
+Completed 302 Found in 5ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/task" for ::1 at 2015-11-30 10:42:04 +0900
+Processing by TaskController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mParticipate Load (0.2ms)[0m  [1mSELECT "participates".* FROM "participates" WHERE "participates"."submit_user_id" = ?[0m  [["submit_user_id", 2]]
+  [1m[35mTask Load (0.1ms)[0m  SELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1  [["task_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1[0m  [["task_id", 1]]
+  Rendered static_pages/_sidebar.html.erb (0.5ms)
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks"
+  Rendered task/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 191ms (Views: 188.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/participate/new?task_id=1" for ::1 at 2015-11-30 10:42:05 +0900
+Processing by ParticipateController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "participates" ("submit_user_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["submit_user_id", 2], ["task_id", 1], ["created_at", "2015-11-30 01:42:05.188742"], ["updated_at", "2015-11-30 01:42:05.188742"]]
+  [1m[35m (1.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/task
+Completed 302 Found in 5ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/task" for ::1 at 2015-11-30 10:42:05 +0900
+Processing by TaskController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mParticipate Load (0.1ms)[0m  SELECT "participates".* FROM "participates" WHERE "participates"."submit_user_id" = ?  [["submit_user_id", 2]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1[0m  [["task_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1  [["task_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1[0m  [["task_id", 1]]
+  Rendered static_pages/_sidebar.html.erb (0.3ms)
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks"
+  Rendered task/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 197ms (Views: 194.2ms | ActiveRecord: 0.6ms)
+  [1m[36m (1.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.7ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20151104073114)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login_id" varchar, "password" varchar, "name" varchar, "sex" varchar, "address" varchar DEFAULT '', "birthdate" date, "cellphone" varchar, "is_admin" boolean DEFAULT 'f', "is_eval" boolean DEFAULT 'f', "is_submit" boolean DEFAULT 'f', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073114"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateAdminUsers (20151104073131)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "admin_users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073131"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateEvalUsers (20151104073138)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "eval_users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "pdst_id" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073138"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateSubmitUsers (20151104073144)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "submit_users" ("user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "eval_value" integer DEFAULT 50, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073144"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateTasks (20151104073150)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "tasks" ("task_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "task_name" varchar, "description" varchar DEFAULT '', "min_upload_period_hour" integer DEFAULT 24, "tdt_name" varchar, "tdt_schema_info" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073150"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateOriginalDataTypes (20151104073203)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "original_data_types" ("odt_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "schema_info" varchar DEFAULT '', "mapping_info" varchar DEFAULT '', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073203"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateParsingDataSequenceTypes (20151104073216)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "parsing_data_sequence_types" ("pdst_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "task_name" varchar, "submit_user_id" varchar, "season_info" varchar, "null_ratio" float DEFAULT 0.5, "period_info" varchar, "estimate_state" integer, "total_tuple_num" integer DEFAULT 0, "dup_tuple_num" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073216"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateSubmits (20151104073229)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "submits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "submit_user_id" integer, "odf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073229"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateParticipates (20151104073234)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "participates" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "submit_user_id" integer, "task_id" integer, "is_pending" boolean DEFAULT 't', "is_permitted" boolean DEFAULT 'f', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151104073234"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateOriginalDataFiles (20151124113233)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "original_data_files" ("odf_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "file_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113233"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateParsingDataSequenceFiles (20151124113300)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "parsing_data_sequence_files" ("pdsf_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "file_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113300"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateSpecifies (20151124113343)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "specifies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "odt_id" integer, "task_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113343"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateGeneralizes (20151124113350)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "generalizes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "odt_id" integer, "pdst_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113350"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateImplementOdts (20151124113359)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "implement_odts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "odt_id" integer, "odf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113359"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateImplementPdsts (20151124113406)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "implement_pdsts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "pdst_id" integer, "pdsf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113406"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateConverts (20151124113414)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "converts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "odf_id" integer, "pdsf_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124113414"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateEvaluates (20151124131943)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "evaluates" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "eval_user_id" integer, "pdsf_id" integer, "is_pending" boolean DEFAULT 't', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124131943"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."login_id" = 'admin' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "admin_users" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2015-11-30 01:44:52.541983"], ["updated_at", "2015-11-30 01:44:52.541983"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("login_id", "password", "name", "sex", "birthdate", "cellphone", "is_admin", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login_id", "admin"], ["password", "admin"], ["name", "administrator"], ["sex", "female"], ["birthdate", "1970-01-01"], ["cellphone", "010-1111-1111"], ["is_admin", "t"], ["created_at", "2015-11-30 01:44:52.539043"], ["updated_at", "2015-11-30 01:44:52.539043"]]
+  [1m[35m (1.8ms)[0m  commit transaction
+
+
+Started GET "/" for ::1 at 2015-11-30 10:45:00 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (11.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  Rendered static_pages/home.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 522ms (Views: 510.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/login" for ::1 at 2015-11-30 10:45:02 +0900
+Processing by SessionController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (2.0ms)
+  Rendered session/new.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 165ms (Views: 164.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/admin" for ::1 at 2015-11-30 10:45:07 +0900
+Processing by AdminSessionController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+Redirected to http://localhost:3000/admin/login
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/admin/login" for ::1 at 2015-11-30 10:45:07 +0900
+Processing by AdminSessionController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_admin_sidebar.html.erb (1.4ms)
+  Rendered admin_session/new.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 176ms (Views: 175.1ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/admin/login" for ::1 at 2015-11-30 10:45:13 +0900
+Processing by AdminSessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RlV3piHV4Jf7uix4vAFLpnBnUmn+mX2MsndWKexdAoQ0BCdECMKpjrrZKCctYEty4bXizfC1jV8AYTCmQWjA2A==", "session"=>{"login_id"=>"admin", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+Redirected to http://localhost:3000/admin/home
+Completed 302 Found in 9ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/admin/home" for ::1 at 2015-11-30 10:45:13 +0900
+Processing by StaticPagesController#admin_home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (0.9ms)
+  Rendered static_pages/admin_home.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 180ms (Views: 179.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/admin/task/" for ::1 at 2015-11-30 10:45:15 +0900
+Processing by TaskController#show as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (0.3ms)
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+  Rendered task/show.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 178ms (Views: 175.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/task/new" for ::1 at 2015-11-30 10:45:16 +0900
+Processing by TaskController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  Rendered task/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 187ms (Views: 180.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/task" for ::1 at 2015-11-30 10:45:21 +0900
+Processing by TaskController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GNrPhID2R5HJAKdUhi7WqOJIpUF7yLOXJgRPLEJgOkFqi59mqeEOiIhjowsXT9Z8c5oV5XXkQ0SUEimj71X4HQ==", "task"=>{"task_name"=>"temp", "description"=>"temp", "min_upload_period_hour"=>"24", "tdt_name"=>"temp", "tdt_schema_info"=>"{\"foo\" : \"string\"}"}, "commit"=>"Create"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tasks" ("task_name", "description", "tdt_name", "tdt_schema_info", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["task_name", "temp"], ["description", "temp"], ["tdt_name", "temp"], ["tdt_schema_info", "{\"foo\" : \"string\"}"], ["created_at", "2015-11-30 01:45:21.201728"], ["updated_at", "2015-11-30 01:45:21.201728"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/admin/task
+Completed 302 Found in 7ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/admin/task" for ::1 at 2015-11-30 10:45:21 +0900
+Processing by TaskController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (0.7ms)
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+  Rendered task/show.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 221ms (Views: 218.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/admin" for ::1 at 2015-11-30 10:45:23 +0900
+Processing by AdminSessionController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+Redirected to http://localhost:3000/admin/home
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/admin/home" for ::1 at 2015-11-30 10:45:23 +0900
+Processing by StaticPagesController#admin_home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  Rendered static_pages/_admin_sidebar.html.erb (0.8ms)
+  Rendered static_pages/admin_home.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 193ms (Views: 192.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:45:24 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "admin"]]
+  Rendered static_pages/_sidebar.html.erb (0.9ms)
+  Rendered static_pages/home.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 202ms (Views: 201.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:45:25 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "admin"]]
+  Rendered static_pages/_sidebar.html.erb (0.7ms)
+  Rendered static_pages/home.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 193ms (Views: 192.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/secession" for ::1 at 2015-11-30 10:45:26 +0900
+Processing by SessionController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:45:26 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  Rendered static_pages/_sidebar.html.erb (1.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  Rendered static_pages/home.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 168ms (Views: 167.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/user/new" for ::1 at 2015-11-30 10:45:27 +0900
+Processing by UserController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" IS NULL LIMIT 1
+  Rendered static_pages/_sidebar.html.erb (1.9ms)
+  Rendered user/new.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 171ms (Views: 170.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/user" for ::1 at 2015-11-30 10:45:39 +0900
+Processing by UserController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OcmIhRK1PrxSqbgInZ06AurEEz0F+BuaoRf8GRejenFLmNhnO6J3pRPKvFcM/DrWexajmQvU60kTAZqWupa4LQ==", "user"=>{"login_id"=>"submit", "password"=>"[FILTERED]", "sex"=>"female", "address"=>"", "birthdate"=>"1212-12-12", "cellphone"=>"000-0000-0000", "user_type"=>"submit"}, "commit"=>"Join"}
+Unpermitted parameter: user_type
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."login_id" = 'submit' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "submit_users" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2015-11-30 01:45:39.758209"], ["updated_at", "2015-11-30 01:45:39.758209"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("login_id", "password", "sex", "birthdate", "cellphone", "is_submit", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["login_id", "submit"], ["password", "submit"], ["sex", "female"], ["birthdate", "1212-12-12"], ["cellphone", "000-0000-0000"], ["is_submit", "t"], ["created_at", "2015-11-30 01:45:39.754440"], ["updated_at", "2015-11-30 01:45:39.754440"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 15ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 10:45:39 +0900
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  Rendered static_pages/_sidebar.html.erb (0.8ms)
+  Rendered static_pages/home.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 187ms (Views: 186.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/task/" for ::1 at 2015-11-30 10:45:41 +0900
+Processing by TaskController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mParticipate Load (0.2ms)[0m  SELECT "participates".* FROM "participates" WHERE "participates"."submit_user_id" = ?  [["submit_user_id", 2]]
+  Rendered static_pages/_sidebar.html.erb (0.4ms)
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+  Rendered task/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 191ms (Views: 186.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/participate/new?task_id=1" for ::1 at 2015-11-30 10:45:42 +0900
+Processing by ParticipateController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "participates" ("submit_user_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["submit_user_id", 2], ["task_id", 1], ["created_at", "2015-11-30 01:45:42.326022"], ["updated_at", "2015-11-30 01:45:42.326022"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/task
+Completed 302 Found in 9ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/task" for ::1 at 2015-11-30 10:45:42 +0900
+Processing by TaskController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mParticipate Load (0.1ms)[0m  [1mSELECT "participates".* FROM "participates" WHERE "participates"."submit_user_id" = ?[0m  [["submit_user_id", 2]]
+  [1m[35mTask Load (0.2ms)[0m  SELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1  [["task_id", 1]]
+  Rendered static_pages/_sidebar.html.erb (0.3ms)
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+  Rendered task/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 191ms (Views: 187.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/participate/new?task_id=1" for ::1 at 2015-11-30 10:45:43 +0900
+Processing by ParticipateController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "participates" ("submit_user_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["submit_user_id", 2], ["task_id", 1], ["created_at", "2015-11-30 01:45:43.650215"], ["updated_at", "2015-11-30 01:45:43.650215"]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/task
+Completed 302 Found in 5ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/task" for ::1 at 2015-11-30 10:45:43 +0900
+Processing by TaskController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1  [["login_id", "submit"]]
+  [1m[36mParticipate Load (0.1ms)[0m  [1mSELECT "participates".* FROM "participates" WHERE "participates"."submit_user_id" = ?[0m  [["submit_user_id", 2]]
+  [1m[35mTask Load (0.1ms)[0m  SELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1  [["task_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1[0m  [["task_id", 1]]
+  Rendered static_pages/_sidebar.html.erb (0.3ms)
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks"
+  Rendered task/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 190ms (Views: 186.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/participate/new?task_id=1" for ::1 at 2015-11-30 10:45:44 +0900
+Processing by ParticipateController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "participates" ("submit_user_id", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["submit_user_id", 2], ["task_id", 1], ["created_at", "2015-11-30 01:45:44.776379"], ["updated_at", "2015-11-30 01:45:44.776379"]]
+  [1m[35m (1.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/task
+Completed 302 Found in 5ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/task" for ::1 at 2015-11-30 10:45:44 +0900
+Processing by TaskController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login_id" = ? LIMIT 1[0m  [["login_id", "submit"]]
+  [1m[35mParticipate Load (0.2ms)[0m  SELECT "participates".* FROM "participates" WHERE "participates"."submit_user_id" = ?  [["submit_user_id", 2]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1[0m  [["task_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1  [["task_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."task_id" = ? LIMIT 1[0m  [["task_id", 1]]
+  Rendered static_pages/_sidebar.html.erb (0.4ms)
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks"
+  Rendered task/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 198ms (Views: 194.3ms | ActiveRecord: 0.6ms)
