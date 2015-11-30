@@ -10,11 +10,15 @@ class ParticipateController < ApplicationController
   end
 
   def new
-    is_joined = Participate.join(current_user, params[:task_id])
-    if is_joined
-      msg = 'Successfully joined.'
-    else
-      msg = 'Something went wrong! Please try again.'
+    @duplicate = Participate.find_by(submit_user_id: current_user.user_id, task_id: params[:task_id])
+
+    if not @duplicate
+      is_joined = Participate.join(current_user, params[:task_id])
+      if is_joined
+        msg = 'Successfully joined.'
+      else
+        msg = 'Something went wrong! Please try again.'
+      end
     end
     redirect_to :controller => 'task', :action => 'index'
   end
