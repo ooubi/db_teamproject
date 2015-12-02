@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ImplementPdstTest < ActiveSupport::TestCase
+class EvaluateControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

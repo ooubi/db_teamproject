@@ -9,8 +9,6 @@
             <% if current_user.is_submit == true %>       
               <%= render "all_tasks" %>
               <%= render "submit_tasks" %>
-            <% elsif current_user.is_eval == true %>
-              <%= render "eval_tasks" %>
             <% end %> 
           <% end %>
           <%= render "/static_pages/menu_toggle" %>

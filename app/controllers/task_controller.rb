@@ -4,7 +4,7 @@ class TaskController < ApplicationController
     if current_user.is_submit
       @my_pending_tasks, @my_proceeding_tasks = Task.get_submit_tasks(current_user.user_id)
     elsif current_user.is_eval
-      @my_pending_tasks, @my_proceeding_tasks = Task.get_eval_tasks(current_user.user_id)
+      @my_pending_tasks, @my_done_tasks = Task.get_eval_tasks(current_user.user_id)
     end
   end
 

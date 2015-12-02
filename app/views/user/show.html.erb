@@ -16,13 +16,14 @@
               <thead>
                 <tr>
                   <th>ID</th>
+                  <th>Login ID</th>
                   <th>Name</th>
                   <th>Sex</th>
                   <th>Address</th>
                   <th>Birthdate</th>
                   <th>Cellphone</th>
-                  <th>type</th>
-                  <th colspan="2"></th>
+                  <th>Type</th>
+                  <th colspan="2">Action</th>
                 </tr>
               </thead>
 
@@ -30,45 +31,38 @@
                 <% if @user_all_infos != nil %>
                   <% @user_all_infos.each do |user| %>
                     <tr>
+                      <td><%= user.user_id %></td>
                       <td><%= user.login_id %></td>
                       <td><%= user.name %></td>
                       <td><%= user.sex %></td>
                       <td><%= user.address %></td>
                       <td><%= user.birthdate %></td>
                       <td><%= user.cellphone %></td>
+                      <!-- eval user -->
                       <% if user.is_eval %>
                       <td>eval</td>
-                      <% else %>
-                      <td>submit</td>
-                      <% end %>
-
-                      <% if !user.is_admin %>
+                      <td><%= link_to "See Details", :controller => "evaluate", :action => :index, :user_id => user.user_id %></td>
                       <td><%= link_to 'Delete', user, method: :destroy, data: { confirm: 'Are you sure?' } %></td>
-                      <% else %>
+                      <!-- submit user -->
+                      <% elsif user.is_submit %>
+                      <td>submit</td>
+                      <td><%= link_to "See Details", :controller => "participate", :action => :index, :user_id => user.user_id %></td>
+                      <td><%= link_to 'Delete', user, method: :destroy, data: { confirm: 'Are you sure?' } %></td>
+                      <!-- admin user -->
+                      <% elsif user.is_admin %>
+                      <td>admin</td>
+                      <td></td>
                       <td></td>
                       <% end %>
-                      
                     </tr>
                   <% end %>
                 <% end %>
               </tbody>
             </table>
-
-            <br>
-
-            <br><br><br>
-
-          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+            <br><br><br><br>
+          <%= render "/static_pages/menu_toggle" %>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<!-- Menu Toggle Script -->
-<script>
-  $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-  });
-</script>

@@ -1,13 +1,40 @@
 class OriginalDataTypeController < ApplicationController
   def index
-    @task = Task.find_by(params[:task_id])
+    @task = Task.find_by(:task_id => params[:task_id])
     @odts = OriginalDataType.get_task_odts(params[:task_id])
+    @my_pdsf_num = 0
+    @tuple_num = 0
+    submit = Submit.where(:submit_user_id => current_user.user_id)
+    implement_task = ImplementTask.where(:task_id => params[:task_id])
+    if submit != nil
+      @my_pdsf_num = submit.size
+    end    
+    if implement_task != nil
+      @tuple_num = implement_task.size
+    end
   end
 
   def show
     return if not admin_check
     @task = Task.find_by(task_id: params[:task_id])
     @odts = OriginalDataType.get_task_odts(params[:task_id])
+    @pdsf_num = 0
+    @tuple_num = 0
+    specifies = Specify.where(:task_id => params[:task_id])
+    implement_task = ImplementTask.where(:task_id => params[:task_id])
+    # Count pdsf nums
+    if specifies != nil
+      specifies.each do |specify|
+        implement_odts = ImplementOdt.where(:odt_id => specify.odt_id)
+        if implement_odts != nil
+          @pdsf_num += implement_odts.size
+        end
+      end
+    end
+    # Count tuple nums
+    if implement_task != nil
+      @tuple_num = implement_task.size
+    end
   end
 
   def new

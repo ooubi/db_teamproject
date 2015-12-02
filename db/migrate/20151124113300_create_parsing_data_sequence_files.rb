@@ -9,6 +9,10 @@ class CreateParsingDataSequenceFiles < ActiveRecord::Migration
       t.integer :estimate_state, default: 0
       t.integer :total_tuple_num, default: 0
       t.integer :dup_tuple_num, default: 0
+      t.boolean :is_assigned, default: false
+      t.boolean :is_evaluated, default: false
+      t.boolean :is_passed, default: false
+      t.integer :score, default: 5
       t.timestamps null: false
     end
   end

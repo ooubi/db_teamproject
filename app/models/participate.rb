@@ -24,6 +24,28 @@ class Participate < ActiveRecord::Base
 	end
 	return permitted_users
   end
+
+  def self.get_pending_tasks(uid)
+  	tasks = []
+  	pendings = where(:submit_user_id => uid, :is_pending => true)
+  	if pendings != nil
+  	  pendings.each do |pending|
+  	  	tasks << Task.find_by(:task_id => pending.task_id)
+  	  end
+  	end
+  	return tasks
+  end
+
+  def self.get_permitted_tasks(uid)
+  	tasks = []
+  	permitteds = where(:submit_user_id => uid, :is_pending => false, :is_permitted => true)
+  	if permitteds != nil
+  	  permitteds.each do |permitted|
+  	  	tasks << Task.find_by(:task_id => permitted.task_id)
+  	  end
+  	end
+  	return tasks
+  end
     
   def self.update_user_state(tid, uid, us)
 	participate = find_by(:task_id => tid, :submit_user_id => uid)

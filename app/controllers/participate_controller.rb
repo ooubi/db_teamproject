@@ -1,5 +1,8 @@
 class ParticipateController < ApplicationController
   def index
+    return if not admin_check
+    @pending_tasks = Participate.get_pending_tasks(params[:user_id])
+    @permitted_tasks = Participate.get_permitted_tasks(params[:user_id])
   end
 
   def show

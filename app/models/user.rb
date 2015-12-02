@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates :cellphone, length: { maximum: 50 }, format: {with: VALID_PHONE_REGEX }
 
   before_create :admin_role_check
-  before_create :set_subclass
+  after_save :set_subclass
 
   def admin_role_check
     if self.is_admin && self.login_id != 'admin' then return false end
@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
       when 'task'
         return get_task_all_infos(search_content)
       when 'id'
-        return where(:user_id => search_content)
+        return where(:login_id => search_content)
       else
         return nil
       end

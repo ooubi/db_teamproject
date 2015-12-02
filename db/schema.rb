@@ -25,10 +25,11 @@ ActiveRecord::Schema.define(version: 20151202021936) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "eval_users", primary_key: "user_id", force: :cascade do |t|
-    t.string   "pdst_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "eval_users", primary_key: "eval_user_id", force: :cascade do |t|
+    t.integer  "user_id"
+    t.boolean  "on_process", default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "evaluates", force: :cascade do |t|
@@ -39,23 +40,9 @@ ActiveRecord::Schema.define(version: 20151202021936) do
     t.datetime "updated_at",                  null: false
   end
 
-  create_table "generalizes", force: :cascade do |t|
-    t.integer  "odt_id"
-    t.integer  "pdst_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "implement_odts", force: :cascade do |t|
     t.integer  "odt_id"
     t.integer  "odf_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "implement_pdsts", force: :cascade do |t|
-    t.integer  "pdst_id"
-    t.integer  "pdsf_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -89,18 +76,10 @@ ActiveRecord::Schema.define(version: 20151202021936) do
     t.integer  "estimate_state",  default: 0
     t.integer  "total_tuple_num", default: 0
     t.integer  "dup_tuple_num",   default: 0
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-  end
-
-  create_table "parsing_data_sequence_types", primary_key: "pdst_id", force: :cascade do |t|
-    t.string   "submit_user_id"
-    t.string   "season_info",     default: "1"
-    t.float    "null_ratio",      default: 0.5
-    t.string   "period_info",     default: "1-1"
-    t.integer  "estimate_state",  default: 0
-    t.integer  "total_tuple_num", default: 0
-    t.integer  "dup_tuple_num",   default: 0
+    t.boolean  "is_assigned",     default: false
+    t.boolean  "is_evaluated",    default: false
+    t.boolean  "is_passed",       default: false
+    t.integer  "score",           default: 5
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
@@ -121,7 +100,8 @@ ActiveRecord::Schema.define(version: 20151202021936) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "submit_users", primary_key: "user_id", force: :cascade do |t|
+  create_table "submit_users", primary_key: "submit_user_id", force: :cascade do |t|
+    t.integer  "user_id"
     t.integer  "eval_value", default: 50
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false

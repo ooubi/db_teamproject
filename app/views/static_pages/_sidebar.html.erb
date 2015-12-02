@@ -4,7 +4,11 @@
     <!-- user specific menu -->
     <% if current_user != nil %>
       <% if !current_user.is_admin %>
+        <% if current_user.is_eval %>
+          <li>  <%= link_to "pdsfs", :controller => :evaluate, :action => :index %></a> </li>
+        <% elsif current_user.is_submit %>
           <li> <a href="/task/">Tasks</a> </li>
+        <% end %>
         <li> <a href="/settings">Settings</a> </li>
       <% end %>
     <% end %>

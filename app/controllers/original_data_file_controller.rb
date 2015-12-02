@@ -18,7 +18,7 @@ class OriginalDataFileController < ApplicationController
   end
 
   def upload
-    if OriginalDataFile.upload_odf(params[:original_data_file][:data], params[:odt_id])
+    if OriginalDataFile.upload_odf(params[:original_data_file][:data], params[:odt_id], current_user.user_id, params[:task_id])
       flash[:notice] = "Successfully updated!"
     else
       flash[:warning] = "Something went wrong! Please try again."

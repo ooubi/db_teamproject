@@ -86,6 +86,7 @@ post 'update' => 'user#update'
 # Task
 get 'task/' => 'task#index'
 get 'admin/task/' => 'task#show'
+get 'task/summary' => 'task#summary'
 get 'task/new' => 'task#new'
 post 'task/new' => 'task#create'
 
@@ -102,6 +103,9 @@ get 'participate/show' => 'participate#show'
 get 'participate/new' => 'participate#new'
 get 'participate/create' => 'participate#create'
 get 'participate/update' => 'participate#update'
+
+# Evaluate
+get 'evaluate/index' => 'evaluate#index'
 
 # Original Data File
 post 'original_data_file/upload' => 'original_data_file#upload'

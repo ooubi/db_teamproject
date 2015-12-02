@@ -13,22 +13,12 @@
 			    <li> <a href="/admin/edit"> edit </a> </li>   
 			  </div>
 			</div>
-
-          
-          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+      <%= render "/static_pages/menu_toggle" %>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<!-- Menu Toggle Script -->
-<script>
-  $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-  });
-</script>
 
 
 
