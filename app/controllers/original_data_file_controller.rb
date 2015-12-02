@@ -11,20 +11,19 @@ class OriginalDataFileController < ApplicationController
 
   def show_file
   	@odf = OriginalDataFile.find(params[:id])
+    @content = [@odf.file].pack("b*")
   	respond_to do |format|
   		format.html
   	end
   end
 
   def upload
-	  uploaded_io = params[:original_data_file][:data]
-	  csv_file = File.open(uploaded_io.tempfile, 'rb') { |file| file.read }
-	  csv_file.unpack('b*') # to binary file
-	  @odf = OriginalDataFile.create(file: csv_file)
-		  if @odf.save
-		  	flash[:notice] = "Successfully updated!"
-		  	redirect_to :controller => 'task', :action => 'index'
-		  end
+    if OriginalDataFile.upload_odf(params[:original_data_file][:data], params[:odt_id])
+      flash[:notice] = "Successfully updated!"
+    else
+      flash[:warning] = "Something went wrong! Please try again."
+    end
+      redirect_to :controller => 'original_data_type', :action => 'index', :task_id => params[:task_id]
   end
 
   def destroy

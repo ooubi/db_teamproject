@@ -1,12 +1,17 @@
 <div id="wrapper">
   <%= render "/static_pages/admin_sidebar" %>
   <div id="page-content-wrapper">
+    <%= render "/static_pages/flash_container" %>
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
           
             <h1>Listing Users</h1>
-
+            <%= form_for(:user_search, :url => { :controller => "user", :action => "show"}, :method => "post" ) do |f| %>
+              <%= f.select :search_category, ['role', 'age', 'sex', 'task', 'id'], :selected => 'role', class: 'form_control' %>
+              <%= f.text_field :search_content %>
+              <%= f.submit "Search", class: "btn btn-primary" %>
+            <% end %>
             <table class="table table-bordered">
               <thead>
                 <tr>
@@ -22,27 +27,29 @@
               </thead>
 
               <tbody>
-                <% @all_users.each do |user| %>
-                  <tr>
-                    <td><%= user.login_id %></td>
-                    <td><%= user.name %></td>
-                    <td><%= user.sex %></td>
-                    <td><%= user.address %></td>
-                    <td><%= user.birthdate %></td>
-                    <td><%= user.cellphone %></td>
-                    <% if user.is_eval %>
-                    <td>eval</td>
-                    <% else %>
-                    <td>submit</td>
-                    <% end %>
+                <% if @user_all_infos != nil %>
+                  <% @user_all_infos.each do |user| %>
+                    <tr>
+                      <td><%= user.login_id %></td>
+                      <td><%= user.name %></td>
+                      <td><%= user.sex %></td>
+                      <td><%= user.address %></td>
+                      <td><%= user.birthdate %></td>
+                      <td><%= user.cellphone %></td>
+                      <% if user.is_eval %>
+                      <td>eval</td>
+                      <% else %>
+                      <td>submit</td>
+                      <% end %>
 
-                    <% if !user.is_admin %>
-                    <td><%= link_to 'Delete', user, method: :destroy, data: { confirm: 'Are you sure?' } %></td>
-                    <% else %>
-                    <td></td>
-                    <% end %>
-                    
-                  </tr>
+                      <% if !user.is_admin %>
+                      <td><%= link_to 'Delete', user, method: :destroy, data: { confirm: 'Are you sure?' } %></td>
+                      <% else %>
+                      <td></td>
+                      <% end %>
+                      
+                    </tr>
+                  <% end %>
                 <% end %>
               </tbody>
             </table>

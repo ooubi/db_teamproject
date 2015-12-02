@@ -1,6 +1,7 @@
 <div id="wrapper">
   <%= render "/static_pages/admin_sidebar" %>
   <div id="page-content-wrapper">
+    <%= render "/static_pages/flash_container" %>
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
@@ -23,7 +24,7 @@
                   <tr>
                     <td><%= pending_user.user_id %></td>
                     <td><%= pending_user.name %></td>
-                    <td><%= pending_user.set %></td>
+                    <td><%= pending_user.sex %></td>
                     <td><%= pending_user.address %></td>
                     <td><%= pending_user.birthdate %></td>
                     <td><%= pending_user.cellphone %></td>
@@ -52,7 +53,7 @@
                   <tr>
                     <td><%= permitted_user.user_id %></td>
                     <td><%= permitted_user.name %></td>
-                    <td><%= permitted_user.set %></td>
+                    <td><%= permitted_user.sex %></td>
                     <td><%= permitted_user.address %></td>
                     <td><%= permitted_user.birthdate %></td>
                     <td><%= permitted_user.cellphone %></td>

@@ -70,6 +70,8 @@ get 'admin/logout' => 'admin_session#destroy'
 get 'admin/edit' => 'user#edit'
 post 'admin/update' => 'user#update'
 get 'admin/user' => 'user#show'
+post 'admin/user' => 'user#show'
+
 # Session
 get 'login' => 'session#new'
 post 'login' => 'session#create'
@@ -86,12 +88,12 @@ get 'task/' => 'task#index'
 get 'admin/task/' => 'task#show'
 get 'task/new' => 'task#new'
 post 'task/new' => 'task#create'
-post 'task/upload' => 'task#upload'
 
 # Original data type
 get 'original_data_type/new' => 'original_data_type#new'
 post 'original_data_type/new' => 'original_data_type#create'
 get 'original_data_type/show' => 'original_data_type#show'
+get 'original_data_type/index' => 'original_data_type#index'
 get 'original_data_type/destroy' => 'original_data_type#destroy'
 
 # Participate

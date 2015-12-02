@@ -1,26 +1,25 @@
 require 'rubygems'
 require 'composite_primary_keys'
 class Participate < ActiveRecord::Base
-  self.primary_keys = :submit_user_id, :task_id # TODO : check!
+  self.primary_keys = :submit_user_id, :task_id
 
   def self.get_pending_users(tid)
     pending_users = []
     pendings = where(:task_id => tid, :is_pending => true)
     if pendings != nil
 	  for pending in pendings
-		pending_users << User.find_by(pending.submit_user_id)
+		pending_users << User.find_by(:user_id => pending.submit_user_id)
 	  end
 	end
 	return pending_users
   end
-
 
   def self.get_permitted_users(tid)
 	permitted_users = []
   	permitteds = where(:task_id => tid, :is_pending => false, :is_permitted => true)
 	if permitteds != nil
 	  for permitted in permitteds
-	    permitted_users << User.find_by(permitted.submit_user_id)
+	    permitted_users << User.find_by(:user_id => permitted.submit_user_id)
 	  end
 	end
 	return permitted_users

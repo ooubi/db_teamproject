@@ -4,19 +4,11 @@ class UserController < ApplicationController
   end
 
   def show
-    @user = User.find_by(:login_id => current_user.login_id)
-    if @user.is_admin
-
-
-      @all_users = User.all
-
-      respond_to do |format|
-        format.html # show.html.erb
-        format.xml  { render :xml => @user }
-      end
-    else
-      flash[:warning] = "login as administrator!!"
-      redirect_to '/admin'
+    return if not admin_check
+    @user_all_infos = User.get_user_all_infos(params[:user_search])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @user }
     end
   end
 

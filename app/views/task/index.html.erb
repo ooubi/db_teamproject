@@ -1,79 +1,21 @@
 <div id="wrapper">
   <%= render "/static_pages/sidebar" %>
   <div id="page-content-wrapper">
+    <%= render "/static_pages/flash_container" %>
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
-
-          <% if current_user != nil and current_user.is_submit == true %>          
-            <h2>All Tasks</h2>
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th> Name </th>
-                  <th> Description </th>
-                  <th> Action </td>
-                </tr>
-              </thead>
-              <tbody>
-                <% @all_tasks.each do |task| %>
-                  <tr>
-                    <td><%= task.task_name %></td>
-                    <td><%= task.description %></td>
-                    <td><%= link_to "Join", :controller => "participate", :action => :new, :task_id => task.task_id %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-            <br>
-            <% end %>
-
-            <h2>My Tasks</h2>
-
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th> Name </th>
-                  <th> Description </th>
-                  <th> Action </th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @my_tasks.each do |task| %>
-                  <tr>
-                    <td><%= task.task_name %></td>
-                    <td><%= task.description %></td>
-                    <td><%= link_to "Enter", :controller => "participate", :action => :index, :task_id => task.task_id %></td>
-
-
-                    <td>
-                      <%= form_for(:original_data_file, :url => { :controller => "original_data_file", :action => "upload"}, :method => "post" ) do |f| %>
-                      <%= f.file_field :data, accept: 'text/csv'%>
-                      </td><td>
-                      <%= f.submit "Submit", class: "btn" %>
-                      <% end %>
-                    </td>
-
-
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-            <br>            
-
-          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+          <% if current_user != nil %>
+            <% if current_user.is_submit == true %>       
+              <%= render "all_tasks" %>
+              <%= render "submit_tasks" %>
+            <% elsif current_user.is_eval == true %>
+              <%= render "eval_tasks" %>
+            <% end %> 
+          <% end %>
+          <%= render "/static_pages/menu_toggle" %>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<!-- Menu Toggle Script -->
-<script>
-  $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-  });
-</script>

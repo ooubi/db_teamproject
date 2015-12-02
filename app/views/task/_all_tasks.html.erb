@@ -1,0 +1,20 @@
+<h2>All Tasks</h2>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+                  <th> Name </th>
+                  <th> Description </th>
+                  <th> Action </td>
+                </tr>
+              </thead>
+              <tbody>
+                <% @all_tasks.each do |task| %>
+                  <tr>
+                    <td><%= task.task_name %></td>
+                    <td><%= task.description %></td>
+                    <td><%= link_to "Join", :controller => "participate", :action => :new, :task_id => task.task_id %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <br>

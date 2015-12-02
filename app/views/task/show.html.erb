@@ -1,6 +1,7 @@
 <div id="wrapper">
   <%= render "/static_pages/admin_sidebar" %>
   <div id="page-content-wrapper">
+    <%= render "/static_pages/flash_container" %>
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
@@ -10,6 +11,7 @@
             <table class="table table-bordered">
               <thead>
                 <tr>
+                  <th> ID </th>
                   <th> Name </th>
                   <th> Description </th>
                   <th> Min upload period hour </th>
@@ -26,6 +28,7 @@
               <tbody>
                 <% @all_tasks.each do |task| %>
                   <tr>
+                    <td><%= task.task_id %></td>
                     <td><%= task.task_name %></td>
                     <td><%= task.description %></td>
                     <td><%= task.min_upload_period_hour %></td>

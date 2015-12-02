@@ -1,0 +1,41 @@
+<h2>My Tasks</h2>
+
+<h3>Pending Tasks </h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th> Name </th>
+      <th> Description </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @my_pending_tasks.each do |task| %>
+      <tr>
+        <td><%= task.task_name %></td>
+        <td><%= task.description %></td>
+      </tr>
+     <% end %>
+  </tbody>
+</table>
+
+<h3>Done Tasks </h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th> Name </th>
+      <th> Description </th>
+      <th> Action </th>
+      <th> Infos </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @my_done_tasks.each do |task| %>
+      <tr>
+        <td><%= task.task_name %></td>
+        <td><%= task.description %></td>
+        <td><%= link_to "See ODTs", :controller => "original_data_type", :action => :index, :task_id => task.task_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>    
+<br>

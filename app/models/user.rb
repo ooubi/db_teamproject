@@ -33,6 +33,14 @@ class User < ActiveRecord::Base
     return temp_user.update_attributes(user_params)
   end
 
+  def self.get_user_all_infos(user_search)
+    if user_search != nil
+      @user_all_infos = get_category_all_infos(user_search[:search_category], user_search[:search_content])
+    else
+      @user_all_infos = all
+    end
+  end
+
   def auth(pw)
     return self.password == pw
   end
@@ -40,5 +48,71 @@ class User < ActiveRecord::Base
   def self.is_admin()
     return AdminUser.find_by(:user_id => self.user_id).exists?
   end
+
+  private
+    def self.get_category_all_infos(search_category, search_content)
+      puts case search_category
+      when 'role'
+        return get_role_all_infos(search_content)
+      when 'age'
+        return get_age_all_infos(search_content)
+      when 'sex'
+        return where(:sex => search_content)
+      when 'task'
+        return get_task_all_infos(search_content)
+      when 'id'
+        return where(:user_id => search_content)
+      else
+        return nil
+      end
+    end
+
+    def self.get_role_all_infos(search_content)
+      puts case search_content
+      when 'admin'
+        return where(:is_admin => true)
+      when 'eval'
+        return where(:is_eval => true)
+      when 'submit'
+        return where(:is_submit => true)
+      else
+        return nil
+      end
+    end
+
+    def self.get_age_all_infos(search_content)
+      begin
+        age_all_infos = []
+          for u in all
+            if is_in_age(u.birthdate, search_content.to_i)
+              age_all_infos << u
+            end
+          end
+        return age_all_infos
+      rescue ArgumentError
+        return nil
+      end
+    end
+
+    def self.get_task_all_infos(search_content)
+      begin
+        user_infos = []
+        participates = Participate.where(:task_id => search_content.to_i)
+        if participates != nil
+          for participate in participates
+            user_infos << find_by(:user_id => participate.submit_user_id)
+          end
+        end
+        return user_infos
+      rescue ArgumentError
+        return nil
+      end      
+    end
+
+    def self.is_in_age(dob, target_age)
+      current_year = (Time.now.strftime "%Y").to_i
+      age = current_year - dob.year + 1
+      return age / 10 == target_age / 10
+    end
 end
 

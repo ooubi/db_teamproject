@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124131943) do
+ActiveRecord::Schema.define(version: 20151202021936) do
 
   create_table "admin_users", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -60,13 +60,21 @@ ActiveRecord::Schema.define(version: 20151124131943) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "implement_tasks", force: :cascade do |t|
+    t.integer  "task_id"
+    t.integer  "task_item_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "original_data_files", primary_key: "odf_id", force: :cascade do |t|
-    t.binary   "file"
+    t.binary   "file",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "original_data_types", primary_key: "odt_id", force: :cascade do |t|
+    t.string   "odt_name",     default: ""
     t.string   "schema_info",  default: ""
     t.string   "mapping_info", default: ""
     t.datetime "created_at",                null: false
@@ -74,22 +82,27 @@ ActiveRecord::Schema.define(version: 20151124131943) do
   end
 
   create_table "parsing_data_sequence_files", primary_key: "pdsf_id", force: :cascade do |t|
-    t.binary   "file"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "file"
+    t.string   "season_info",     default: "1"
+    t.float    "null_ratio",      default: 0.5
+    t.string   "period_info",     default: "1-1"
+    t.integer  "estimate_state",  default: 0
+    t.integer  "total_tuple_num", default: 0
+    t.integer  "dup_tuple_num",   default: 0
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "parsing_data_sequence_types", primary_key: "pdst_id", force: :cascade do |t|
-    t.string   "task_name"
     t.string   "submit_user_id"
-    t.string   "season_info"
+    t.string   "season_info",     default: "1"
     t.float    "null_ratio",      default: 0.5
-    t.string   "period_info"
-    t.integer  "estimate_state"
+    t.string   "period_info",     default: "1-1"
+    t.integer  "estimate_state",  default: 0
     t.integer  "total_tuple_num", default: 0
     t.integer  "dup_tuple_num",   default: 0
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "participates", force: :cascade do |t|
@@ -119,6 +132,12 @@ ActiveRecord::Schema.define(version: 20151124131943) do
     t.integer  "odf_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "task_items", primary_key: "task_item_id", force: :cascade do |t|
+    t.string   "item"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tasks", primary_key: "task_id", force: :cascade do |t|
