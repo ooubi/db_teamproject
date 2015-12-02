@@ -52,13 +52,18 @@ class UserController < ApplicationController
 
   private
     def user_params
-      if params[:user][:user_type] == 'admin'
-        params[:user][:is_admin] = true
-      elsif params[:user][:user_type] == 'eval'
+      #if params[:user][:user_type] == 'admin'
+      #  params[:user][:is_admin] = true
+      #elsif params[:user][:user_type] == 'eval'
+      #  params[:user][:is_eval] = true
+      #elsif params[:user][:user_type] == 'submit'
+      #  params[:user][:is_submit] = true
+      #end
+
+      if params[:user][:is_submit] == false
         params[:user][:is_eval] = true
-      elsif params[:user][:user_type] == 'submit'
-        params[:user][:is_submit] = true
       end
+
       params.require(:user)
       .permit(:user_id, :login_id, :password, :name, :sex, :address, :birthdate, :cellphone, :is_admin, :is_eval, :is_submit)
     end
