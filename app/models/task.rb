@@ -2,6 +2,8 @@ require 'json'
 class Task < ActiveRecord::Base
   validates_numericality_of :min_upload_period_hour, inclusion: { :greater_than_or_equal_to => 1, :message => "min upload period hour should be more than 1 hour" }
 
+  attr_accessor :name0, :name1, :name2, :name3, :name4, :name5, :type0, :type1, :type2, :type3, :type4, :type5
+
   def self.get_submit_tasks(uid)
   	pending_tasks = []
     proceeding_tasks = []

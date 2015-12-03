@@ -9,15 +9,20 @@
           <% provide(:title, "Log in") %>
           <div class="row">
             <div class="col-md-6 col-md-offset-3">
-              <h1>Login</h1>
-              <%= form_for(:session, url: login_path) do |f| %>
-                <%= f.label :id %>
-                <%= f.text_field :login_id, class: 'form-control' %>
+              
+              <%= form_for :session, url: login_path, :html => {:class => "form-signin"} do |f| %>
 
-                <%= f.label :password %>
-                <%= f.password_field :password, class: 'form-control' %>
+                <h2 class="form-signin-heading">Login</h2>
+                
+                <div class="form-group">
+                  <%= f.text_field :login_id, class: 'form-control', placeholder: 'id' %>
+                </div>
 
-                <%= f.submit "Log in", class: "btn btn-primary" %>
+                <div class="form-group">
+                  <%= f.password_field :password, class: 'form-control', placeholder: 'password' %>
+                </div>
+
+                <%= f.submit "Log in", class: "btn btn-lg btn-primary btn-block" %>
               <% end %>
             </div>
           </div>

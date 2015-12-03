@@ -59,7 +59,32 @@ class TaskController < ApplicationController
 
 
   private
+  #{"name" : "string", "age" : "integer", "st" : "string"}
     def task_params
+      temp = "{\""
+      temp = temp + params[:task][:name0].to_s
+      temp = temp + "\" : \""
+      temp = temp + params[:task][:type0].to_s
+
+      for i in 1..5
+        sym_name = "name" + i.to_s
+        if not params[:task][sym_name.to_sym].to_s == ""
+          temp = temp + "\", \""
+          temp = temp + params[:task][sym_name.to_sym].to_s
+          temp = temp + "\" : \""
+          sym_type = "type" + i.to_s
+          temp = temp + params[:task][sym_type.to_sym].to_s
+        end
+      end
+      temp = temp + "\"}"
+
+      params[:task][:tdt_schema_info] = temp.to_s
+      
+
+      puts "\n\n\n"
+      puts params
+      puts "\n\n\n"
+
       params.require(:task)
       .permit(:task_name, :description, :min_upload_period_hour, :tdt_name, :tdt_schema_info)
     end

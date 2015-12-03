@@ -1,23 +1,28 @@
 <div id="wrapper">
   <%= render "/static_pages/admin_sidebar" %>
   <div id="page-content-wrapper">
+    <%= render "/static_pages/flash_container" %>
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
           
           <% provide(:title, "Log in Admin") %>
           <div class="row">
-            <%= render "/static_pages/flash_container" %>
             <div class="col-md-6 col-md-offset-3">
-              <h1>Login Admin</h1>
-              <%= form_for(:session, url: 'login') do |f| %>
-                <%= f.label :id %>
-                <%= f.text_field :login_id, class: 'form-control' %>
+              
+              <%= form_for :session, url: 'login', :html => {:class => "form-signin"} do |f| %>
 
-                <%= f.label :password %>
-                <%= f.password_field :password, class: 'form-control' %>
+                <h2 class="form-signin-heading">Admin Login</h2>
+                
+                <div class="form-group">
+                  <%= f.text_field :login_id, class: 'form-control', placeholder: 'id' %>
+                </div>
 
-                <%= f.submit "Log in", class: "btn btn-primary" %>
+                <div class="form-group">
+                  <%= f.password_field :password, class: 'form-control', placeholder: 'password' %>
+                </div>
+
+                <%= f.submit "Log in", class: "btn btn-lg btn-primary btn-block" %>
               <% end %>
             </div>
           </div>
@@ -27,9 +32,6 @@
     </div>
   </div>
 </div>
-
-
-
 
 
 

@@ -15,8 +15,11 @@
             </div>
             
             <div class="col-md-6 col-md-offset-3">
-              <h1>Join</h1>
+              
               <%= form_for(:user, :url => { :controller => "user", :action => "create"}, :method => "post" ) do |f| %>
+
+                
+                <h2 class="form-signin-heading">Join</h2>
                 
                 <div class="form-group">
                   <%= f.text_field :login_id, class: 'form-control', placeholder: 'id' %>
@@ -51,7 +54,7 @@
                   <%= f.select(:is_submit, [['Submit user', true], ['Evaluate user', false]], {include_blank: "User type"}, { :class => 'form-control' }) %>
                 </div>
 
-                <%= f.submit "Join", class: "btn btn-primary" %>
+                <%= f.submit "Join", class: "btn btn-lg btn-primary btn-block" %>
 
               <% end %>
             </div>

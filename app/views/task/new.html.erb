@@ -1,28 +1,67 @@
-<% provide(:title, "Create a Task") %>
-<div class="row">
-  <%= render "/static_pages/flash_container" %>
-  
-  <div class="col-md-6 col-md-offset-3">
-    <h1>Create a Task </h1>
-    **** Attribute type should be one of : string, text, integer, float, decimal, datetime, timestamp, time, date, binary, boolean ****
-    <%= form_for(:task, :url => { :controller => "task", :action => "create"}, :method => "post" ) do |f| %>
-      <li>
-      <%= f.label :"task name" %>
-      <%= f.text_field :task_name, class: 'form-control' %>
-      </li><li>
-      <%= f.label :description %>
-      <%= f.text_field :description, class: 'form-control' %>
-      </li><li>
-      <%= f.label :"min upload period hour" %>
-      <%= f.number_field :min_upload_period_hour, class: 'form-control' %>
-      </li><li>
-      <%= f.label :"task data table name" %>
-      <%= f.text_field :tdt_name, class: 'form-control' %>
-      </li><li>
-      <%= f.label :"task data table schema information" %> (json format)
-      <%= f.text_field :tdt_schema_info, :value => '{"name" : "string", "age" : "integer", "st" : "string"}', class: 'form-control' %>
-        </li>
-      <%= f.submit "Create", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-</div>
+<div id="wrapper">
+  <%= render "/static_pages/admin_sidebar" %>
+  <div id="page-content-wrapper">
+    <%= render "/static_pages/flash_container" %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+    
+              <div style="text-align: center;">
+                **** Attribute type should be one of : string, text, integer, float, decimal, datetime, timestamp, time, date, binary, boolean ****
+              </div>
+              <%= form_for(:task, :url => { :controller => "task", :action => "create"}, :html => {:class => "form-general"}, :method => "post" ) do |f| %>
+
+                <h2 class="form-general-heading">Create a Task</h2>
+
+                <div class="form-group">
+                  <%= f.text_field :task_name, class: 'form-control', placeholder: 'task name' %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.text_field :description, class: 'form-control', placeholder: 'description' %>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-3"  style="padding-top:10px;">
+                  <span class="label label-default">min upload period hour</span>
+                  </div>
+                  <div class="col-sm-9">
+                    <div class="form-group">
+                      <%= f.number_field :min_upload_period_hour, class: 'form-control'%>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <%= f.text_field :tdt_name, class: 'form-control', placeholder: 'task data table name' %>
+                </div>
+
+                <div>
+                  <br>
+                  <p><span class="label label-default">TDT schema information</span></p>
+                </div>
+
+                <% for i in 0..5 %>
+                <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <% var1 = "name" + i.to_s %>
+                    <%= f.text_field var1.to_sym, class: 'form-control', placeholder: 'attribute name' %>
+                  </div>      
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <% var2 = "type" + i.to_s %>
+                    <%= f.select(var2.to_sym, ['integer', 'string'], {include_blank: "type"}, { :class => 'form-control' }) %>   
+                  </div>      
+                </div>
+                </div>
+                <% end %>
+
+                <%= f.submit "Create", class: "btn btn-lg btn-primary btn-block" %>
+              <% end %>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>    
