@@ -61,24 +61,26 @@ class TaskController < ApplicationController
   private
   #{"name" : "string", "age" : "integer", "st" : "string"}
     def task_params
-      temp = "{\""
-      temp = temp + params[:task][:name0].to_s
-      temp = temp + "\" : \""
-      temp = temp + params[:task][:type0].to_s
+      json_builder = "{\""
+      json_builder += params[:task][:name0].to_s
+      json_builder += "\" : \""
+      json_builder += params[:task][:type0].to_s
 
       for i in 1..5
-        sym_name = "name" + i.to_s
+        sym_name = "name" + i.to_s # sym_name.to_sym is :name[i]
+        sym_type = "type" + i.to_s # sym_type.to_sym is :type[i]
+
         if not params[:task][sym_name.to_sym].to_s == ""
-          temp = temp + "\", \""
-          temp = temp + params[:task][sym_name.to_sym].to_s
-          temp = temp + "\" : \""
-          sym_type = "type" + i.to_s
-          temp = temp + params[:task][sym_type.to_sym].to_s
+          json_builder += "\", \""
+          json_builder += params[:task][sym_name.to_sym].to_s
+          json_builder += "\" : \""
+          json_builder += params[:task][sym_type.to_sym].to_s
         end
       end
-      temp = temp + "\"}"
 
-      params[:task][:tdt_schema_info] = temp.to_s
+      json_builder += "\"}"
+
+      params[:task][:tdt_schema_info] = json_builder.to_s
       
 
       puts "\n\n\n"
