@@ -59,8 +59,52 @@ class OriginalDataTypeController < ApplicationController
     redirect_to :action => 'new'
   end
 
+
+
+
   private
+      
     def original_data_type_params
+
+      json_builder = "{\""
+      json_builder += params[:original_data_type][:name0].to_s
+      json_builder += "\" : \""
+      json_builder += params[:original_data_type][:type0].to_s
+
+      for i in 1..5
+        sym_name = "name" + i.to_s # sym_name.to_sym is :name[i]
+        sym_type = "type" + i.to_s # sym_type.to_sym is :type[i]
+
+        if not params[:original_data_type][sym_name.to_sym].to_s == ""
+          json_builder += "\", \""
+          json_builder += params[:original_data_type][sym_name.to_sym].to_s
+          json_builder += "\" : \""
+          json_builder += params[:original_data_type][sym_type.to_sym].to_s
+        end
+      end
+      json_builder += "\"}"
+      params[:original_data_type][:schema_info] = json_builder.to_s
+
+
+      json_builder = "{\""
+      json_builder += params[:original_data_type][:from0].to_s
+      json_builder += "\" : \""
+      json_builder += params[:original_data_type][:to0].to_s
+
+      for i in 1..5
+        sym_name = "from" + i.to_s # sym_name.to_sym is :name[i]
+        sym_type = "to" + i.to_s # sym_type.to_sym is :type[i]
+
+        if not params[:original_data_type][sym_name.to_sym].to_s == ""
+          json_builder += "\", \""
+          json_builder += params[:original_data_type][sym_name.to_sym].to_s
+          json_builder += "\" : \""
+          json_builder += params[:original_data_type][sym_type.to_sym].to_s
+        end
+      end
+      json_builder += "\"}"
+      params[:original_data_type][:mapping_info] = json_builder.to_s
+
       params.require(:original_data_type)
       .permit(:odt_id, :odt_name, :schema_info, :mapping_info)
     end
