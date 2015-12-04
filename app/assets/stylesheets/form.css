@@ -43,3 +43,6 @@
 .form-general .form-general:focus {
     z-index: 2;
 }
+
+.black-background {background-color:#000000;}
+.white {color:#ffffff;}

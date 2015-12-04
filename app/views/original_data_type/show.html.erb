@@ -18,6 +18,7 @@
                   <th> Name </th>
                   <th> Schema Info </th>
                   <th> Mapping Info </th>
+                  <th> See Details </th>
                 </tr>
               </thead>
               <tbody>
@@ -27,6 +28,7 @@
                     <td><%= odt.odt_name %></td>
                     <td><%= odt.schema_info %></td>
                     <td><%= odt.mapping_info %></td>
+                    <td><%= link_to "See", :controller => "implement_odt", :action => :show, :odt_id => odt.odt_id %></td>
                   </tr>
                 <% end %>
               </tbody>

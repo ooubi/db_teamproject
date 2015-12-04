@@ -18,12 +18,14 @@ class OriginalDataFileController < ApplicationController
   end
 
   def upload
-    if OriginalDataFile.upload_odf(params[:original_data_file][:data], params[:odt_id], current_user.user_id, params[:task_id])
+    odf_params = params[:original_data_file]
+    if OriginalDataFile.upload_odf(odf_params[:data], odf_params[:odt_id],
+      current_user.user_id, odf_params[:task_id], odf_params[:season_info], odf_params[:period_info])
       flash[:notice] = "Successfully updated!"
     else
       flash[:warning] = "Something went wrong! Please try again."
     end
-      redirect_to :controller => 'original_data_type', :action => 'index', :task_id => params[:task_id]
+    redirect_to :controller => 'original_data_type', :action => 'index', :task_id => odf_params[:task_id]
   end
 
   def destroy

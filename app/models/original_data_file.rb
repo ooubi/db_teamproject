@@ -3,14 +3,14 @@ require 'csv'
 class OriginalDataFile < ActiveRecord::Base
 	belongs_to :binary
 
-	def self.upload_odf(data_io, odt_id, user_id, task_id)
+	def self.upload_odf(data_io, odt_id, user_id, task_id, season_info, period_info)
 	  print 'uploading....'
 	  is_uploaded = false
 	  odt = OriginalDataType.find_by(:odt_id => odt_id)
 	  odf_raw = File.readlines(data_io.tempfile)
 	  header = odf_raw[0]
 	  if odt != nil
-	  	is_uploaded = upload_datas(task_id, user_id, odt, header, odf_raw)
+	  	is_uploaded = upload_datas(task_id, user_id, season_info, period_info, odt, header, odf_raw)
 	  end
 	  if is_uploaded
 		Evaluate.assign_if_possible
@@ -19,23 +19,23 @@ class OriginalDataFile < ActiveRecord::Base
 	end
 
 	private
-	  def self.upload_datas(task_id, user_id, odt, header, odf_raw)
+	  def self.upload_datas(task_id, user_id, season_info, period_info, odt, header, odf_raw)
 	  	odt_schema_keys = JSON.parse(odt.schema_info).keys
 	  	odt_mapping = JSON.parse(odt.mapping_info)
-	  	header_items = CSV.parse(header)
+	  	header_items = CSV.parse(header)[0]
 	  	if is_header_valid(odt, header, odt_schema_keys, odt_mapping, header_items)
 	  	  task_header_items = Task.get_header_items(task_id)
 		  pdsf_content, pdsf_summaries = save_task_items(
 		  	task_id, odt, odf_raw[1...odf_raw.length], odt_mapping, header_items, task_header_items)
 		  odf_content = odf_raw.join('').unpack('b*')[0]
-		  return save_infos(odt.odt_id, user_id, odf_content, pdsf_content, pdsf_summaries)
+		  return save_infos(odt.odt_id, user_id, season_info, period_info, odf_content, pdsf_content, pdsf_summaries)
 		end
 		return false
 	  end
 
 	  def self.is_header_valid(odt, header, odt_schema_keys, odt_mapping, header_items)
 	  	mapped = Hash.new
-	  	header_items[0].each do |item|
+	  	header_items.each do |item|
 	  	  if odt_mapping[item] != nil && mapped[odt_mapping[item]] != nil
 	  	  	return false
 	  	  end
@@ -54,12 +54,9 @@ class OriginalDataFile < ActiveRecord::Base
 	  	  	line, pdsf_summaries, odt_mapping, odt_header_items, task_header_items)
 	  	  if parsed_line != nil
 	  	    pdsf_raw << parsed_line
-	  	    #if !save_task_infos(task_id, parsed_line)
-	  	    #  break
-	  	    #end
 	  	  end
 	  	end
-	  	pdsf_content = pdsf_raw.join('').unpack('b*')[0]
+	  	pdsf_content = pdsf_raw.join('\n').unpack('b*')[0]
 	  	return pdsf_content, pdsf_summaries
 	  end
 
@@ -81,31 +78,23 @@ class OriginalDataFile < ActiveRecord::Base
 	  	raw_items = line.split(',')
 	  	parsed_items = []
 	  	task_header_items.each do |item|
-	  	  odt_index = odt_header_items.index{ |odt_item| odt_item.include?(odt_mapping[item]) }
+	  	  odt_index = odt_header_items.index(odt_mapping[item])
 	  	  parsed_items << raw_items[odt_index]
 	  	end
 	  	return parsed_items.join(',')
 	  end
 
-	  #def self.save_task_infos(task_id, parsed_line)
-	  #	task_item = TaskItem.new(:item => parsed_line)
-	  #	if task_item.save!
-	  #  implement_task = ImplementTask.new(:task_id => task_id, :task_item_id => task_item.task_item_id)
-	  #	  return implement_task.save!
-	  #	else
-	  #	  return false
-	  #	end
-	  #end
-
-	  def self.save_infos(odt_id, user_id,  odf_content, pdsf_content, pdsf_summaries)
+	  def self.save_infos(odt_id, user_id, season_info, period_info, odf_content, pdsf_content, pdsf_summaries)
 	    odf = OriginalDataFile.new(:file => odf_content)
 	    pdsf_null_ratio = pdsf_summaries["null_num"] / pdsf_summaries["total_tuple_num"]
 	    pdsf = ParsingDataSequenceFile.new(:file => pdsf_content,
 	    	:null_ratio => pdsf_null_ratio,
+	    	:season_info => season_info,
+	    	:period_info => period_info,
 	    	:total_tuple_num => pdsf_summaries["total_tuple_num"],
 	    	:dup_tuple_num => pdsf_summaries["dup_tuple_num"])
 	    if odf.save && pdsf.save
-	      submit = Submit.new(:submit_user_id => user_id, :odf_id => odf.odf_id)
+	      submit = Submit.new(:user_id => user_id, :odf_id => odf.odf_id)
 	      implement_odt = ImplementOdt.new(:odt_id => odt_id, :odf_id => odf.odf_id)
 	  	  convert = Convert.new(:odf_id => odf.odf_id, :pdsf_id => pdsf.pdsf_id)
 	  	  return submit.save && implement_odt.save && convert.save

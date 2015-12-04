@@ -76,6 +76,7 @@ post 'admin/user' => 'user#show'
 get 'login' => 'session#new'
 post 'login' => 'session#create'
 get 'secession'  => 'session#destroy'
+
 # User
 get 'join' => 'user#new'
 post 'join' => 'user#create'
@@ -84,11 +85,16 @@ get 'edit' => 'user#edit'
 post 'update' => 'user#update'
 
 # Task
-get 'task/' => 'task#index'
+get 'task/index' => 'task#index'
 get 'admin/task/' => 'task#show'
 get 'task/summary' => 'task#summary'
 get 'task/new' => 'task#new'
+get 'admin/task/stop' => 'task#stop'
 post 'task/new' => 'task#create'
+
+
+# Task Item
+get 'task_item/show' => 'task_item#show'
 
 # Original data type
 get 'original_data_type/new' => 'original_data_type#new'
@@ -106,9 +112,20 @@ get 'participate/update' => 'participate#update'
 
 # Evaluate
 get 'evaluate/index' => 'evaluate#index'
+post 'evaluate/edit' => 'evaluate#edit'
+
+# Implement Odt
+get 'implement_odt/index' => 'implement_odt#index'
+get 'implement_odt/show' => 'implement_odt#show'
 
 # Original Data File
 post 'original_data_file/upload' => 'original_data_file#upload'
 post 'original_data_file/:id' => 'original_data_file#show_file'
+
+# Parsing Data Sequence File
+get 'parsing_data_sequence_file/index' => 'parsing_data_sequence_file#index'
+
+# Consent form
+get 'consent_form/show' => 'consent_form#show'
 
 end

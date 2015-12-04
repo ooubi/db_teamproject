@@ -1,30 +1,32 @@
 <div id="sidebar-wrapper">
   <ul class="sidebar-nav">
-    <li class="sidebar-brand"> <a href="/">Underwood </a></li>
+    <li class="sidebar-brand" style="padding-left:5px;"> <a href="/"> Underwood </a></li>
     <!-- user specific menu -->
     <% if current_user != nil %>
       <% if !current_user.is_admin %>
         <% if current_user.is_eval %>
-          <li>  <%= link_to "pdsfs", :controller => :evaluate, :action => :index %></a> </li>
+          <li>  <%= link_to '<i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;PDSFs'.html_safe, :controller => :evaluate, :action => :index, :user_id => current_user.user_id %></a> </li>
         <% elsif current_user.is_submit %>
-          <li> <a href="/task/">Tasks</a> </li>
+          <li> <%= link_to '<i class="glyphicon glyphicon-th-list"></i>&nbsp;&nbsp;Tasks'.html_safe, :controller => :task, :action => :index, :user_id => current_user.user_id %> </li>
         <% end %>
-        <li> <a href="/settings">Settings</a> </li>
+        <li> <a href="/settings"><i class="glyphicon glyphicon-cog"></i>&nbsp;&nbsp;Settings</a> </li>
+      <% else %>
+        <li> <a href="/admin/home"><i class="glyphicon glyphicon-cog"></i>&nbsp;&nbsp;admin</a> </li>
       <% end %>
+
     <% end %>
     <!-- end of user specific menu -->
     <!-- join/login menu -->
     
     <li>
     <% if current_user == nil %>
-     <%= link_to "Join", {:controller => :user, :action => :new}, {:style =>  'display: inline;' } %>
-     | 
-     <% end %>
-      <% if current_user != nil %>
-        <%= link_to "Logout", {:controller => :session, :action => :destroy}, {:style =>  'display: inline;' } %>
-      <% else %>
-        <%= link_to "Login", {:controller => :session, :action => :new}, {:style =>  'display: inline;' } %>
-      <% end %>
+     <%= link_to '<i class="glyphicon glyphicon-plus"></i>&nbsp;&nbsp;Join'.html_safe, {:controller => :user, :action => :new}, {:style =>  'display: inline;' } %>
+    <% end %>
+    <% if current_user != nil %>
+      <%= link_to '<i class="glyphicon glyphicon-log-out"></i>&nbsp;&nbsp;Logout'.html_safe, {:controller => :session, :action => :destroy}, {:style =>  'display: inline;' } %>
+    <% else %>
+      <li><%= link_to '<i class="glyphicon glyphicon-log-in"></i>&nbsp;&nbsp;Login'.html_safe, {:controller => :session, :action => :new}, {:style =>  'display: inline;' } %></li>
+    <% end %>
     </li>
     <!-- end of join/login menu -->
   </ul>

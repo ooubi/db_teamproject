@@ -7,7 +7,8 @@ class Task < ActiveRecord::Base
   def self.get_submit_tasks(uid)
   	pending_tasks = []
     proceeding_tasks = []
-    participates = Participate.where(:submit_user_id => uid)
+    disabled_tasks = []
+    participates = Participate.where(:user_id => uid)
   	if participates != nil
   	  for participate in participates
         if participate.is_pending
@@ -17,13 +18,13 @@ class Task < ActiveRecord::Base
         end
   	  end
   	end
-  	return pending_tasks, proceeding_tasks
+  	return pending_tasks, proceeding_tasks, disabled_tasks
   end
 
   def self.get_eval_tasks(uid)
   	pending_tasks = []
     done_tasks = []
-  	evaluates = Evaluate.where(:eval_user_id => uid)
+  	evaluates = Evaluate.where(:user_id => uid)
   	if evaluates != nil
   	  for evaluate in evaluates
         if evaluate.is_pending

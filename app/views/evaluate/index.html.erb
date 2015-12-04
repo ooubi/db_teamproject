@@ -31,10 +31,17 @@
 			        <td><%= pdsf.estimate_state %></td>
 			        <td><%= pdsf.total_tuple_num %></td>
 			        <td><%= pdsf.dup_tuple_num %></td>
-			        <td> <!-- TODO --> </td>
-			        <td> <!-- TODO : score --> </td>
-			        <td> <!-- TODO : pass/non-pass --> </td>
-			        <td> <!-- TODO : submit --> </td>
+			        <td><%= link_to 'Download', :controller => "parsing_data_sequence_file", :action => :index, :pdsf_id => pdsf.pdsf_id %></td>
+			        <%= form_for(:evaluate, :url => { :controller => "evaluate", :action => "edit"}, :method => "post" ) do |f| %>
+			          <%= f.hidden_field :pdsf_id, :value =>pdsf.pdsf_id %>
+			          <td>
+                      <%= f.number_field :score %>
+                      </td><td>
+		              <%= f.select(:pass_or_nonpass, ['Pass', 'Non-Pass'],  :selected => 'Pass') %>
+		              </td><td>
+                      <%= f.submit "Submit", class: "btn btn-primary" %>
+                  	  </td>
+                      <% end %>
 			      </tr>
 			     <% end %>
 			  </tbody>
@@ -52,10 +59,11 @@
 			      <th> Dup Tuple Num </th>
 			      <th> Score </th>
 			      <th> Passed </th>
+			      <th> Open File </th>
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <% @my_pending_pdsfs.each do |pdsf| %>
+			    <% @my_done_pdsfs.each do |pdsf| %>
 			      <tr>
 			        <td><%= pdsf.season_info %></td>
 			        <td><%= pdsf.null_ratio %></td>
@@ -69,6 +77,7 @@
 			        <% else %>
 			        <td> N </td>
 			        <% end %>
+					<td><%= link_to 'Download', :controller => "parsing_data_sequence_file", :action => :index, :pdsf_id => pdsf.pdsf_id %></td>
 			      </tr>
 			     <% end %>
 			  </tbody>

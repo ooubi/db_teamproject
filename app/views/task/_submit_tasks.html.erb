@@ -32,7 +32,13 @@
       <tr>
         <td><%= task.task_name %></td>
         <td><%= task.description %></td>
-        <td><%= link_to "See Details", :controller => "original_data_type", :action => :index, :task_id => task.task_id %></td>
+        <td>
+        <% if task.active %>
+        <%= link_to "See Details", :controller => "original_data_type", :action => :index, :task_id => task.task_id %>
+        <% else %>
+        <span style="text-decoration:line-through;">See Details</span> <span class="label label-default">stopped</span>
+        <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

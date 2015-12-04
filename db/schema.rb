@@ -27,17 +27,16 @@ ActiveRecord::Schema.define(version: 20151202021936) do
 
   create_table "eval_users", primary_key: "eval_user_id", force: :cascade do |t|
     t.integer  "user_id"
-    t.boolean  "on_process", default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "evaluates", force: :cascade do |t|
-    t.integer  "eval_user_id"
+    t.integer  "user_id"
     t.integer  "pdsf_id"
-    t.boolean  "is_pending",   default: true
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.boolean  "is_pending", default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "implement_odts", force: :cascade do |t|
@@ -50,6 +49,7 @@ ActiveRecord::Schema.define(version: 20151202021936) do
   create_table "implement_tasks", force: :cascade do |t|
     t.integer  "task_id"
     t.integer  "task_item_id"
+    t.integer  "pdsf_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -70,9 +70,9 @@ ActiveRecord::Schema.define(version: 20151202021936) do
 
   create_table "parsing_data_sequence_files", primary_key: "pdsf_id", force: :cascade do |t|
     t.string   "file"
-    t.string   "season_info",     default: "1"
+    t.integer  "season_info",     default: 1
     t.float    "null_ratio",      default: 0.5
-    t.string   "period_info",     default: "1-1"
+    t.integer  "period_info",     default: 1
     t.integer  "estimate_state",  default: 0
     t.integer  "total_tuple_num", default: 0
     t.integer  "dup_tuple_num",   default: 0
@@ -85,12 +85,12 @@ ActiveRecord::Schema.define(version: 20151202021936) do
   end
 
   create_table "participates", force: :cascade do |t|
-    t.integer  "submit_user_id"
+    t.integer  "user_id"
     t.integer  "task_id"
-    t.boolean  "is_pending",     default: true
-    t.boolean  "is_permitted",   default: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.boolean  "is_pending",   default: true
+    t.boolean  "is_permitted", default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "specifies", force: :cascade do |t|
@@ -102,20 +102,21 @@ ActiveRecord::Schema.define(version: 20151202021936) do
 
   create_table "submit_users", primary_key: "submit_user_id", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "eval_value", default: 50
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "submits", force: :cascade do |t|
-    t.integer  "submit_user_id"
+    t.integer  "user_id"
     t.integer  "odf_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "task_items", primary_key: "task_item_id", force: :cascade do |t|
     t.string   "item"
+    t.integer  "user_id"
+    t.string   "user_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -126,8 +127,9 @@ ActiveRecord::Schema.define(version: 20151202021936) do
     t.integer  "min_upload_period_hour", default: 24
     t.string   "tdt_name"
     t.string   "tdt_schema_info"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.boolean  "active",                 default: true
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "users", primary_key: "user_id", force: :cascade do |t|
@@ -138,6 +140,7 @@ ActiveRecord::Schema.define(version: 20151202021936) do
     t.string   "address",    default: ""
     t.date     "birthdate"
     t.string   "cellphone"
+    t.integer  "score",      default: 0
     t.boolean  "is_admin",   default: false
     t.boolean  "is_eval",    default: false
     t.boolean  "is_submit",  default: false

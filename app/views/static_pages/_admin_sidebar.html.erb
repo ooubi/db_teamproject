@@ -3,15 +3,16 @@
     <li class="sidebar-brand"> <a href="/admin">Underwood-Admin </a></li>
     <!-- user specific menu -->
     <% if current_user != nil %>
-      <li> <a href="/admin/user/"> Users </a> </li>
-      <li> <a href="/admin/task/"> Tasks </a> </li>
-      <li> <a href="/original_data_file/show"> Files </a> </li>
-      <li> <a href="/settings"> Settings </a> </li>
+      <li> <a href="/admin/user/"><i class="glyphicon glyphicon-heart"></i>&nbsp;&nbsp; Users </a> </li>
+      <li> <a href="/admin/task/"><i class="glyphicon glyphicon-th-list"></i>&nbsp;&nbsp; Tasks </a> </li>
+      <li> <a href="/original_data_file/show"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp; Files </a> </li>
+      <li> <a href="/settings"><i class="glyphicon glyphicon-cog"></i>&nbsp;&nbsp; Settings </a> </li>
       <li>
-        <%= link_to "Logout", {:controller => :admin_session, :action => :destroy}, {:style =>  'display: inline;' } %>
+        <%= link_to '<i class="glyphicon glyphicon-log-out"></i>&nbsp;&nbsp;Logout'.html_safe, {:controller => :admin_session, :action => :destroy}, {:style =>  'display: inline;' } %>
+        
       </li>
     <% else %>
-      <li><%= link_to "Login", {:controller => :admin_session, :action => :new}, {:style =>  'display: inline;' } %></li>
+      <li><%= link_to '<i class="glyphicon glyphicon-log-in"></i>&nbsp;&nbsp;Login'.html_safe, {:controller => :admin_session, :action => :new}, {:style =>  'display: inline;' } %>
     <% end %>
 
     <!-- end of join/login menu -->

@@ -13,7 +13,7 @@ class ParticipateController < ApplicationController
   end
 
   def new
-    @duplicate = Participate.find_by(submit_user_id: current_user.user_id, task_id: params[:task_id])
+    @duplicate = Participate.find_by(user_id: current_user.user_id, task_id: params[:task_id])
     if not @duplicate
       is_joined = Participate.join(current_user, params[:task_id])
       if is_joined
@@ -22,7 +22,7 @@ class ParticipateController < ApplicationController
         msg = 'Something went wrong! Please try again.'
       end
     end
-    redirect_to :controller => 'task', :action => 'index'
+    redirect_to :controller => 'task', :action => 'index', :user_id => current_user.user_id
   end
 
   def update

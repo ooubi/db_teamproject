@@ -1,0 +1,55 @@
+<div id="wrapper">
+  <%= render "/static_pages/admin_sidebar" %>
+  <div id="page-content-wrapper">
+    <%= render "/static_pages/flash_container" %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          
+          <h1>Details for <%= @odt.odt_name %></h1>
+          <h3> Summary </h3>
+          Tuple Num : <%= @tuple_num %> <br>
+          Pdsf Num : <%= @pdsf_num %> <br>
+          <table class="table table-bordered">
+          <h3> Pdsfs </h3>
+          <thead>
+            <tr>
+              <th> Season Info </th>
+              <th> Null Ratio </th>
+              <th> Period Info </th>
+              <th> Estimate State </th>
+              <th> Total Tuple Num </th>
+              <th> Dup Tuple Num </th>
+              <th> Score </th>
+              <th> Passed </th>
+              <th> Open File </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @pdsfs.each do |pdsf| %>
+              <tr>
+                <td><%= pdsf.season_info %></td>
+                <td><%= pdsf.null_ratio %></td>
+                <td><%= pdsf.period_info %></td>
+                <td><%= pdsf.estimate_state %></td>
+                <td><%= pdsf.total_tuple_num %></td>
+                <td><%= pdsf.dup_tuple_num %></td>
+                <td> <%= pdsf.score %> </td>
+                <% if pdsf.is_passed %>
+                  <td> Y </td>
+                <% else %>
+                  <td> N </td>
+                <% end %>
+                <td><%= link_to 'Download', :controller => "parsing_data_sequence_file", :action => :index, :pdsf_id => pdsf.pdsf_id %></td>
+              </tr>
+             <% end %>
+          </tbody>
+        </table>
+
+            <br>
+          <%= render "/static_pages/menu_toggle" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

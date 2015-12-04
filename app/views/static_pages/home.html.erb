@@ -7,8 +7,18 @@
         <div class="col-lg-12">
           <% if current_user != nil %>
             <h1>Hello <%= current_user.login_id %> ! Welcome</h1>
+            <% if current_user.is_submit %>
+            <h3> <%= current_user.login_id %> 님의 데이터 점수는 <span class="label label-success"><%= current_user.score %> 점</span> 입니다.</h3>
+            <% end %>
           <% else %>
-            <h1>Hello Visitor ! Please log in</h1>
+          <div class="container">
+             <div class="starter-template">
+              <div class="page-header"><h1>언더우드DB</h1></div>
+              <p class="lead">크라우드 소싱 데이터 수집 사이트 언더우드DB에 오신 것을 환영합니다.<br>당신은 당신의 데이터를 제출하여 평가받을 수도 있고, 다른 사람이 제출한 데이터를 평가할 수도 있습니다.<br>처음이시라면 바로 <a href="/user/new" style="text-decoration:none;">가입하기</a>를 눌러보세요!</p> 
+             </div>
+          </div> <!--container-->
+            
+
           <% end %>
           <%= render "/static_pages/menu_toggle" %>
         </div>

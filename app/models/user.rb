@@ -33,6 +33,15 @@ class User < ActiveRecord::Base
     return temp_user.update_attributes(user_params)
   end
 
+  def self.update_score(user_id, is_passed)
+    user = find_by(:user_id => user_id)
+    if is_passed
+      return user.update_attributes(:score => (user.score + 10))
+    else 
+      return user.update_attributes(:score => (user.score - 5))
+    end
+  end
+
   def self.get_user_all_infos(user_search)
     if user_search != nil
       @user_all_infos = get_category_all_infos(user_search[:search_category], user_search[:search_content])

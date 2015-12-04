@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col-lg-12">
           <% if current_user != nil %>
-            <% if current_user.is_submit == true %>       
+            <% if current_user.is_submit %>       
               <%= render "all_tasks" %>
               <%= render "submit_tasks" %>
             <% end %> 

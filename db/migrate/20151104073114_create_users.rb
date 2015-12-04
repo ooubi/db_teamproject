@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :address, default: ''
       t.date :birthdate
       t.string :cellphone
+      t.integer :score, default: 0
       t.boolean :is_admin, default: false
       t.boolean :is_eval, default: false
       t.boolean :is_submit, default: false

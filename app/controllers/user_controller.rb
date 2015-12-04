@@ -31,14 +31,25 @@ class UserController < ApplicationController
   end
 
   def destroy
-    @destroy_user = User.find_by(:login_id => current_user.login_id)
-    if @destroy_user.destroy
-      flash[:notice] = "Bye~"
-      redirect_to '/login'
+    if admin_check
+      redirect_to '/admin'
     else
-      flash[:warning] = "Error."
+      @destroy_user = User.find_by(:login_id => current_user.login_id)
+
+      @participates = Participate.where(user_id: @destroy_user.user_id)
+      @participates.each do |p|
+        p.destroy
+      end
+
+      if @destroy_user.destroy
+        flash[:notice] = "Bye~"
+        redirect_to '/login'
+      else
+        flash[:warning] = "Error."
+      end
     end
   end
+
 
   def update
     if User.update_user(user_params)
@@ -52,18 +63,19 @@ class UserController < ApplicationController
 
   private
     def user_params
-      #if params[:user][:user_type] == 'admin'
-      #  params[:user][:is_admin] = true
-      #elsif params[:user][:user_type] == 'eval'
-      #  params[:user][:is_eval] = true
-      #elsif params[:user][:user_type] == 'submit'
-      #  params[:user][:is_submit] = true
-      #end
-
-      if params[:user][:is_submit] == false
+      if params[:user][:user_type] == 'admin'
+        params[:user][:is_admin] = true
+      elsif params[:user][:user_type] == 'Eval User'
         params[:user][:is_eval] = true
+      elsif params[:user][:user_type] == 'Submit User'
+        params[:user][:is_submit] = true
       end
 
+      #if params[:user][:is_submit] == false
+      #  print "hello!!!!!!!!!!!!!!"
+      #  params[:user][:is_eval] = true
+      #end
+      
       params.require(:user)
       .permit(:user_id, :login_id, :password, :name, :sex, :address, :birthdate, :cellphone, :is_admin, :is_eval, :is_submit)
     end

@@ -4,6 +4,7 @@
     <tr>
                   <th> Name </th>
                   <th> Description </th>
+                  <th> Download Consent Form </th>
                   <th> Action </td>
                 </tr>
               </thead>
@@ -11,8 +12,10 @@
                 <% @all_tasks.each do |task| %>
                   <tr>
                     <td><%= task.task_name %></td>
-                    <td><%= task.description %></td>
-                    <td><%= link_to "Join", :controller => "participate", :action => :new, :task_id => task.task_id %></td>
+                    <td><%= task.description %></td> 
+                    <td><%= link_to "Download", :controller => "consent_form", :action => :show, :method => 'get' %></td>
+                    <td><%= link_to("Join", {:controller => "participate", :action => :new, :task_id => task.task_id}, :data => {:confirm => 'I have read consent Form and Agree with that.'}) %></td>
+
                   </tr>
                 <% end %>
               </tbody>

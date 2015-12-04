@@ -12,21 +12,32 @@
               <thead>
                 <tr>
                   <th> ID </th>
+                  <th> Activation </th>
                   <th> Name </th>
                   <th> Description </th>
                   <th> Min upload period hour </th>
                   <th> TDT name </th>
                   <th> TDT schema information </th>
-                  <th> Add ODT </td>
-                  <th> See Details </td>
-                  <th> Delete Task </td>
-                  <th> Submitters </td>
+                  <th> Add ODT </th>
+                  <th> See Details </th>
+                  <th> Delete Task </th>
+                  <th> Submitters </th>
+                  <th> Download Task File </th>
                 </tr>
               </thead>
               <tbody>
                 <% @all_tasks.each do |task| %>
                   <tr>
                     <td><%= task.task_id %></td>
+                    <td>
+
+                    <% if task.active %>
+                    <%= link_to '<span class="label label-primary">enable</span>'.html_safe , admin_task_stop_path + "?task_id=" + task.task_id.to_s %>
+                    
+                    <% else %>
+                    <%= link_to '<span class="label label-default">stop</span>'.html_safe , admin_task_stop_path + "?task_id=" + task.task_id.to_s %>
+                    
+                    <% end %></td>
                     <td><%= task.task_name %></td>
                     <td><%= task.description %></td>
                     <td><%= task.min_upload_period_hour %></td>
@@ -35,7 +46,9 @@
                     <td><%= link_to "Add", :controller => "original_data_type", :action => :new, :task_id => task.task_id %></td>
                     <td><%= link_to "See", :controller => "original_data_type", :action => :show, :task_id => task.task_id %></td>
                     <td><%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                    <td><%= link_to 'Check', :controller => "participate" ,:action => :show, :task_id => task.task_id %></td>    
+                    <td><%= link_to 'Check', :controller => "participate" ,:action => :show, :task_id => task.task_id %></td>   
+                    <td><%= link_to 'Download', :controller => "task_item", :action => :show,
+                    :task_id => task.task_id %></td>
                   </tr>
                 <% end %>
               </tbody>

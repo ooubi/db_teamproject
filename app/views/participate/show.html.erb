@@ -16,6 +16,8 @@
                   <th> Address </th>
                   <th> Birthdate </th>
                   <th> Cellphone </th>
+                  <th> Score </th>
+                  <th> See Details </th>
                   <th colspan="2"> Status Change </th>
                 </tr>
               </thead>
@@ -28,6 +30,8 @@
                     <td><%= pending_user.address %></td>
                     <td><%= pending_user.birthdate %></td>
                     <td><%= pending_user.cellphone %></td>
+                    <td><%= pending_user.score %></td>
+                    <td><%= link_to "See", :controller => "participate", :action => :index, :user_id => pending_user.user_id %></td>
                     <td><%= link_to "Permit", :controller => "participate", :action => :update, :task_id => @task_id, :user_id => pending_user.user_id, :user_state => "permitted" %></td>
                     <td><%= link_to "Decline", :controller => "participate", :action => :update, :task_id => @task_id, :user_id => pending_user.user_id, :user_state => "declined" %></td>
                   </tr>
@@ -46,6 +50,8 @@
                   <th> Address </th>
                   <th> Birthdate </th>
                   <th> Cellphone </th>
+                  <th> Score </th>
+                  <th> See Details </th>
                 </tr>
               </thead>
               <tbody>
@@ -57,6 +63,8 @@
                     <td><%= permitted_user.address %></td>
                     <td><%= permitted_user.birthdate %></td>
                     <td><%= permitted_user.cellphone %></td>
+                    <td><%= permitted_user.score %></td>
+                    <td><%= link_to "See", :controller => "participate", :action => :index, :user_id => permitted_user.user_id %></td>
                   </tr>
                 <% end %>
               </tbody>

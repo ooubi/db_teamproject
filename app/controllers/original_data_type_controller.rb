@@ -4,7 +4,7 @@ class OriginalDataTypeController < ApplicationController
     @odts = OriginalDataType.get_task_odts(params[:task_id])
     @my_pdsf_num = 0
     @tuple_num = 0
-    submit = Submit.where(:submit_user_id => current_user.user_id)
+    submit = Submit.where(:user_id => current_user.user_id)
     implement_task = ImplementTask.where(:task_id => params[:task_id])
     if submit != nil
       @my_pdsf_num = submit.size
@@ -46,11 +46,9 @@ class OriginalDataTypeController < ApplicationController
   def create
     return if not admin_check
     odt = OriginalDataType.new(original_data_type_params)
-    #pdst = ParsingDataSequenceType.new
-    if odt.save!# && pdst.save! # TODO : What if only one saved?
+    if odt.save!
       specify = Specify.new(:odt_id => odt.odt_id, :task_id => params[:original_data_type][:task_id])
-      #generalize = Generalize.new(:odt_id => odt.odt_id, :pdst_id => pdst.pdst_id)
-      if specify.save! # && generalize.save!
+      if specify.save!
         redirect_to url_for(:controller => :task, :action => :show)
         return
       end
@@ -59,13 +57,8 @@ class OriginalDataTypeController < ApplicationController
     redirect_to :action => 'new'
   end
 
-
-
-
   private
-      
     def original_data_type_params
-
       json_builder = "{\""
       json_builder += params[:original_data_type][:name0].to_s
       json_builder += "\" : \""

@@ -8,13 +8,6 @@
           
           <% provide(:title, "Edit") %>
           <div class="row">
-            <div class="flash_container">
-            <% flash.each do |key, value| %>
-              <div class="alert alert-<%= key %>"><%= value %></div>
-            <% end %>
-            <%= yield %>
-            </div>
-            
             <div class="col-md-6 col-md-offset-3">
               <h1>Edit</h1>
               <h2><%=@edit_user.login_id %></h2>
@@ -44,9 +37,9 @@
                 </li><li>
                 <%= f.label :usertype %>
                 <% if @edit_user.is_eval %>
-                  <%= f.select :user_type, ['eval', 'submit'],  :selected => 'eval', class: 'form-control' %>
+                  <%= f.select :user_type, ['Eval User', 'Submit User'],  :selected => 'Eval User', class: 'form-control' %>
                 <% elsif @edit_user.is_submit %>
-                  <%= f.select :user_type, ['eval', 'submit'],  :selected => 'submit', class: 'form-control' %>
+                  <%= f.select :user_type, ['Eval User', 'Submit User'],  :selected => 'Submit User', class: 'form-control' %>
                 <% end %>
                 </li>
                 <%= f.submit "Edit", class: "btn btn-primary" %>

@@ -1,4 +1,40 @@
-<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+<style type="text/css">
+
+	.btn-menu-toggle {
+		position:absolute;
+		top:0px;
+		right:0px;
+	}
+
+	.btn-edit-profile {
+		position:absolute;
+		top:0px;
+		right:50px;
+	}
+
+
+
+	.white {color:#ffffff;}
+
+	.black-background:hover {background-color: black }
+  </style>
+<a href="#menu-toggle" class="btn btn-default btn-menu-toggle" id="menu-toggle">M</a>
+
+<% if current_user %>
+<div class="btn-group btn-edit-profile">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    <%= current_user.login_id %> <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="/edit">edit profile</a></li>
+    <li><a href="/secession">logout</a></li>
+    <li class="divider"></li>
+    <li><a href="/sign-out">sign out</a></li>
+    
+  </ul>
+</div>
+<% end %>
+
 <script>
   $("#menu-toggle").click(function(e) {
       e.preventDefault();
