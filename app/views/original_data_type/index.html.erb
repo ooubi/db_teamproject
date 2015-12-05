@@ -50,14 +50,17 @@
                     -->
                     <td>
                     <%= form_for(:original_data_file, :url => { :controller => "original_data_file", :action => "upload" }, :method => "post" ) do |f| %>
-                      <%= f.file_field :data, accept: 'text/csv'%>
+
+                     
+                     
+                      <div class="form-group"><%= f.file_field :data, accept: 'text/csv'%></div>
                       <%= f.hidden_field :task_id, :value => @task.task_id %>
                       <%= f.hidden_field :odt_id, :value => odt.odt_id %>
                       <%= f.label :season %> 
-                      <%= f.number_field :season_info, :value => 1 %> <br>
+                      <div class="form-group"><%= f.number_field :season_info, :value => 1 %></div>
                       <%= f.label :period %> 
-                      <%= f.number_field :period_info, :value => 1 %>
-                      <%= f.submit "Submit", class: "btn btn-primary" %>
+                      <div class="form-group"><%= f.number_field :period_info, :value => 1 %></div>
+                      <div class="form-group"><%= f.submit "Submit", class: "btn btn-primary" %></div>
                       <% end %>
                       </td>
                   </tr>
