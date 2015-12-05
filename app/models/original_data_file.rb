@@ -44,15 +44,17 @@ class OriginalDataFile < ActiveRecord::Base
 	  	return true
 	  end
 
-	# TODO : calculate dup_tuple_num
 	  def self.save_task_items(task_id, odt, odf_raw, odt_mapping, odt_header_items, task_header_items)
-	  	pdsf_summaries = Hash["null_num" => 0, "total_tuple_num" => 0, "dup_tuple_num" => 0]
+	  	pdsf_summaries = Hash["null_nums" => Array.new(task_header_items.size){|i| 0},
+	  		"total_tuple_num" => 0, "dup_tuple_num" => 0]
 	  	pdsf_raw = []
+	  	odf_raw_lines = []
 	  	pdsf_raw << task_header_items.join(',')
 	  	odf_raw.each do |line|
 	  	  parsed_line, pdsf_summaries = get_pdsf_info(
-	  	  	line, pdsf_summaries, odt_mapping, odt_header_items, task_header_items)
+	  	  	odf_raw_lines, line, pdsf_summaries, odt_mapping, odt_header_items, task_header_items)
 	  	  if parsed_line != nil
+	  	  	odf_raw_lines << line
 	  	    pdsf_raw << parsed_line
 	  	  end
 	  	end
@@ -60,17 +62,15 @@ class OriginalDataFile < ActiveRecord::Base
 	  	return pdsf_content, pdsf_summaries
 	  end
 
-      # TODO : is pdsf_summaries ok?? double add ?
-	  def self.get_pdsf_info(line, pdsf_summaries, odt_mapping, odt_header_items, task_header_items)
-	  	is_null = is_null_line(line)
-	  	is_dup = is_dup_line(line)
-	  	pdsf_summaries["null_num"] += 1 if is_null
+      def self.get_pdsf_info(odf_raw, line, pdsf_summaries, odt_mapping, odt_header_items, task_header_items)
+	  	is_dup = is_dup_line(odf_raw, line)
+	  	pdsf_summaries["null_nums"] = update_null_nums(pdsf_summaries["null_nums"], line)
 	  	pdsf_summaries["dup_tuple_num"] += 1 if is_dup
 	  	pdsf_summaries["total_tuple_num"] += 1
-	  	if is_null || is_dup
+	  	if is_null(line)
 	  	  return nil, pdsf_summaries
 	  	else
-	  	  return get_parsed_line(line, odt_mapping, odt_header_items, task_header_items), pdsf_summaries
+	  	return get_parsed_line(line, odt_mapping, odt_header_items, task_header_items), pdsf_summaries
 	  	end
 	  end
 
@@ -81,14 +81,14 @@ class OriginalDataFile < ActiveRecord::Base
 	  	  odt_index = odt_header_items.index(odt_mapping[item])
 	  	  parsed_items << raw_items[odt_index]
 	  	end
-	  	return parsed_items.join(',')
+	  	return parsed_items.join(',').strip
 	  end
 
 	  def self.save_infos(odt_id, user_id, season_info, period_info, odf_content, pdsf_content, pdsf_summaries)
 	    odf = OriginalDataFile.new(:file => odf_content)
-	    pdsf_null_ratio = pdsf_summaries["null_num"] / pdsf_summaries["total_tuple_num"]
+	    pdsf_null_ratios = get_null_ratios(pdsf_summaries["null_nums"], pdsf_summaries["total_tuple_num"])
 	    pdsf = ParsingDataSequenceFile.new(:file => pdsf_content,
-	    	:null_ratio => pdsf_null_ratio,
+	    	:null_ratio => pdsf_null_ratios.to_s,
 	    	:season_info => season_info,
 	    	:period_info => period_info,
 	    	:total_tuple_num => pdsf_summaries["total_tuple_num"],
@@ -103,11 +103,36 @@ class OriginalDataFile < ActiveRecord::Base
 	    end
 	  end
 
-	  def self.is_null_line(line)
-	  	return line == ''
+	  def self.update_null_nums(null_nums, line)
+	  	raw_items = line.split(',')
+	  	raw_item_end_index = raw_items.size - 1
+	  	null_nums_end_index = null_nums.size - 1
+	  	(0..null_nums_end_index).each do |i|
+	  	  if raw_item_end_index < i || is_null(raw_items[i])
+	  	  	null_nums[i] += 1
+	  	  end
+	  	end
+	  	return null_nums
 	  end
 
-	  def self.is_dup_line(line)
+	  def self.get_null_ratios(null_nums, total_tuple_num)
+	  	null_ratios = []
+	  	null_nums.each do |null_num|
+	  	  null_ratios << (null_num.to_f / total_tuple_num).to_s
+	  	end
+	  	return null_ratios.join(',')
+	  end
+
+	  def self.is_null(item)
+	  	return item == nil || item == '' || item.to_s.strip.length == 0
+	  end
+
+	  def self.is_dup_line(all_lines, line)
+	  	all_lines.each do |each_line|
+	  	  if each_line == line
+	  	  	return true
+	  	  end
+	  	end
 	  	return false
 	  end
 end

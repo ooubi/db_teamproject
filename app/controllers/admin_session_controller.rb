@@ -17,7 +17,7 @@ class AdminSessionController < ApplicationController
       redirect_to '/admin/home'
     else
       flash[:warning] = "something's wrong! please log in again."
-      redirect_to :action => 'index'
+      redirect_to '/admin'
     end
   end
 

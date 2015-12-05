@@ -18,9 +18,11 @@
                   <th> Schema Info </th>
                   <th> Mapping Info </th>
                   <th> See Details </th>
+                  <!--
                   <th> Action </th>
                   <th> Season </th>
                   <th> Period </th>
+                  -->
                   <th> Submit </th>
                 </tr>
               </thead>
@@ -31,6 +33,7 @@
                     <td><%= odt.schema_info %></td>
                     <td><%= odt.mapping_info %></td>
                     <td><%= link_to "See", :controller => "implement_odt", :action => :index, :odt_id => odt.odt_id, :user_id => current_user.user_id %></td>
+                    <!--
                     <%= form_for(:original_data_file, :url => { :controller => "original_data_file", :action => "upload"}, :method => "post" ) do |f| %>
                       <td>
                       <%= f.file_field :data, accept: 'text/csv'%>
@@ -42,8 +45,21 @@
                       <%= f.number_field :period_info, :value => 1 %>
                       </td><td>
                       <%= f.submit "Submit", class: "btn btn-primary" %>
-                      </td>
                       <% end %>
+                      </td>
+                    -->
+                    <td>
+                    <%= form_for(:original_data_file, :url => { :controller => "original_data_file", :action => "upload" }, :method => "post" ) do |f| %>
+                      <%= f.file_field :data, accept: 'text/csv'%>
+                      <%= f.hidden_field :task_id, :value => @task.task_id %>
+                      <%= f.hidden_field :odt_id, :value => odt.odt_id %>
+                      <%= f.label :season %> 
+                      <%= f.number_field :season_info, :value => 1 %> <br>
+                      <%= f.label :period %> 
+                      <%= f.number_field :period_info, :value => 1 %>
+                      <%= f.submit "Submit", class: "btn btn-primary" %>
+                      <% end %>
+                      </td>
                   </tr>
                 <% end %>
               </tbody>

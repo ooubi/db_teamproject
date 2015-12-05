@@ -4,7 +4,7 @@ class CreateParsingDataSequenceFiles < ActiveRecord::Migration
       t.primary_key :pdsf_id
       t.string :file
       t.integer :season_info, default: 1
-      t.float :null_ratio, default: 0.5
+      t.string :null_ratio, default: '[]'
       t.integer :period_info, default: 1
       t.integer :estimate_state, default: 0
       t.integer :total_tuple_num, default: 0

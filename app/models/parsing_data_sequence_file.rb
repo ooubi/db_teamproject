@@ -1,12 +1,10 @@
 class ParsingDataSequenceFile < ActiveRecord::Base
-  validates_numericality_of :null_ratio, inclusion: { :greater_than_or_equal_to => 0.0, :less_than_or_equal_to => 1.0, :message => "invalid null ratio"}
   validates_numericality_of :total_tuple_num, inclusion: { :greater_than_or_equal_to => 0, :message => "invalid tuple count"}
   validates_numericality_of :dup_tuple_num, inclusion: { :greater_than_or_equal_to => 0, :message => "invalid tuple count"}
 
-  def self.change_score(pdsf_id, score)
+  def self.insert_eval_infos(pdsf_id, score, is_passed)
   	pdsf = find_by(:pdsf_id => pdsf_id)
-  	pdsf.score = score
-  	return pdsf.save!
+    return pdsf.update_attributes(:score => score, :is_passed => is_passed)
   end
 
   def self.get_user_infos(pdsf_id)

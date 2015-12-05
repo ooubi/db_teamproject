@@ -50,8 +50,9 @@ class Participate < ActiveRecord::Base
   def self.update_user_state(tid, uid, us)
 	participate = find_by(:task_id => tid, :user_id => uid)
   is_permitted = (us == "permitted" && participate.update_attributes(:is_pending => false, :is_permitted => true))
-	is_declined = (us == "declined" && participate.update_attributes(:is_pending => false, :is_permitted => false))
-	return is_permitted || is_declined
+	#is_declined = (us == "declined" && participate.update_attributes(:is_pending => false, :is_permitted => false))
+  is_declined = (us == "declined" && participate.destroy)
+  return is_permitted || is_declined
   end
 
   def self.join(cu, tid)

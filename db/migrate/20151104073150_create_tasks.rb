@@ -7,6 +7,7 @@ class CreateTasks < ActiveRecord::Migration
       t.integer :min_upload_period_hour, default: 24
       t.string :tdt_name
       t.string :tdt_schema_info
+      t.boolean :active, default: true
       t.timestamps null: false
     end
   end

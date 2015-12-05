@@ -32,6 +32,7 @@
 			        <td><%= pdsf.total_tuple_num %></td>
 			        <td><%= pdsf.dup_tuple_num %></td>
 			        <td><%= link_to 'Download', :controller => "parsing_data_sequence_file", :action => :index, :pdsf_id => pdsf.pdsf_id %></td>
+			        <!--
 			        <%= form_for(:evaluate, :url => { :controller => "evaluate", :action => "edit"}, :method => "post" ) do |f| %>
 			          <%= f.hidden_field :pdsf_id, :value =>pdsf.pdsf_id %>
 			          <td>
@@ -42,6 +43,15 @@
                       <%= f.submit "Submit", class: "btn btn-primary" %>
                   	  </td>
                       <% end %>
+                  -->
+                  <td>
+                  <%= form_for(:evaluate, :url => { :controller => "evaluate", :action => "edit"}, :method => "post" ) do |f| %>
+			          <%= f.hidden_field :pdsf_id, :value =>pdsf.pdsf_id %>
+			          <%= f.number_field :score %>
+                      <%= f.select(:pass_or_nonpass, ['Pass', 'Non-Pass'],  :selected => 'Pass') %>
+		              <%= f.submit "Submit", class: "btn btn-primary" %>
+                  	  <% end %>
+                  	  </td>
 			      </tr>
 			     <% end %>
 			  </tbody>
