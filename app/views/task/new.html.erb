@@ -49,7 +49,9 @@
                 <div class="col-sm-6">
                   <div class="form-group">
                     <% var2 = "type" + i.to_s %>
-                    <%= f.select(var2.to_sym, ['string', 'text', 'integer', 'float', 'decimal', 'timestamp', 'time', 'date', 'binary', 'boolean'], {include_blank: "type"}, { :class => 'form-control' }) %> 
+                    <!-- <%= f.select(var2.to_sym, ['string', 'text', 'integer', 'float', 'decimal', 'timestamp', 'time', 'date', 'datetime', 'binary', 'boolean'], {include_blank: "type"}, { :class => 'form-control' }) %>
+                    or  --> 
+                    <%= f.text_field var2.to_sym, class: 'form-control', placeholder: 'user-defined type' %>
                 </div>      
                 </div>
                 </div>

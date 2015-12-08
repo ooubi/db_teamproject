@@ -12,5 +12,4 @@ class ImplementTask < ActiveRecord::Base
   	end
   	return tuple_num
   end
-
 end

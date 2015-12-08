@@ -1,6 +1,17 @@
 class OriginalDataType < ActiveRecord::Base
 
-  attr_accessor :name0, :name1, :name2, :name3, :name4, :name5, :type0, :type1, :type2, :type3, :type4, :type5, :from0, :from1, :from2, :from3, :from4, :from5, :to0, :to1, :to2, :to3, :to4, :to5
+  #attr_accessor :name0, :name1, :name2, :name3, :name4, :name5, :type0, :type1, :type2, :type3, :type4, :type5, :from0, :from1, :from2, :from3, :from4, :from5, :to0, :to1, :to2, :to3, :to4, :to5
+
+  def self.set_attr_accessor(attr_num, map_num)
+    for i in 0..attr_num
+      self.class_eval { attr_accessor "name" + i.to_s }
+      self.class_eval { attr_accessor "type" + i.to_s }
+    end
+    for i in 0..map_num
+      self.class_eval { attr_accessor "from" + i.to_s }
+      self.class_eval { attr_accessor "to" + i.to_s }      
+    end
+  end
 
   def self.get_task_odts(tid)
   	odts = []

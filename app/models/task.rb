@@ -41,4 +41,21 @@ class Task < ActiveRecord::Base
     schema_info = find_by(:task_id => tid).tdt_schema_info
     return JSON.parse(schema_info).keys
   end
+
+    def self.get_header_items_from_pdsf(pdsf_id)
+    convert = Convert.find_by(:pdsf_id => pdsf_id)
+    unless convert.nil?
+      impl_odt = ImplementOdt.find_by(:odf_id => convert.odf_id)
+      unless impl_odt.nil?
+        specify = Specify.find_by(:odt_id => impl_odt.odt_id)
+        unless specify.nil?
+          task = Task.find_by(:task_id => specify.task_id)
+          unless task.nil?
+            return JSON.parse(task.tdt_schema_info).keys
+          end
+        end
+      end
+    end
+    return []
+  end
 end

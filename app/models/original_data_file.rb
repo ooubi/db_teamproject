@@ -49,7 +49,7 @@ class OriginalDataFile < ActiveRecord::Base
 	  		"total_tuple_num" => 0, "dup_tuple_num" => 0]
 	  	pdsf_raw = []
 	  	odf_raw_lines = []
-	  	pdsf_raw << task_header_items.join(',')
+	  	# pdsf_raw << task_header_items.join(',') : TODO : is this correct?
 	  	odf_raw.each do |line|
 	  	  parsed_line, pdsf_summaries = get_pdsf_info(
 	  	  	odf_raw_lines, line, pdsf_summaries, odt_mapping, odt_header_items, task_header_items)
@@ -79,7 +79,11 @@ class OriginalDataFile < ActiveRecord::Base
 	  	parsed_items = []
 	  	task_header_items.each do |item|
 	  	  odt_index = odt_header_items.index(odt_mapping[item])
-	  	  parsed_items << raw_items[odt_index]
+	  	  if odt_index.nil?
+	  	    parsed_items << ""
+	  	  else
+	  	    parsed_items << raw_items[odt_index]
+	  	  end
 	  	end
 	  	return parsed_items.join(',').strip
 	  end

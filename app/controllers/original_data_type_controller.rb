@@ -40,12 +40,19 @@ class OriginalDataTypeController < ApplicationController
   def new
     return if not admin_check
     @original_data_type = OriginalDataType.new
-    @task = Task.find_by(task_id: params[:task_id]) 
+    @task = Task.find_by(task_id: params[:task_id])
+    @attr_num = 6
+    @attr_num = params[:attr_num].to_i unless params[:attr_num].nil?
+    @map_num = 6
+    @attr_num = params[:map_num].to_i unless params[:map_num].nil?
+    OriginalDataType.set_attr_accessor(@attr_num, @map_num)
   end
 
   def create
     return if not admin_check
-    odt = OriginalDataType.new(original_data_type_params)
+    attr_num = params[:original_data_type][:attr_num].to_i
+    map_num = params[:original_data_type][:map_num].to_i
+    odt = OriginalDataType.new(original_data_type_params(attr_num, map_num))
     if odt.save!
       specify = Specify.new(:odt_id => odt.odt_id, :task_id => params[:original_data_type][:task_id])
       if specify.save!
@@ -58,13 +65,14 @@ class OriginalDataTypeController < ApplicationController
   end
 
   private
-    def original_data_type_params
+    def original_data_type_params(attr_num, map_num)
+      return if params[:original_data_type].nil?
       json_builder = "{\""
       json_builder += params[:original_data_type][:name0].to_s
       json_builder += "\" : \""
       json_builder += params[:original_data_type][:type0].to_s
 
-      for i in 1..5
+      for i in 0..attr_num
         sym_name = "name" + i.to_s # sym_name.to_sym is :name[i]
         sym_type = "type" + i.to_s # sym_type.to_sym is :type[i]
 
@@ -84,7 +92,7 @@ class OriginalDataTypeController < ApplicationController
       json_builder += "\" : \""
       json_builder += params[:original_data_type][:to0].to_s
 
-      for i in 1..5
+      for i in 0..map_num
         sym_name = "from" + i.to_s # sym_name.to_sym is :name[i]
         sym_type = "to" + i.to_s # sym_type.to_sym is :type[i]
 
