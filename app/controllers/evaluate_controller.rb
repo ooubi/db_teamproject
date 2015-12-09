@@ -39,7 +39,7 @@ class EvaluateController < ApplicationController
   	  redirect_to :action => 'index', :user_id => current_user.user_id
     end
 
-    def self.get_trimmed_score(raw_score)
+    def get_trimmed_score(raw_score)
       if raw_score < 0
         return 0
       elsif raw_score > 10
