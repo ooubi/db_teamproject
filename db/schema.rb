@@ -13,7 +13,8 @@
 
 ActiveRecord::Schema.define(version: 20151209013217) do
 
-  create_table "admin_users", primary_key: "user_id", force: :cascade do |t|
+  create_table "admin_users", primary_key: "admin_user_id", force: :cascade do |t|
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
