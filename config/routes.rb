@@ -72,6 +72,7 @@ post 'admin/update' => 'user#update'
 get 'admin/user' => 'user#show'
 post 'admin/user' => 'user#show'
 
+
 # Session
 get 'login' => 'session#new'
 post 'login' => 'session#create'
@@ -82,6 +83,7 @@ get 'join' => 'user#new'
 post 'join' => 'user#create'
 get 'sign-out' => 'user#destroy'
 get 'edit' => 'user#edit'
+get 'user/destroy' => 'user#destroy'
 post 'update' => 'user#update'
 
 # Task
@@ -94,7 +96,7 @@ post 'task/new' => 'task#create'
 
 
 # Task Item
-get 'task_item/show' => 'task_item#show'
+get 'task_table/show' => 'task_table#show'
 
 # Original data type
 get 'original_data_type/new' => 'original_data_type#new'

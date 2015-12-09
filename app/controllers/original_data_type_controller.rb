@@ -5,12 +5,17 @@ class OriginalDataTypeController < ApplicationController
     @my_pdsf_num = 0
     @tuple_num = 0
     submit = Submit.where(:user_id => current_user.user_id)
-    implement_task = ImplementTask.where(:task_id => params[:task_id])
+    implement_tasks = ImplementTask.where(:task_id => params[:task_id])
     if submit != nil
       @my_pdsf_num = submit.size
     end    
-    if implement_task != nil
-      @tuple_num = implement_task.size
+    if implement_tasks != nil
+      implement_tasks.each do |implement_task|
+        task_table = TaskTable.find_by(:task_item_id => implement_task.task_item_id, :user_id => current_user.user_id)
+        unless task_table.nil?
+          @tuple_num += 1
+        end
+      end
     end
   end
 

@@ -3,6 +3,25 @@ require 'composite_primary_keys'
 class Participate < ActiveRecord::Base
   self.primary_keys = :user_id, :task_id
 
+  def self.destroy_user(uid)
+    participates = where(:user_id => uid)
+    unless participates.nil?
+      participates.each do |p|
+        p.destroy
+      end
+    end
+  end
+
+  def self.destroy_task(tid)
+    participates = where(:task_id => tid)
+    unless participates.nil?
+      participates.each do |p|
+        
+        p.destroy # TODO : is this enough? what about eval?
+      end
+    end
+  end
+
   def self.get_pending_users(tid)
     pending_users = []
     pendings = where(:task_id => tid, :is_pending => true)

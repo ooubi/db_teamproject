@@ -26,6 +26,16 @@ submit_user = User.new(
 	:is_submit => true
 )
 
+eval_user = User.new(
+	:login_id => 'eval',
+	:password => 'eval',
+	:name => 'user0001',
+	:sex => 'male',
+	:birthdate => "2002-01-31",
+	:cellphone => "010-1234-5678",
+	:is_eval => true
+)
+
 test1 = Task.new(
 	:task_name => 'test1',
 	:description => 'this is test1',
@@ -45,9 +55,41 @@ test2 = Task.new(
 	)
 
 submit_user.save
+eval_user.save
 test1.save
 test2.save
 
+odt1 = OriginalDataType.new(
+	:odt_id => test1.task_id,
+    :odt_name => "this is sample odt",
+    :schema_info => '{"name" : "string", "age" : "integer", "st" : "string"}',
+    :mapping_info => '{"name" : "name", "age" : "age", "st" : "st"}'
+	)
+
+
+odt2 = OriginalDataType.new(
+	:odt_id => test2.task_id,
+    :odt_name => "this is sample odt",
+    :schema_info => '{"name" : "string", "age" : "integer", "st" : "string"}',
+    :mapping_info => '{"name" : "name", "age" : "age", "st" : "st"}'
+	)
+
+odt1.save
+odt2.save
+
+
+specify1 = Specify.new(
+	:odt_id => odt1.odt_id,
+	:task_id => test1.task_id
+	)
+
+specify2 = Specify.new(
+	:odt_id => odt2.odt_id,
+	:task_id => test2.task_id
+	)
+
+specify1.save
+specify2.save
 
 if not admin_user.save
   puts "admin save went wrong"

@@ -37,10 +37,17 @@
                 </li><li>
                 <%= f.label :usertype %>
                 <% if @edit_user.is_eval %>
+                  <%= f.hidden_field :user_type, :value => 'Eval User', class: 'form-control' %>
+                <% elsif @edit_user.is_submit %>
+                  <%= f.hidden_field :user_type, :value => 'Submit User', class: 'form-control' %>
+                <% end %>
+                <!--
+                <% if @edit_user.is_eval %>
                   <%= f.select :user_type, ['Eval User', 'Submit User'],  :selected => 'Eval User', class: 'form-control' %>
                 <% elsif @edit_user.is_submit %>
                   <%= f.select :user_type, ['Eval User', 'Submit User'],  :selected => 'Submit User', class: 'form-control' %>
                 <% end %>
+                -->
                 </li>
                 <%= f.submit "Edit", class: "btn btn-primary" %>
               <% end %>

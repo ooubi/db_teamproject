@@ -50,12 +50,8 @@ class TaskController < ApplicationController
   def destroy
     return if not admin_check
     @task = Task.find(params[:id])
-   
-    @participates = Participate.where(task_id: @task.task_id)
-    @participates.each do |p|
-      p.destroy
-    end
-   
+    Participate.destroy_task(@task.task_id)
+    Evaluate.destroy_task(@task.task_id)
     @task.destroy
     respond_to do |format|
       #format.html { redirect_to task_url, notice: 'Task was successfully destroyed.' }

@@ -20,17 +20,17 @@ class OriginalDataFile < ActiveRecord::Base
 
 	private
 	  def self.upload_datas(task_id, user_id, season_info, period_info, odt, header, odf_raw)
-	  	odt_schema_keys = JSON.parse(odt.schema_info).keys
+	  	header_items = JSON.parse(odt.schema_info).keys
 	  	odt_mapping = JSON.parse(odt.mapping_info)
-	  	header_items = CSV.parse(header)[0]
-	  	if is_header_valid(odt, header, odt_schema_keys, odt_mapping, header_items)
-	  	  task_header_items = Task.get_header_items(task_id)
-		  pdsf_content, pdsf_summaries = save_task_items(
-		  	task_id, odt, odf_raw[1...odf_raw.length], odt_mapping, header_items, task_header_items)
-		  odf_content = odf_raw.join('').unpack('b*')[0]
-		  return save_infos(odt.odt_id, user_id, season_info, period_info, odf_content, pdsf_content, pdsf_summaries)
-		end
-		return false
+	  	#header_items = CSV.parse(header)[0]
+	  	#if is_header_valid(odt, header, odt_schema_keys, odt_mapping, header_items)
+	  	task_header_items = Task.get_header_items(task_id)
+		pdsf_content, pdsf_summaries = save_task_items(
+		  	task_id, odt, odf_raw[0...odf_raw.length], odt_mapping, header_items, task_header_items)
+		odf_content = odf_raw.join('').unpack('b*')[0]
+		return save_infos(odt.odt_id, user_id, season_info, period_info, odf_content, pdsf_content, pdsf_summaries)
+		#end
+		#return false
 	  end
 
 	  def self.is_header_valid(odt, header, odt_schema_keys, odt_mapping, header_items)
@@ -48,30 +48,28 @@ class OriginalDataFile < ActiveRecord::Base
 	  	pdsf_summaries = Hash["null_nums" => Array.new(task_header_items.size){|i| 0},
 	  		"total_tuple_num" => 0, "dup_tuple_num" => 0]
 	  	pdsf_raw = []
-	  	odf_raw_lines = []
 	  	# pdsf_raw << task_header_items.join(',') : TODO : is this correct?
 	  	odf_raw.each do |line|
 	  	  parsed_line, pdsf_summaries = get_pdsf_info(
-	  	  	odf_raw_lines, line, pdsf_summaries, odt_mapping, odt_header_items, task_header_items)
+	  	  	pdsf_raw, line, pdsf_summaries, odt_mapping, odt_header_items, task_header_items)
 	  	  if parsed_line != nil
-	  	  	odf_raw_lines << line
-	  	    pdsf_raw << parsed_line
+	  	  	pdsf_raw << parsed_line
 	  	  end
 	  	end
 	  	pdsf_content = pdsf_raw.join('\n').unpack('b*')[0]
 	  	return pdsf_content, pdsf_summaries
 	  end
 
-      def self.get_pdsf_info(odf_raw, line, pdsf_summaries, odt_mapping, odt_header_items, task_header_items)
-	  	is_dup = is_dup_line(odf_raw, line)
-	  	pdsf_summaries["null_nums"] = update_null_nums(pdsf_summaries["null_nums"], line)
+      def self.get_pdsf_info(pdsf_raw, line, pdsf_summaries, odt_mapping, odt_header_items, task_header_items)
+      	parsed_line = ''
+	  	unless is_null(line)
+	  	  parsed_line = get_parsed_line(line, odt_mapping, odt_header_items, task_header_items)
+	  	end
+	  	is_dup = is_dup_line(pdsf_raw, parsed_line)
+	  	pdsf_summaries["null_nums"] = update_null_nums(pdsf_summaries["null_nums"], parsed_line)
 	  	pdsf_summaries["dup_tuple_num"] += 1 if is_dup
 	  	pdsf_summaries["total_tuple_num"] += 1
-	  	if is_null(line)
-	  	  return nil, pdsf_summaries
-	  	else
-	  	return get_parsed_line(line, odt_mapping, odt_header_items, task_header_items), pdsf_summaries
-	  	end
+	  	return parsed_line, pdsf_summaries
 	  end
 
 	  def self.get_parsed_line(line, odt_mapping, odt_header_items, task_header_items)

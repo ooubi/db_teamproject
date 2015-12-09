@@ -47,7 +47,7 @@
                     <td><%= link_to "See", :controller => "original_data_type", :action => :show, :task_id => task.task_id %></td>
                     <td><%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                     <td><%= link_to 'Check', :controller => "participate" ,:action => :show, :task_id => task.task_id %></td>   
-                    <td><%= link_to 'Download', :controller => "task_item", :action => :show,
+                    <td><%= link_to 'Download', :controller => "task_table", :action => :show,
                     :task_id => task.task_id %></td>
                   </tr>
                 <% end %>

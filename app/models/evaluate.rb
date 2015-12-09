@@ -52,4 +52,43 @@ class Evaluate < ActiveRecord::Base
   	end
   	return pdsfs
   end
+
+  def self.destroy_user_and_reassign(uid)
+    evaluates = where(:user_id => uid)
+    unless evaluates.nil?
+      evaluates.each do |evaluate|
+        destroy_evaluate(evaluate)
+      end
+    end
+    assign_if_possible
+  end
+
+  def self.destroy_task(tid)
+    specifies = Specify.where(:task_id => tid)
+    unless specifies.nil?
+      specifies.each do |specify|
+        impl_odt = ImplementOdt.find_by(:odt_id => specify.odt_id)
+        unless impl_odt.nil?
+          convert = Convert.find_by(:odf_id => impl_odt.odf_id)
+          unless convert.nil?
+            evaluate = find_by(:pdsf_id => convert.pdsf_id)
+            unless evaluate.nil?
+              destroy_evaluate(evaluate)
+            end
+          end
+        end
+      end
+    end
+  end
+
+  private
+    def self.destroy_evaluate(evaluate)
+      if evaluate.is_pending
+        pdsf = ParsingDataSequenceFile.find_by(:pdsf_id => evaluate.pdsf_id)
+        if !pdsf.nil? && !pdsf.is_evaluated 
+          pdsf.update_attributes(:is_assigned => false)
+        end
+        evaluate.destroy
+      end
+    end
 end

@@ -9,7 +9,7 @@ class EvaluateController < ApplicationController
     user_id, user_name = ParsingDataSequenceFile.get_user_infos(eval_params[:pdsf_id])
   	if eval_params[:pass_or_nonpass] == 'Pass'
   	  if ParsingDataSequenceFile.insert_eval_infos(eval_params[:pdsf_id], eval_params[:score], true) &&
-          TaskItem.add_pdsf_items(user_id, user_name, eval_params[:pdsf_id]) &&
+          TaskTable.add_pdsf_items(user_id, user_name, eval_params[:pdsf_id]) &&
           User.update_score(user_id, true)
   	  	save_done(eval_params[:pdsf_id])
   	  else

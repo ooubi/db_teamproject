@@ -109,7 +109,7 @@ class User < ActiveRecord::Base
         participates = Participate.where(:task_id => search_content.to_i)
         if participates != nil
           for participate in participates
-            user_infos << find_by(:user_id => participate.submit_user_id)
+            user_infos << find_by(:user_id => participate.user_id)
           end
         end
         return user_infos

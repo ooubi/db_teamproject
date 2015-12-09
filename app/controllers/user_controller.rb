@@ -31,22 +31,15 @@ class UserController < ApplicationController
   end
 
   def destroy
-    if admin_check
-      redirect_to '/admin'
+    destroy_user = User.find_by(:user_id => current_user.user_id)
+    Participate.destroy_user(destroy_user.user_id)
+    Evaluate.destroy_user_and_reassign(destroy_user.user_id)
+    if destroy_user.destroy
+      flash[:notice] = "Bye~"
+      redirect_to :controller => 'session', :action => 'destroy'
+      return
     else
-      @destroy_user = User.find_by(:login_id => current_user.login_id)
-
-      @participates = Participate.where(user_id: @destroy_user.user_id)
-      @participates.each do |p|
-        p.destroy
-      end
-
-      if @destroy_user.destroy
-        flash[:notice] = "Bye~"
-        redirect_to '/login'
-      else
-        flash[:warning] = "Error."
-      end
+      flash[:warning] = "Error."
     end
   end
 

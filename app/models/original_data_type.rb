@@ -24,7 +24,7 @@ class OriginalDataType < ActiveRecord::Base
     return odts
   end
 
-  def self.get_pdsf_header_items(pdsf_id)
+  def self.get_header_items_from_pdsf(pdsf_id)
     convert = Convert.find_by(:pdsf_id => pdsf_id)
     unless convert.nil?
       impl_odt = ImplementOdt.find_by(:odf_id => convert.odf_id)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202021936) do
+ActiveRecord::Schema.define(version: 20151209013217) do
 
   create_table "admin_users", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 20151202021936) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "task_items", primary_key: "task_item_id", force: :cascade do |t|
+  create_table "task_tables", primary_key: "task_item_id", force: :cascade do |t|
     t.string   "item"
     t.integer  "user_id"
     t.string   "user_name"

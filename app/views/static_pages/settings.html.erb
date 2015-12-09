@@ -11,7 +11,9 @@
 			  	<h1>Settings</h1>
 			    <h2>User</h2>
 			    <li> <a href="/edit"> edit </a> </li>
-			    <li> <a href="/sign-out"> sign out </a> </li>
+          <% if current_user != nil && !current_user.is_admin %>
+			      <li> <%= link_to "Sign out", :controller => "user", :action => :destroy %> </a> </li>
+          <% end %>
 			  </div>
 			</div>
           <%= render "/static_pages/menu_toggle" %>
