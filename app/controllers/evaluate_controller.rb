@@ -10,7 +10,7 @@ class EvaluateController < ApplicationController
   	if eval_params[:pass_or_nonpass] == 'Pass'
   	  if ParsingDataSequenceFile.insert_eval_infos(eval_params[:pdsf_id], eval_params[:score], true) &&
           TaskTable.add_pdsf_items(user_id, user_name, eval_params[:pdsf_id]) &&
-          User.update_score(user_id, true)
+          User.update_score(user_id, eval_params[:score], eval_params[:pdsf_id], true)
   	  	save_done(eval_params[:pdsf_id])
   	  else
   	  	flash[:warning] = "Something's wrong! Please try again."
@@ -18,7 +18,7 @@ class EvaluateController < ApplicationController
   	  end
   	else
       if ParsingDataSequenceFile.insert_eval_infos(eval_params[:pdsf_id], eval_params[:score], false) &&
-          User.update_score(user_id, false)
+          User.update_score(user_id, eval_params[:score], eval_params[:pdsf_id], false)
   	    save_done(eval_params[:pdsf_id])
       else
         flash[:warning] = "Something's wrong! Please try again."

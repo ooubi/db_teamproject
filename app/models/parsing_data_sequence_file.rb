@@ -50,4 +50,23 @@ class ParsingDataSequenceFile < ActiveRecord::Base
   	return nil
   end
 
+  def self.get_summary_ratios(pdsf_id)
+    pdsf = find_by(:pdsf_id => pdsf_id)
+    unless pdsf.nil?
+      # get dup ratio
+      total_tuple_num = pdsf.total_tuple_num
+      dup_tuple_num = pdsf.dup_tuple_num
+      dup_ratio = dup_tuple_num.to_f / total_tuple_num.to_f
+      # get avg null ratio
+      null_ratios = pdsf.null_ratio.split(',')
+      null_ratio_sum = 0.0
+      null_ratios.each do |nr|
+        null_ratio_sum += nr.to_f
+      end
+      avg_null_ratio = null_ratio_sum / null_ratios.size
+      return dup_ratio, avg_null_ratio
+    end
+    return 0.0,0.0
+  end
+
 end

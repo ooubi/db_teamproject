@@ -33,12 +33,23 @@ class User < ActiveRecord::Base
     return temp_user.update_attributes(user_params)
   end
 
-  def self.update_score(user_id, is_passed)
+  def self.update_score(user_id, score, pdsf_id, is_passed)
+    adv = 10
+    disadv = 5
+    null_ratio_threshold = 0.2
+    dup_ratio_threshold = 0.5
     user = find_by(:user_id => user_id)
+    score = user.score
     if is_passed
-      return user.update_attributes(:score => (user.score + 10))
+      dup_ratio, avg_null_ratio = ParsingDataSequenceFile.get_summary_ratios(pdsf_id)
+      if avg_null_ratio >= null_ratio_threshold || dup_ratio >= dup_ratio_threshold
+        score -= disadv
+      end
+      score += adv
+      return user.update_attributes(:score => score)
     else 
-      return user.update_attributes(:score => (user.score - 5))
+      score -= disadv 
+      return user.update_attributes(:score => score)
     end
   end
 
