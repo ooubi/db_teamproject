@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20151209013217) do
   end
 
   create_table "parsing_data_sequence_files", primary_key: "pdsf_id", force: :cascade do |t|
-    t.string   "file"
+    t.binary   "file",                            null: false
     t.integer  "season_info",     default: 1
     t.string   "null_ratio",      default: "[]"
     t.integer  "period_info",     default: 1

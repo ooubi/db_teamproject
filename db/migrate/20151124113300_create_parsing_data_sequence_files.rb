@@ -2,7 +2,7 @@ class CreateParsingDataSequenceFiles < ActiveRecord::Migration
   def change
     create_table(:parsing_data_sequence_files, :id => false) do |t|
       t.primary_key :pdsf_id
-      t.string :file
+      t.binary :file, :null => false
       t.integer :season_info, default: 1
       t.string :null_ratio, default: '[]'
       t.integer :period_info, default: 1

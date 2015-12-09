@@ -1,4 +1,6 @@
 class ParsingDataSequenceFile < ActiveRecord::Base
+  belongs_to :binary
+  
   validates_numericality_of :total_tuple_num, inclusion: { :greater_than_or_equal_to => 0, :message => "invalid tuple count"}
   validates_numericality_of :dup_tuple_num, inclusion: { :greater_than_or_equal_to => 0, :message => "invalid tuple count"}
 
